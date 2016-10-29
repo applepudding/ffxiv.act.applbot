@@ -136,6 +136,7 @@
             this.MinimumSize = new System.Drawing.Size(275, 125);
             this.Name = "formMini";
             this.Text = "minibot";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMini_FormClosing);
             this.Load += new System.EventHandler(this.formMini_Load);
             this.Shown += new System.EventHandler(this.formMini_Shown);

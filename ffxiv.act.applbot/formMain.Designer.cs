@@ -40,7 +40,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_browse = new System.Windows.Forms.Button();
             this.txt_simFile = new System.Windows.Forms.TextBox();
             this.btn_test = new System.Windows.Forms.Button();
             this.btn_reloadPlayers = new System.Windows.Forms.Button();
@@ -114,6 +114,7 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -237,12 +238,11 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(223, 18);
+            this.button2.Location = new System.Drawing.Point(194, 18);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 22);
+            this.button2.Size = new System.Drawing.Size(104, 22);
             this.button2.TabIndex = 0;
             this.button2.Text = "Open Server";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = true;
             // 
             // tabPage5
@@ -261,7 +261,7 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.button1);
+            this.groupBox9.Controls.Add(this.btn_browse);
             this.groupBox9.Controls.Add(this.txt_simFile);
             this.groupBox9.Location = new System.Drawing.Point(6, 6);
             this.groupBox9.Name = "groupBox9";
@@ -270,18 +270,18 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Custom Simulation File";
             // 
-            // button1
+            // btn_browse
             // 
-            this.button1.Location = new System.Drawing.Point(261, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 37);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Browse";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_browse.Location = new System.Drawing.Point(261, 19);
+            this.btn_browse.Name = "btn_browse";
+            this.btn_browse.Size = new System.Drawing.Size(75, 37);
+            this.btn_browse.TabIndex = 12;
+            this.btn_browse.Text = "Browse";
+            this.btn_browse.UseVisualStyleBackColor = true;
+            this.btn_browse.Click += new System.EventHandler(this.btn_browse_Click);
             // 
             // txt_simFile
             // 
-            this.txt_simFile.Enabled = false;
             this.txt_simFile.Location = new System.Drawing.Point(6, 19);
             this.txt_simFile.Multiline = true;
             this.txt_simFile.Name = "txt_simFile";
@@ -1064,6 +1064,13 @@
             this.panel1.Size = new System.Drawing.Size(913, 159);
             this.panel1.TabIndex = 20;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "output.txt";
+            this.openFileDialog1.Filter = "Text File|*.txt";
+            this.openFileDialog1.RestoreDirectory = true;
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1133,7 +1140,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_browse;
         private System.Windows.Forms.TextBox txt_simFile;
         private System.Windows.Forms.Button btn_test;
         private System.Windows.Forms.Button btn_reloadPlayers;
@@ -1207,5 +1214,6 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

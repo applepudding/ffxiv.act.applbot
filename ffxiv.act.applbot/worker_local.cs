@@ -110,10 +110,10 @@ namespace ffxiv.act.applbot
                                                     highlightEvent();
                                                 }
                                             }
-                                            if ((pattern == "") && (Int32.Parse(current_lvi.SubItems[3].Text) == 0)) //currentline is fight event with no trigger
+                                            if ((pattern == "") && (Int32.Parse(current_lvi.SubItems[2].Text) == 0)) //currentline is fight event with no trigger
                                             {
                                                 completeEvent();
-                                                log("event trigger: " + current_lv_index.ToString(), false, resultLine);
+                                                log("event elapsed: " + current_lv_index.ToString());
                                                 if (chk_speakEvent.Checked)
                                                 {
                                                     string toSpeak = current_lvi.SubItems[3].Text;

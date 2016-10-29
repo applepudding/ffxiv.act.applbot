@@ -349,5 +349,15 @@ namespace ffxiv.act.applbot
                 synthesizer.SpeakAsync(txt_toSpeak.Text);
             }
         }
+
+        private void btn_browse_Click(object sender, EventArgs e)
+        {
+            this.openFileDialog1.ShowDialog();
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            this.txt_simFile.Text = this.openFileDialog1.FileName;
+        }
     }
 }

@@ -641,7 +641,7 @@ namespace ffxiv.act.applbot
                     {
                         string eventDetail = (eventNode.Attributes["detail"] == null) ? "" : eventNode.Attributes["detail"].Value; //eventNode.SelectSingleNode("encounter-event-detail").InnerText;
                         string eventCountdown = eventNode.Attributes["countdown"].Value; //eventNode.SelectSingleNode("encounter-event-countdown").InnerText;
-                        string eventTrigger = eventNode.Attributes["trigger"].Value; //eventNode.SelectSingleNode("encounter-event-trigger").InnerText;
+                        string eventTrigger = (eventNode.Attributes["trigger"] == null) ? "" : eventNode.Attributes["trigger"].Value; //eventNode.SelectSingleNode("encounter-event-trigger").InnerText;
                         string eventSpeak = (eventNode.Attributes["speak"] == null) ? "" : eventNode.Attributes["speak"].Value;//eventNode.SelectSingleNode("encounter-event-speak").InnerText;
 
                         lvi = new ListViewItem();
