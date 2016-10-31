@@ -33,11 +33,10 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_openServer = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.btn_browse = new System.Windows.Forms.Button();
@@ -115,6 +114,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.combo_serverName = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -155,15 +155,15 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.combo_serverName);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.btn_openServer);
             this.groupBox2.Location = new System.Drawing.Point(596, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(304, 112);
@@ -199,15 +199,6 @@
             this.label21.TabIndex = 5;
             this.label21.Text = "- / -";
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(111, 23);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(28, 13);
-            this.label20.TabIndex = 4;
-            this.label20.Text = "t-t.tv";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -235,15 +226,16 @@
             this.label19.TabIndex = 3;
             this.label19.Text = "Channel # / PIN:";
             // 
-            // button2
+            // btn_openServer
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(194, 18);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 22);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Open Server";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_openServer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_openServer.Location = new System.Drawing.Point(213, 18);
+            this.btn_openServer.Name = "btn_openServer";
+            this.btn_openServer.Size = new System.Drawing.Size(85, 22);
+            this.btn_openServer.TabIndex = 0;
+            this.btn_openServer.Text = "Connect";
+            this.btn_openServer.UseVisualStyleBackColor = true;
+            this.btn_openServer.Click += new System.EventHandler(this.btn_openServer_Click);
             // 
             // tabPage5
             // 
@@ -1071,6 +1063,18 @@
             this.openFileDialog1.RestoreDirectory = true;
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // combo_serverName
+            // 
+            this.combo_serverName.FormattingEnabled = true;
+            this.combo_serverName.Items.AddRange(new object[] {
+            "localhost",
+            "t-t.tv"});
+            this.combo_serverName.Location = new System.Drawing.Point(111, 19);
+            this.combo_serverName.Name = "combo_serverName";
+            this.combo_serverName.Size = new System.Drawing.Size(96, 21);
+            this.combo_serverName.TabIndex = 9;
+            this.combo_serverName.Text = "localhost";
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1133,11 +1137,10 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_openServer;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button btn_browse;
@@ -1215,5 +1218,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ComboBox combo_serverName;
     }
 }

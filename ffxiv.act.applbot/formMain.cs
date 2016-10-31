@@ -174,6 +174,7 @@ namespace ffxiv.act.applbot
             xmlSettings.AddControlSetting(chk_speakEvent.Name, chk_speakEvent);
             xmlSettings.AddControlSetting(chk_showLogs.Name, chk_showLogs);
             xmlSettings.AddControlSetting(chk_showMini.Name, chk_showMini);
+            xmlSettings.AddControlSetting(combo_serverName.Name, combo_serverName);
 
             //a11s stuff
             xmlSettings.AddControlSetting(txt_a11s_optical_shiva.Name, txt_a11s_optical_shiva);
@@ -346,7 +347,7 @@ namespace ffxiv.act.applbot
         {
             if (txt_toSpeak.Text != "")
             {
-                synthesizer.SpeakAsync(txt_toSpeak.Text);
+                botspeak(txt_toSpeak.Text);
             }
         }
 
@@ -358,6 +359,22 @@ namespace ffxiv.act.applbot
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
             this.txt_simFile.Text = this.openFileDialog1.FileName;
+        }
+
+        private void btn_openServer_Click(object sender, EventArgs e)
+        {
+            if ((this.btn_openServer.Text == "Connect") && (this.combo_serverName.Text != ""))
+            {
+                this.btn_openServer.Text = "Disconnect";
+                this.combo_serverName.Enabled = false;
+                broadcastServer = true;
+            }
+            else
+            {
+                broadcastServer = false;
+                this.combo_serverName.Enabled = true;
+                this.btn_openServer.Text = "Connect";
+            }
         }
     }
 }

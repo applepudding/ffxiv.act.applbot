@@ -64,9 +64,9 @@
             this.lbl_eventCountdown.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_eventCountdown.Location = new System.Drawing.Point(3, 9);
+            this.lbl_eventCountdown.Location = new System.Drawing.Point(8, 21);
             this.lbl_eventCountdown.Name = "lbl_eventCountdown";
-            this.lbl_eventCountdown.Size = new System.Drawing.Size(53, 74);
+            this.lbl_eventCountdown.Size = new System.Drawing.Size(41, 56);
             this.lbl_eventCountdown.TabIndex = 2;
             this.lbl_eventCountdown.Text = "25";
             this.lbl_eventCountdown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

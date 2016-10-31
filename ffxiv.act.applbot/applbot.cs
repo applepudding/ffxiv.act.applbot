@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Net;
 using System.ComponentModel;
 using System.Drawing;
 
 using System.Windows.Forms;
-using Advanced_Combat_Tracker;
 using System.IO;
 using System.Xml;
 
@@ -70,6 +70,49 @@ namespace ffxiv.act.applbot
         string[] ffxiv_jobList;
         string[] ffxiv_classList;
         bool partySorted = false;
+
+        bool broadcastServer = false;
+
+
+        void botspeak(string toSpeak)
+        {
+            if (!InvokeRequired)
+            {
+                synthesizer.SpeakAsync(toSpeak);
+                broadcast(toSpeak, "");
+            }
+            else
+            {
+                Invoke(new Action<string>(botspeak), toSpeak);
+            }
+
+        }
+
+        void broadcast(string m, string e)
+        {
+            if (!InvokeRequired)
+            {
+                if (broadcastServer && ((m != "") || (e != ""))) 
+                { 
+                    string URI = "http://" + this.combo_serverName.Text + "/applbot/api/up.php";
+                    string myParameters = "c=1";
+                    myParameters += (m != "") ? "&m=" + Uri.UnescapeDataString(m) : "" ;
+                    myParameters += (e != "") ? "&e=" + Uri.UnescapeDataString(e) : "" ;
+                    log("broadcasting", true, myParameters);
+                    using (WebClient wc = new WebClient())
+                    {
+                        wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                        string HtmlResult = wc.UploadString(URI, myParameters);
+                    }
+                }
+            }
+            else
+            {
+                Invoke(new Action<string, string>(broadcast), m, e);
+            }
+
+        }
+
 
         void clearPlayerList()
         {
@@ -215,7 +258,7 @@ namespace ffxiv.act.applbot
                     {
                         log("---countdown: " + countdown.ToString());
                         string toSpeak = string.Format("{0}", countdown);
-                        synthesizer.SpeakAsync(toSpeak);
+                        botspeak(toSpeak);
                     }
                     countdown--;
                 }
@@ -225,7 +268,7 @@ namespace ffxiv.act.applbot
                     delayedMessage_t--;
                     if (delayedMessage_t == 0)
                     {
-                        synthesizer.SpeakAsync(delayedMessage_m);
+                        botspeak(delayedMessage_m);
                         log("---delayed Message: " + delayedMessage_m);
                         delayedMessage_m = "";
                     }
@@ -387,11 +430,9 @@ namespace ffxiv.act.applbot
         {
             if (!InvokeRequired)
             {
+                this.list_fight.Clear();
                 if (this.combo_xml_fightFile.Text != "")
                 {
-                    this.list_fight.Clear();
-
-
                     string xmlFilePath = xmlFolderPath + this.combo_xml_fightFile.Text;
                     log("Loading XML", true, xmlFilePath);
                     loadFightXml(xmlFilePath);
@@ -454,23 +495,27 @@ namespace ffxiv.act.applbot
             {
                 if (this.list_fight.Items.Count + 1 > inputIndex)
                 {
-                    current_lvi = this.list_fight.Items[inputIndex];
-                    string temp_currentEvent = this.list_fight.Items[inputIndex].SubItems[1].Text;
-                    string temp_nextEvent = "";
-                    for (int i = 1; (inputIndex + i < this.list_fight.Items.Count) && (i < 3); i++)
+                    if (this.list_fight.Items[inputIndex] != current_lvi)
                     {
-                        temp_nextEvent += (temp_nextEvent != "") ? ", " : "";
-                        if (this.list_fight.Items[inputIndex + i].SubItems[0].Text != "")
+                        current_lvi = this.list_fight.Items[inputIndex];
+                        string temp_currentEvent = this.list_fight.Items[inputIndex].SubItems[1].Text;
+                        string temp_nextEvent = "";
+                        for (int i = 1; (inputIndex + i < this.list_fight.Items.Count) && (i < 3); i++)
                         {
-                            temp_nextEvent += this.list_fight.Items[inputIndex + i].SubItems[0].Text;
-                        }
-                        else
-                        {
-                            temp_nextEvent += this.list_fight.Items[inputIndex + i].SubItems[1].Text + " (" + this.list_fight.Items[inputIndex + i].SubItems[2].Text + ")";
-                        }
+                            temp_nextEvent += (temp_nextEvent != "") ? ", " : "";
+                            if (this.list_fight.Items[inputIndex + i].SubItems[0].Text != "")
+                            {
+                                temp_nextEvent += this.list_fight.Items[inputIndex + i].SubItems[0].Text;
+                            }
+                            else
+                            {
+                                temp_nextEvent += this.list_fight.Items[inputIndex + i].SubItems[1].Text + " (" + this.list_fight.Items[inputIndex + i].SubItems[2].Text + ")";
+                            }
 
+                        }
+                        miniUX_update(temp_currentEvent, temp_nextEvent, this.list_fight.Items[inputIndex].SubItems[2].Text );
                     }
-                    miniUX_update(temp_currentEvent, temp_nextEvent);
+                    
                 }
                 else
                 {
@@ -570,16 +615,17 @@ namespace ffxiv.act.applbot
                 Invoke(new Action(decreaseTimerEvent));
             }
         }
-        public void miniUX_update(string ux_currentEvent, string ux_nextEvent)
+        public void miniUX_update(string ux_currentEvent, string ux_nextEvent, string timing)
         {
             if (!InvokeRequired)
             {
                 uxForm.uxlbl_eventCurrent.Text = ux_currentEvent;
                 uxForm.uxlbl_eventNext.Text = ux_nextEvent;
+                broadcast("", ux_currentEvent + ":" + timing + "@" + ux_nextEvent);
             }
             else
             {
-                Invoke(new Action<string, string>(miniUX_update), ux_currentEvent, ux_nextEvent);
+                Invoke(new Action<string, string, string>(miniUX_update), ux_currentEvent, ux_nextEvent, timing);
             }
         }
         public void startCountdown(int c)

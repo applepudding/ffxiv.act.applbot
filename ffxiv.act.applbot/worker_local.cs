@@ -81,7 +81,7 @@ namespace ffxiv.act.applbot
                                             if (chk_speakPhase.Checked)
                                             {
                                                 string toSpeak = current_lvi.SubItems[3].Text;
-                                                synthesizer.SpeakAsync(toSpeak);
+                                                botspeak(toSpeak);
                                             }
 
 
@@ -104,7 +104,7 @@ namespace ffxiv.act.applbot
                                                     if (chk_speakEvent.Checked)
                                                     {
                                                         string toSpeak = current_lvi.SubItems[3].Text;
-                                                        synthesizer.SpeakAsync(toSpeak);
+                                                        botspeak(toSpeak);
                                                     }
                                                     next_lvi();
                                                     highlightEvent();
@@ -117,7 +117,7 @@ namespace ffxiv.act.applbot
                                                 if (chk_speakEvent.Checked)
                                                 {
                                                     string toSpeak = current_lvi.SubItems[3].Text;
-                                                    synthesizer.SpeakAsync(toSpeak);
+                                                    botspeak(toSpeak);
                                                 }
                                                 next_lvi();
                                                 highlightEvent();
@@ -140,7 +140,7 @@ namespace ffxiv.act.applbot
                                     {
                                         string[] mainElements = Regex.Split(resultLine, pattern);
                                         string toSpeak = string.Format(this.txt_speak_abilityUse.Text + " {0}", mainElements[1]);
-                                        if (this.chk_speakAbilityUse.Checked) synthesizer.SpeakAsync(toSpeak);
+                                        if (this.chk_speakAbilityUse.Checked) botspeak(toSpeak);
                                         log("Uses " + mainElements[1], false, resultLine);
                                         break;
                                     }
@@ -151,7 +151,7 @@ namespace ffxiv.act.applbot
                                     {
                                         string[] mainElements = Regex.Split(resultLine, pattern);
                                         string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
-                                        if (this.chk_speakAbilityReady.Checked) synthesizer.SpeakAsync(toSpeak);
+                                        if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
                                         log("Readies " + mainElements[1], false, resultLine);
                                         break;
                                     }
@@ -162,7 +162,7 @@ namespace ffxiv.act.applbot
                                     {
                                         string[] mainElements = Regex.Split(resultLine, pattern);
                                         string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
-                                        if (this.chk_speakAbilityReady.Checked) synthesizer.SpeakAsync(toSpeak);
+                                        if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
                                         log("Begins Casting " + mainElements[1], false, resultLine);
                                         break;
                                     }
@@ -173,7 +173,7 @@ namespace ffxiv.act.applbot
                                     {
                                         string[] mainElements = Regex.Split(resultLine, pattern);
                                         string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
-                                        if (this.chk_speakAbilityReady.Checked) synthesizer.SpeakAsync(toSpeak);
+                                        if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
                                         log("Casts " + mainElements[1], false, resultLine);
                                         break;
                                     }
@@ -193,10 +193,95 @@ namespace ffxiv.act.applbot
                                     {
                                         string toSpeak = "Pauldron";
 
-                                        synthesizer.SpeakAsync(toSpeak);
+                                        botspeak(toSpeak);
                                         log(toSpeak);
                                         sleep_t = 12;
                                     }
+                                    /*
+                                    pattern = "Cruise Chaser.1A6C.Optical Sight";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "Shiva";
+
+                                        botspeak(toSpeak);
+                                        log(toSpeak);
+                                        sleep_t = 5;
+                                    }
+                                    pattern = "The Cruise Chaser readies Optical Sight";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "Optical";
+
+                                        botspeak(toSpeak);
+                                        log(toSpeak);
+                                    }
+                                    pattern = "Cruise Chaser.1A6D.Optical Sight";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "Out";
+
+                                        botspeak(toSpeak);
+                                        log(toSpeak);
+                                        sleep_t = 5;
+                                    }
+                                    pattern = "Cruise Chaser.1A6E.Optical Sight";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "Out";
+
+                                        botspeak(toSpeak);
+                                        log(toSpeak);
+                                        sleep_t = 5;
+                                    }
+                                    pattern = "readies Left Laser Sword";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "left";
+
+                                        botspeak(toSpeak);
+                                        log(toSpeak);
+                                    }
+                                    pattern = "readies Right Laser Sword";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "right";
+
+                                        botspeak(toSpeak);
+                                        log(toSpeak);
+                                    }
+                                    pattern = "The Cruise Chaser readies Laser X Sword";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "Laser X";
+
+                                        botspeak(toSpeak);
+                                        log(toSpeak);
+                                    }
+                                    pattern = "The Cruise Chaser readies Propeller Wind";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "Hide";
+
+                                        botspeak(toSpeak);
+                                        log(toSpeak);
+                                    }
+                                    pattern = "The Cruise Chaser readies Spin Crusher";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "Spin Crusher";
+
+                                        botspeak(toSpeak);
+                                        log(toSpeak);
+                                    }*/
                                     break;
                                 #endregion
 
@@ -273,7 +358,7 @@ namespace ffxiv.act.applbot
                                                 string toSpeak = string.Format("Prey {0}", castTarget);
                                                 if (chk_a5s_callDoublePrey.Checked)
                                                 {
-                                                    synthesizer.SpeakAsync(toSpeak);
+                                                    botspeak(toSpeak);
                                                 }
 
                                                 log(toSpeak, false, resultLine);
@@ -300,7 +385,7 @@ namespace ffxiv.act.applbot
                                                     string toSpeak = string.Format("Second Prey {0}", castTarget);
                                                     if (chk_a5s_callDoublePrey.Checked)
                                                     {
-                                                        synthesizer.SpeakAsync(toSpeak);
+                                                        botspeak(toSpeak);
                                                     }
                                                     log(toSpeak, false, resultLine);
                                                 }
@@ -328,7 +413,7 @@ namespace ffxiv.act.applbot
                                         delayedMessage_m = string.Format("Stack on tank {0}", castTarget);
                                         delayedMessage_t = 10;
 
-                                        synthesizer.SpeakAsync(toSpeak);
+                                        botspeak(toSpeak);
                                         log(toSpeak);
                                     }
                                     break;
@@ -347,7 +432,7 @@ namespace ffxiv.act.applbot
                                         string castTarget = mainElements[0];
                                         string toSpeak = "flame " + getNickname(castTarget);
                                         log(toSpeak, false, resultLine);
-                                        if (this.chk_a7s_flameCallout.Checked) synthesizer.SpeakAsync(toSpeak);
+                                        if (this.chk_a7s_flameCallout.Checked) botspeak(toSpeak);
                                     }
 
                                     //Beam MARKER
@@ -359,7 +444,7 @@ namespace ffxiv.act.applbot
                                         string castTarget = mainElements[0];
                                         string toSpeak = "beam " + getNickname(castTarget);
                                         log(toSpeak, false, resultLine);
-                                        if (this.chk_a7s_beamCallout.Checked) synthesizer.SpeakAsync(toSpeak);
+                                        if (this.chk_a7s_beamCallout.Checked) botspeak(toSpeak);
                                     }
 
                                     switch (currentPhase)
@@ -389,14 +474,14 @@ namespace ffxiv.act.applbot
                                                 {
                                                     //string toSpeak = string.Format("tank prey and healer tether");
                                                     string toSpeak = string.Format("{0} prey and {1} tether", getNickname(a7s_grabPlayerByClass("tank")), getNickname(a7s_getOtherSameClass(castTarget)));
-                                                    synthesizer.SpeakAsync(toSpeak);
+                                                    botspeak(toSpeak);
                                                     log(toSpeak);
                                                 }
                                                 else if (getClass(subElements[0]) == "melee")
                                                 {
                                                     //string toSpeak = string.Format("caster prey and tank tether"); //MELEE tether
                                                     string toSpeak = string.Format("{0} prey and {1} tether", getNickname(a7s_grabPlayerByClass("caster")), getNickname(a7s_grabPlayerByClass(this.combo_a7s_melee1jail.Text)));
-                                                    synthesizer.SpeakAsync(toSpeak);
+                                                    botspeak(toSpeak);
                                                     log(toSpeak);
                                                 }
                                                 sleep_t = 3; //sleep 3s
@@ -407,7 +492,7 @@ namespace ffxiv.act.applbot
                                             {
                                                 currentPhase = 3;
                                                 log("--- Phase " + currentPhase, true, resultLine);
-                                                //synthesizer.SpeakAsync("Phase " + currentPhase);
+                                                //botspeak("Phase " + currentPhase);
                                             }
                                             break;
                                         case 3:
@@ -424,14 +509,14 @@ namespace ffxiv.act.applbot
                                                 {
                                                     //string toSpeak = string.Format("healer prey and caster tether");
                                                     string toSpeak = string.Format("{0} prey and {1} tether", getNickname(a7s_getOtherSameClass(castTarget)), getNickname(a7s_grabPlayerByClass("caster")));
-                                                    synthesizer.SpeakAsync(toSpeak);
+                                                    botspeak(toSpeak);
                                                     log(toSpeak);
                                                 }
                                                 else if ((getClass(subElements[0]) == "caster") || (getClass(subElements[0]) == "range"))
                                                 {
                                                     //string toSpeak = string.Format("melee prey and tank tether");
                                                     string toSpeak = string.Format("{0} prey and {1} tether", getNickname(a7s_grabPlayerByClass("melee")), getNickname(a7s_grabPlayerByClass("tank")));
-                                                    synthesizer.SpeakAsync(toSpeak);
+                                                    botspeak(toSpeak);
                                                     log(toSpeak);
                                                 }
                                                 sleep_t = 3; //sleep 3s
@@ -445,7 +530,7 @@ namespace ffxiv.act.applbot
                                                 {
                                                     currentPhase = 4;
                                                     log("--- Phase " + currentPhase + ": Superbeam", true, resultLine);
-                                                    synthesizer.SpeakAsync("Super Beam Phase");
+                                                    botspeak("Super Beam Phase");
                                                     temp_number1 = 0;
                                                 }
                                             }
@@ -457,7 +542,7 @@ namespace ffxiv.act.applbot
                                                 {
                                                     currentPhase = 4;
                                                     log("--- Phase " + currentPhase + ": Superbeam", true, resultLine);
-                                                    synthesizer.SpeakAsync("Super Beam Phase");
+                                                    botspeak("Super Beam Phase");
                                                     temp_number1 = 0;
                                                 }
                                             }
@@ -476,7 +561,7 @@ namespace ffxiv.act.applbot
                                             {
                                                 currentPhase = 5;
                                                 log("--- Phase " + currentPhase + ": Merry Go Round", true, resultLine);
-                                                synthesizer.SpeakAsync("Merry go round Phase");
+                                                botspeak("Merry go round Phase");
                                             }
                                             break;
                                         case 5: //MERRY GO ROUND
@@ -508,7 +593,7 @@ namespace ffxiv.act.applbot
                                                 {
                                                     currentPhase = 8;
                                                     log("--- Phase " + currentPhase + ": Final Jail Sets", true, resultLine);
-                                                    synthesizer.SpeakAsync("Final Jail Phase");
+                                                    botspeak("Final Jail Phase");
                                                 }
                                             }
                                             break;
@@ -527,14 +612,14 @@ namespace ffxiv.act.applbot
                                                 {
                                                     //string toSpeak = string.Format("melee prey and healer tether"); //melee prey
                                                     string toSpeak = string.Format("{0} tether", getNickname(a7s_getOtherSameClass(castTarget)));
-                                                    synthesizer.SpeakAsync(toSpeak);
+                                                    botspeak(toSpeak);
                                                     log(toSpeak);
                                                 }
                                                 if (getClass(subElements[0]) == "melee")
                                                 {
                                                     //string toSpeak = string.Format("melee prey and healer tether"); //melee prey
                                                     string toSpeak = string.Format("{0} prey", getNickname(a7s_grabPlayerByClass(this.combo_a7s_melee3jail.Text))); //getNickname(a7s_grabPlayerByClass("tank"))
-                                                    synthesizer.SpeakAsync(toSpeak);
+                                                    botspeak(toSpeak);
                                                     log(toSpeak);
                                                 }
                                             }
@@ -549,7 +634,7 @@ namespace ffxiv.act.applbot
                                                 {
                                                     //string toSpeak = string.Format("tank prey and caster tether"); 
                                                     string toSpeak = string.Format("{0} prey and {1} tether", getNickname(a7s_grabPlayerByClass("tank")), getNickname(a7s_grabPlayerByClass("caster"))); // a7s_getOtherSameClass(castTarget)
-                                                    synthesizer.SpeakAsync(toSpeak);
+                                                    botspeak(toSpeak);
                                                     log(toSpeak, false, resultLine);
                                                 }
                                             }
@@ -572,7 +657,7 @@ namespace ffxiv.act.applbot
                                                 string[] subElements = Regex.Split(mainElements[1], "\\|");
                                                 string castTarget = getNickname(subElements[0]);
                                                 string toSpeak = string.Format("first Water {0}", castTarget);
-                                                synthesizer.SpeakAsync(toSpeak);
+                                                botspeak(toSpeak);
                                                 log(toSpeak, false, resultLine);
 
                                                 temp_1 = castTarget;
@@ -586,7 +671,7 @@ namespace ffxiv.act.applbot
                                                 string[] subElements = Regex.Split(mainElements[1], "\\|");
                                                 string castTarget = getNickname(subElements[0]);
                                                 string toSpeak = string.Format("first Lightning {0}", castTarget);
-                                                synthesizer.SpeakAsync(toSpeak);
+                                                botspeak(toSpeak);
                                                 log(toSpeak, false, resultLine);
                                             }
                                             pattern = "Vortexer readies Fire Beam";
@@ -607,7 +692,7 @@ namespace ffxiv.act.applbot
                                                 string[] subElements = Regex.Split(mainElements[1], "\\|");
                                                 string castTarget = getNickname(subElements[0]);
                                                 string toSpeak = string.Format("second Water {0}", castTarget);
-                                                synthesizer.SpeakAsync(toSpeak);
+                                                botspeak(toSpeak);
                                                 log(toSpeak, false, resultLine);
 
                                                 temp_2 = castTarget;
@@ -626,7 +711,7 @@ namespace ffxiv.act.applbot
                                                 string[] subElements = Regex.Split(mainElements[1], "\\|");
                                                 string castTarget = getNickname(subElements[0]);
                                                 string toSpeak = string.Format("third Water {0}", castTarget);
-                                                synthesizer.SpeakAsync(toSpeak);
+                                                botspeak(toSpeak);
                                                 log(toSpeak, false, resultLine);
                                                 string lightningTaker = temp_2;
                                                 string awayFromEveryone = temp_1;
