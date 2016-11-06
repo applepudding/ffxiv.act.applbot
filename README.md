@@ -7,7 +7,7 @@ Extract .zip to ACT Folder (applbot folder inside ACT main folder)
 ## Usage
 er ... add+enable it in plugin listing and try out :) 
 
-## Contributing
+## Contributing (template: https://gist.github.com/zenorocha/4526327)
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
@@ -15,11 +15,15 @@ er ... add+enable it in plugin listing and try out :)
 5. Submit a pull request
 
 ## History
+Recent fix/addition:
+
 + selection highlight on log
 + light/quick mode (no players loading)
++ primitive broadcasting server
 
 Required fixes:
 - a9s xml, phase skip stuff
+- broadcasting server (connect to channel #)
 
 Missing features:
 - event warning notification (warning-timing, warning-speak, warning-countdown)
