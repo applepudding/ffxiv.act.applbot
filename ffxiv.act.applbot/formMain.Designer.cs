@@ -30,6 +30,7 @@
         {
             this.label23 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.combo_serverName = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -114,7 +115,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.combo_serverName = new System.Windows.Forms.ComboBox();
+            this.chk_quickMode = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -164,12 +165,24 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.btn_openServer);
-            this.groupBox2.Location = new System.Drawing.Point(596, 6);
+            this.groupBox2.Location = new System.Drawing.Point(537, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(304, 112);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Broadcast Server (Please use Moderately)";
+            // 
+            // combo_serverName
+            // 
+            this.combo_serverName.FormattingEnabled = true;
+            this.combo_serverName.Items.AddRange(new object[] {
+            "localhost",
+            "t-t.tv"});
+            this.combo_serverName.Location = new System.Drawing.Point(111, 19);
+            this.combo_serverName.Name = "combo_serverName";
+            this.combo_serverName.Size = new System.Drawing.Size(96, 21);
+            this.combo_serverName.TabIndex = 9;
+            this.combo_serverName.Text = "localhost";
             // 
             // label24
             // 
@@ -195,9 +208,9 @@
             this.label21.ForeColor = System.Drawing.Color.Red;
             this.label21.Location = new System.Drawing.Point(111, 68);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(24, 13);
+            this.label21.Size = new System.Drawing.Size(10, 13);
             this.label21.TabIndex = 5;
-            this.label21.Text = "- / -";
+            this.label21.Text = "-";
             // 
             // label18
             // 
@@ -220,11 +233,11 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(15, 68);
+            this.label19.Location = new System.Drawing.Point(44, 68);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(88, 13);
+            this.label19.Size = new System.Drawing.Size(59, 13);
             this.label19.TabIndex = 3;
-            this.label19.Text = "Channel # / PIN:";
+            this.label19.Text = "Channel #:";
             // 
             // btn_openServer
             // 
@@ -246,7 +259,7 @@
             this.tabPage5.Controls.Add(this.btn_clearPlayerList);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(905, 133);
+            this.tabPage5.Size = new System.Drawing.Size(846, 133);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Advanced";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -481,8 +494,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.list_fight);
-            this.splitContainer2.Size = new System.Drawing.Size(899, 106);
-            this.splitContainer2.SplitterDistance = 295;
+            this.splitContainer2.Size = new System.Drawing.Size(840, 106);
+            this.splitContainer2.SplitterDistance = 275;
             this.splitContainer2.TabIndex = 0;
             // 
             // grid_players
@@ -499,7 +512,7 @@
             this.grid_players.Location = new System.Drawing.Point(3, 3);
             this.grid_players.Name = "grid_players";
             this.grid_players.RowHeadersVisible = false;
-            this.grid_players.Size = new System.Drawing.Size(289, 100);
+            this.grid_players.Size = new System.Drawing.Size(269, 100);
             this.grid_players.TabIndex = 6;
             // 
             // list_fight
@@ -513,7 +526,7 @@
             this.list_fight.Location = new System.Drawing.Point(3, 3);
             this.list_fight.MultiSelect = false;
             this.list_fight.Name = "list_fight";
-            this.list_fight.Size = new System.Drawing.Size(594, 100);
+            this.list_fight.Size = new System.Drawing.Size(555, 100);
             this.list_fight.TabIndex = 8;
             this.list_fight.UseCompatibleStateImageBehavior = false;
             this.list_fight.View = System.Windows.Forms.View.Details;
@@ -534,7 +547,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.list_log);
-            this.splitContainer1.Size = new System.Drawing.Size(905, 270);
+            this.splitContainer1.Size = new System.Drawing.Size(846, 270);
             this.splitContainer1.SplitterDistance = 112;
             this.splitContainer1.TabIndex = 21;
             // 
@@ -544,9 +557,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.list_log.FullRowSelect = true;
+            this.list_log.HideSelection = false;
             this.list_log.Location = new System.Drawing.Point(3, 3);
             this.list_log.Name = "list_log";
-            this.list_log.Size = new System.Drawing.Size(899, 148);
+            this.list_log.Size = new System.Drawing.Size(840, 148);
             this.list_log.TabIndex = 3;
             this.list_log.UseCompatibleStateImageBehavior = false;
             this.list_log.View = System.Windows.Forms.View.Details;
@@ -556,7 +570,7 @@
             // 
             this.chk_speakEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chk_speakEvent.AutoSize = true;
-            this.chk_speakEvent.Location = new System.Drawing.Point(675, 165);
+            this.chk_speakEvent.Location = new System.Drawing.Point(616, 165);
             this.chk_speakEvent.Name = "chk_speakEvent";
             this.chk_speakEvent.Size = new System.Drawing.Size(113, 17);
             this.chk_speakEvent.TabIndex = 22;
@@ -567,7 +581,7 @@
             // 
             this.chk_speakPhase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chk_speakPhase.AutoSize = true;
-            this.chk_speakPhase.Location = new System.Drawing.Point(794, 165);
+            this.chk_speakPhase.Location = new System.Drawing.Point(735, 165);
             this.chk_speakPhase.Name = "chk_speakPhase";
             this.chk_speakPhase.Size = new System.Drawing.Size(115, 17);
             this.chk_speakPhase.TabIndex = 23;
@@ -667,7 +681,7 @@
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(905, 133);
+            this.tabPage2.Size = new System.Drawing.Size(846, 133);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Alexander: Midas";
             // 
@@ -989,7 +1003,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(905, 133);
+            this.tabPage1.Size = new System.Drawing.Size(846, 133);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             // 
@@ -1018,7 +1032,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(913, 159);
+            this.tabControl1.Size = new System.Drawing.Size(854, 159);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage4
@@ -1053,7 +1067,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(913, 159);
+            this.panel1.Size = new System.Drawing.Size(854, 159);
             this.panel1.TabIndex = 20;
             // 
             // openFileDialog1
@@ -1063,22 +1077,22 @@
             this.openFileDialog1.RestoreDirectory = true;
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // combo_serverName
+            // chk_quickMode
             // 
-            this.combo_serverName.FormattingEnabled = true;
-            this.combo_serverName.Items.AddRange(new object[] {
-            "localhost",
-            "t-t.tv"});
-            this.combo_serverName.Location = new System.Drawing.Point(111, 19);
-            this.combo_serverName.Name = "combo_serverName";
-            this.combo_serverName.Size = new System.Drawing.Size(96, 21);
-            this.combo_serverName.TabIndex = 9;
-            this.combo_serverName.Text = "localhost";
+            this.chk_quickMode.AutoSize = true;
+            this.chk_quickMode.Location = new System.Drawing.Point(184, 165);
+            this.chk_quickMode.Name = "chk_quickMode";
+            this.chk_quickMode.Size = new System.Drawing.Size(179, 17);
+            this.chk_quickMode.TabIndex = 27;
+            this.chk_quickMode.Text = "Quick Mode (Disable Player List)";
+            this.chk_quickMode.UseVisualStyleBackColor = true;
+            this.chk_quickMode.CheckedChanged += new System.EventHandler(this.chk_quickMode_CheckedChanged);
             // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chk_quickMode);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.chk_showLogs);
             this.Controls.Add(this.chk_showMini);
@@ -1086,7 +1100,7 @@
             this.Controls.Add(this.chk_speakPhase);
             this.Controls.Add(this.panel1);
             this.Name = "formMain";
-            this.Size = new System.Drawing.Size(913, 461);
+            this.Size = new System.Drawing.Size(854, 461);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -1219,5 +1233,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ComboBox combo_serverName;
+        private System.Windows.Forms.CheckBox chk_quickMode;
     }
 }

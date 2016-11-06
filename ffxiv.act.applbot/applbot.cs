@@ -27,6 +27,8 @@ namespace ffxiv.act.applbot
         string simulationFile = "";
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
 
+        bool quickMode = true;
+
         //background worker stuff
         Stopwatch stopWatch = new Stopwatch();
         private static System.Timers.Timer fightTimer;
@@ -646,6 +648,14 @@ namespace ffxiv.act.applbot
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(xmlFilePath);
+
+                // temporary replace later that support multiple bosses in 1 area (ex: a6s blaster+brawler+swindler+vortexer)
+                XmlNode xml_encounterNode = doc.DocumentElement.SelectSingleNode("encounter");
+                if (quickMode)
+                {
+                    string encounterName = (xml_encounterNode.Attributes["name"] == null) ? "" : xml_encounterNode.Attributes["name"].Value;
+                }
+                /////////////////////////////////////////////////////////////
 
                 XmlNodeList xml_phaseNodes = doc.DocumentElement.SelectNodes("/encounter/encounter-phase");
 

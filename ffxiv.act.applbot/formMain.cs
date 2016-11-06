@@ -5,7 +5,6 @@ using System.Text;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
 using System.IO;
-using System.Reflection;
 using System.Xml;
 
 using System.Linq;
@@ -85,66 +84,69 @@ namespace ffxiv.act.applbot
         {
             if (workerRunning) // implement in new way later PLZ, too resource intensive
             {
-                #region add players to list, sort it, and get boss name
-                if (ffxiv_player_list.Count != int.Parse(txt_partySize.Text)) //partySize
+                if (!quickMode)
                 {
-                    Match m;
-
-                    if (isNewPC(actionInfo.attacker))
+                    #region add players to list, sort it, and get boss name
+                    if (ffxiv_player_list.Count != int.Parse(txt_partySize.Text)) //partySize
                     {
-                        int jobID = 0;
-                        foreach (string actionList in ffxiv_jobSkillList)
+                        Match m;
+
+                        if (isNewPC(actionInfo.attacker))
                         {
-                            string toCheckActionName = "#" + actionInfo.theAttackType.ToLower() + "#";
-                            m = Regex.Match(actionList, toCheckActionName);
-                            if (m.Success)
+                            int jobID = 0;
+                            foreach (string actionList in ffxiv_jobSkillList)
                             {
-                                ffxiv_player_list.Add(new ffxiv_player() { varName = actionInfo.attacker, varJob = ffxiv_jobList[jobID], varClass = ffxiv_classList[jobID], varOrder = ffxiv_jobSortOrder[jobID] });
-                                log("adding " + actionInfo.attacker + " to player list", false, actionInfo.combatAction.ToString());
-                                break;
+                                string toCheckActionName = "#" + actionInfo.theAttackType.ToLower() + "#";
+                                m = Regex.Match(actionList, toCheckActionName);
+                                if (m.Success)
+                                {
+                                    ffxiv_player_list.Add(new ffxiv_player() { varName = actionInfo.attacker, varJob = ffxiv_jobList[jobID], varClass = ffxiv_classList[jobID], varOrder = ffxiv_jobSortOrder[jobID] });
+                                    log("adding " + actionInfo.attacker + " to player list", false, actionInfo.combatAction.ToString());
+                                    break;
+                                }
+                                jobID++;
                             }
-                            jobID++;
+                        }
+
+                    }
+                    else
+                    {
+                        if (!partySorted)
+                        {
+                            log("fixing player names");
+                            foreach (ffxiv_player p in ffxiv_player_list)
+                            {
+                                if ((p.varName == "YOU") && (this.txt_you.Text != ""))
+                                {
+                                    p.varName = this.txt_you.Text;
+                                }
+                            }
+                            log("sorting party");
+                            List<ffxiv_player> SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varOrder).ToList();
+                            ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
+                            partySorted = true;
+                            this.grid_players.DataSource = ffxiv_player_list;
+                        }
+
+                        if (currentFight == "")
+                        {
+                            if ((isNewPC(actionInfo.victim)) && (actionInfo.victim != "YOU"))
+                            {
+                                currentFight = actionInfo.victim;
+
+                                //------------------------------ temp
+                                //a6s bandaid fix
+                                if ((currentFight == "Vortexer") || (currentFight == "Brawler") || (currentFight == "Blaster") || (currentFight == "Swindler"))
+                                {
+                                    currentFight = "Machinery Bay 70";
+                                }
+                                this.group_currentFight.Text = currentFight;
+                                log("--- Fight Name: " + currentFight, true);
+                            }
                         }
                     }
-
+                    #endregion
                 }
-                else
-                {
-                    if (!partySorted)
-                    {
-                        log("fixing player names");
-                        foreach (ffxiv_player p in ffxiv_player_list)
-                        {
-                            if ((p.varName == "YOU") && (this.txt_you.Text != ""))
-                            {
-                                p.varName = this.txt_you.Text;
-                            }
-                        }
-                        log("sorting party");
-                        List<ffxiv_player> SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varOrder).ToList();
-                        ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
-                        partySorted = true;
-                        this.grid_players.DataSource = ffxiv_player_list;
-                    }
-
-                    if (currentFight == "")
-                    {
-                        if ((isNewPC(actionInfo.victim)) && (actionInfo.victim != "YOU"))
-                        {
-                            currentFight = actionInfo.victim;
-
-                            //------------------------------ temp
-                            //a6s bandaid fix
-                            if ((currentFight == "Vortexer") || (currentFight == "Brawler") || (currentFight == "Blaster") || (currentFight == "Swindler"))
-                            {
-                                currentFight = "Machinery Bay 70";
-                            }
-                            this.group_currentFight.Text = currentFight;
-                            log("--- Fight Name: " + currentFight, true);
-                        }
-                    }
-                }
-                #endregion
             }
             //throw new NotImplementedException();
         }
@@ -175,6 +177,7 @@ namespace ffxiv.act.applbot
             xmlSettings.AddControlSetting(chk_showLogs.Name, chk_showLogs);
             xmlSettings.AddControlSetting(chk_showMini.Name, chk_showMini);
             xmlSettings.AddControlSetting(combo_serverName.Name, combo_serverName);
+            xmlSettings.AddControlSetting(chk_quickMode.Name, chk_quickMode);
 
             //a11s stuff
             xmlSettings.AddControlSetting(txt_a11s_optical_shiva.Name, txt_a11s_optical_shiva);
@@ -309,6 +312,7 @@ namespace ffxiv.act.applbot
                 simulationFile = this.txt_simFile.Text;
                 this.txt_simFile.Enabled = false;
                 this.txt_bossName.Enabled = false;
+                this.chk_quickMode.Enabled = false;
             }
             else
             {
@@ -328,6 +332,7 @@ namespace ffxiv.act.applbot
 
                 this.txt_simFile.Enabled = true;
                 this.txt_bossName.Enabled = true;
+                this.chk_quickMode.Enabled = true;
             }
         }
 
@@ -374,6 +379,22 @@ namespace ffxiv.act.applbot
                 broadcastServer = false;
                 this.combo_serverName.Enabled = true;
                 this.btn_openServer.Text = "Connect";
+            }
+        }
+
+        private void chk_quickMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.chk_quickMode.Checked == true)
+            {
+                this.splitContainer2.Panel1Collapsed = true;
+                this.splitContainer2.Panel1.Hide();
+                quickMode = false;
+            }
+            else
+            {
+                this.splitContainer2.Panel1Collapsed = false;
+                this.splitContainer2.Panel1.Show();
+                quickMode = true;
             }
         }
     }
