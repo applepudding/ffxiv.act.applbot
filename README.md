@@ -1,6 +1,4 @@
-<snippet>
-  <content><![CDATA[
-# ${1:ffxiv.act.applbot}
+# ffxiv.act.applbot
 Robot, callouts, and timeline plugin for boss encounters.
 ## Installation
 Extract .zip to ACT Folder (applbot folder inside ACT main folder)
@@ -22,6 +20,3 @@ Missing features:
 ⋅⋅*full log reader fight recognizer/separator
 ## Credits
 Apple Pudding, Ix Xyl, Raccle Lancale @ Leviathan
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
