@@ -106,7 +106,7 @@
             this.txt_toSpeak = new System.Windows.Forms.TextBox();
             this.btn_toSpeak = new System.Windows.Forms.Button();
             this.txt_partySize = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbl_partySize = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -350,7 +350,7 @@
             // 
             // txt_a11s_sword_left
             // 
-            this.txt_a11s_sword_left.Location = new System.Drawing.Point(159, 16);
+            this.txt_a11s_sword_left.Location = new System.Drawing.Point(142, 16);
             this.txt_a11s_sword_left.Name = "txt_a11s_sword_left";
             this.txt_a11s_sword_left.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_sword_left.TabIndex = 2;
@@ -359,7 +359,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(29, 19);
+            this.label13.Location = new System.Drawing.Point(12, 19);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(124, 13);
             this.label13.TabIndex = 1;
@@ -368,7 +368,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(22, 42);
+            this.label12.Location = new System.Drawing.Point(5, 42);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(131, 13);
             this.label12.TabIndex = 0;
@@ -422,7 +422,7 @@
             // 
             // txt_a11s_sword_right
             // 
-            this.txt_a11s_sword_right.Location = new System.Drawing.Point(159, 39);
+            this.txt_a11s_sword_right.Location = new System.Drawing.Point(142, 39);
             this.txt_a11s_sword_right.Name = "txt_a11s_sword_right";
             this.txt_a11s_sword_right.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_sword_right.TabIndex = 3;
@@ -455,14 +455,14 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(905, 133);
+            this.tabPage3.Size = new System.Drawing.Size(846, 133);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "General";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(65, 65);
+            this.label14.Location = new System.Drawing.Point(48, 65);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(88, 13);
             this.label14.TabIndex = 12;
@@ -570,6 +570,8 @@
             // 
             this.chk_speakEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chk_speakEvent.AutoSize = true;
+            this.chk_speakEvent.Checked = true;
+            this.chk_speakEvent.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_speakEvent.Location = new System.Drawing.Point(616, 165);
             this.chk_speakEvent.Name = "chk_speakEvent";
             this.chk_speakEvent.Size = new System.Drawing.Size(113, 17);
@@ -581,6 +583,8 @@
             // 
             this.chk_speakPhase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chk_speakPhase.AutoSize = true;
+            this.chk_speakPhase.Checked = true;
+            this.chk_speakPhase.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_speakPhase.Location = new System.Drawing.Point(735, 165);
             this.chk_speakPhase.Name = "chk_speakPhase";
             this.chk_speakPhase.Size = new System.Drawing.Size(115, 17);
@@ -596,9 +600,9 @@
             this.groupBox8.Controls.Add(this.label16);
             this.groupBox8.Controls.Add(this.txt_a11s_optical_stack);
             this.groupBox8.Controls.Add(this.label15);
-            this.groupBox8.Location = new System.Drawing.Point(223, 16);
+            this.groupBox8.Location = new System.Drawing.Point(210, 16);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(151, 89);
+            this.groupBox8.Size = new System.Drawing.Size(168, 89);
             this.groupBox8.TabIndex = 11;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Optical Sights";
@@ -607,7 +611,7 @@
             // 
             this.txt_a11s_optical_out.Location = new System.Drawing.Point(83, 61);
             this.txt_a11s_optical_out.Name = "txt_a11s_optical_out";
-            this.txt_a11s_optical_out.Size = new System.Drawing.Size(55, 20);
+            this.txt_a11s_optical_out.Size = new System.Drawing.Size(79, 20);
             this.txt_a11s_optical_out.TabIndex = 7;
             this.txt_a11s_optical_out.Text = "Out";
             // 
@@ -624,7 +628,7 @@
             // 
             this.txt_a11s_optical_shiva.Location = new System.Drawing.Point(83, 17);
             this.txt_a11s_optical_shiva.Name = "txt_a11s_optical_shiva";
-            this.txt_a11s_optical_shiva.Size = new System.Drawing.Size(55, 20);
+            this.txt_a11s_optical_shiva.Size = new System.Drawing.Size(79, 20);
             this.txt_a11s_optical_shiva.TabIndex = 5;
             this.txt_a11s_optical_shiva.Text = "Shiva";
             // 
@@ -641,9 +645,9 @@
             // 
             this.txt_a11s_optical_stack.Location = new System.Drawing.Point(83, 39);
             this.txt_a11s_optical_stack.Name = "txt_a11s_optical_stack";
-            this.txt_a11s_optical_stack.Size = new System.Drawing.Size(55, 20);
+            this.txt_a11s_optical_stack.Size = new System.Drawing.Size(79, 20);
             this.txt_a11s_optical_stack.TabIndex = 6;
-            this.txt_a11s_optical_stack.Text = "Out";
+            this.txt_a11s_optical_stack.Text = "Stack, Out";
             // 
             // label15
             // 
@@ -656,7 +660,7 @@
             // 
             // txt_a11s_pauldron
             // 
-            this.txt_a11s_pauldron.Location = new System.Drawing.Point(159, 62);
+            this.txt_a11s_pauldron.Location = new System.Drawing.Point(142, 62);
             this.txt_a11s_pauldron.Name = "txt_a11s_pauldron";
             this.txt_a11s_pauldron.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_pauldron.TabIndex = 13;
@@ -927,6 +931,7 @@
             this.txt_voiceIndex.Size = new System.Drawing.Size(24, 20);
             this.txt_voiceIndex.TabIndex = 8;
             this.txt_voiceIndex.Text = "0";
+            this.txt_voiceIndex.TextChanged += new System.EventHandler(this.txt_voiceIndex_TextChanged);
             // 
             // txt_you
             // 
@@ -973,14 +978,14 @@
             this.txt_partySize.TabIndex = 17;
             this.txt_partySize.Text = "8";
             // 
-            // label7
+            // lbl_partySize
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(578, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Party Size:";
+            this.lbl_partySize.AutoSize = true;
+            this.lbl_partySize.Location = new System.Drawing.Point(578, 53);
+            this.lbl_partySize.Name = "lbl_partySize";
+            this.lbl_partySize.Size = new System.Drawing.Size(57, 13);
+            this.lbl_partySize.TabIndex = 16;
+            this.lbl_partySize.Text = "Party Size:";
             // 
             // label5
             // 
@@ -995,7 +1000,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Controls.Add(this.txt_partySize);
-            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.lbl_partySize);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.txt_you);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -1041,7 +1046,7 @@
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(905, 133);
+            this.tabPage4.Size = new System.Drawing.Size(846, 133);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Alexander: Creator";
             // 
@@ -1054,9 +1059,9 @@
             this.groupBox3.Controls.Add(this.txt_a11s_sword_left);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(16, 3);
+            this.groupBox3.Location = new System.Drawing.Point(10, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(384, 112);
+            this.groupBox3.Size = new System.Drawing.Size(384, 113);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "A11S";
@@ -1223,7 +1228,7 @@
         private System.Windows.Forms.TextBox txt_toSpeak;
         private System.Windows.Forms.Button btn_toSpeak;
         private System.Windows.Forms.TextBox txt_partySize;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbl_partySize;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;

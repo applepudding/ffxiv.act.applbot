@@ -34,8 +34,9 @@ namespace ffxiv.act.applbot
             xmlSettings = new SettingsSerializer(this);	// Create a new settings serializer and pass it this instance
 
             
-            LoadSettings();
+            
             initEncounterPlugin();
+            LoadSettings();
             // Create some sort of parsing event handler.  After the "+=" hit TAB twice and the code will be generated for you.
             ActGlobals.oFormActMain.AfterCombatAction += new CombatActionDelegate(encounter_oFormActMain_AfterCombatAction);
             ActGlobals.oFormActMain.OnCombatStart += new CombatToggleEventDelegate(encounter_oFormActMain_OnCombatStart);
@@ -70,14 +71,20 @@ namespace ffxiv.act.applbot
         {
             if (workerRunning)
             {
-                startNewFight();
+                if (this.txt_simFile.Text == "")
+                {
+                    startNewFight();
+                }
             }
         }
 
         void encounter_oFormActMain_OnCombatEnd(bool isImport, CombatToggleEventArgs encounterInfo)
         {
-            log("ACT combat end: " + encounterInfo.encounter);
-            stopFight();
+            if (this.txt_simFile.Text =="")
+            {
+                log("ACT combat end: " + encounterInfo.encounter);
+                stopFight();
+            }
         }
 
         void encounter_oFormActMain_AfterCombatAction(bool isImport, CombatActionEventArgs actionInfo)
@@ -176,8 +183,9 @@ namespace ffxiv.act.applbot
             xmlSettings.AddControlSetting(chk_speakEvent.Name, chk_speakEvent);
             xmlSettings.AddControlSetting(chk_showLogs.Name, chk_showLogs);
             xmlSettings.AddControlSetting(chk_showMini.Name, chk_showMini);
-            xmlSettings.AddControlSetting(combo_serverName.Name, combo_serverName);
             xmlSettings.AddControlSetting(chk_quickMode.Name, chk_quickMode);
+            xmlSettings.AddControlSetting(combo_serverName.Name, combo_serverName);
+            
 
             //a11s stuff
             xmlSettings.AddControlSetting(txt_a11s_optical_shiva.Name, txt_a11s_optical_shiva);
@@ -303,16 +311,14 @@ namespace ffxiv.act.applbot
         {
             if (!workerRunning)
             {
-                log("Watch started", true);
+                btn_start.Text = "STOP";
+                simulationFile = this.txt_simFile.Text;
                 workerRunning = true;
                 myThread = new Thread(myBackgroudWorker);
                 myThread.Start();
-                btn_start.Text = "STOP";
-
-                simulationFile = this.txt_simFile.Text;
                 this.txt_simFile.Enabled = false;
-                this.txt_bossName.Enabled = false;
                 this.chk_quickMode.Enabled = false;
+                log("Watch started", true);
             }
             else
             {
@@ -331,14 +337,17 @@ namespace ffxiv.act.applbot
                 fightTimer.Enabled = false;
 
                 this.txt_simFile.Enabled = true;
-                this.txt_bossName.Enabled = true;
                 this.chk_quickMode.Enabled = true;
             }
         }
 
         private void combo_voiceSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            synthesizer.SelectVoice(combo_voiceSelector.SelectedItem.ToString());
+            if (combo_voiceSelector.SelectedIndex != combo_voiceSelector.Items.Count-1)
+            {
+                synthesizer.SelectVoice(combo_voiceSelector.SelectedItem.ToString());
+                
+            }
             txt_voiceIndex.Text = combo_voiceSelector.SelectedIndex.ToString();
             log("Changing voice", false, combo_voiceSelector.SelectedItem.ToString());
         }
@@ -386,16 +395,25 @@ namespace ffxiv.act.applbot
         {
             if (this.chk_quickMode.Checked == true)
             {
+                this.lbl_partySize.Visible = false;
+                this.txt_partySize.Visible = false;
                 this.splitContainer2.Panel1Collapsed = true;
                 this.splitContainer2.Panel1.Hide();
-                quickMode = false;
+                quickMode = true;
             }
             else
             {
+                this.lbl_partySize.Visible = true;
+                this.txt_partySize.Visible = true;
                 this.splitContainer2.Panel1Collapsed = false;
                 this.splitContainer2.Panel1.Show();
-                quickMode = true;
+                quickMode = false;
             }
+        }
+
+        private void txt_voiceIndex_TextChanged(object sender, EventArgs e)
+        {
+            this.combo_voiceSelector.SelectedIndex = Int32.Parse(this.txt_voiceIndex.Text);
         }
     }
 }

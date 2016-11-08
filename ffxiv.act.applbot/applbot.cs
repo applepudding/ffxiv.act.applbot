@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+using Advanced_Combat_Tracker;
 
 using System.Linq;
 using System.Threading; //worker stuff
@@ -80,7 +81,15 @@ namespace ffxiv.act.applbot
         {
             if (!InvokeRequired)
             {
-                synthesizer.SpeakAsync(toSpeak);
+                if (combo_voiceSelector.SelectedIndex != combo_voiceSelector.Items.Count-1)
+                {
+                    synthesizer.SpeakAsync(toSpeak);
+                }
+                else
+                {
+                    ActGlobals.oFormActMain.PlayTtsMethod(toSpeak);
+                }
+                    
                 broadcast(toSpeak, "");
             }
             else
@@ -187,6 +196,8 @@ namespace ffxiv.act.applbot
                     combo_voiceSelector.Items.Add(info.Name);
                 }
                 combo_voiceSelector.SelectedIndex = int.Parse(txt_voiceIndex.Text);
+                //add ACT synch speak engine
+                combo_voiceSelector.Items.Add("ACT synch mode (Not Reccomended)");
 
                 //set fight timer
                 fightTimer = new System.Timers.Timer(1000); // Create a timer with a 1 second interval.
@@ -461,7 +472,7 @@ namespace ffxiv.act.applbot
                 temp_1 = "";
                 temp_2 = "";
                 fightTimer.Enabled = true;
-                log("--- Fight Started", true);
+                log("--- Fight Started", true, currentFight);                
             }
             else
             {
@@ -650,10 +661,10 @@ namespace ffxiv.act.applbot
                 doc.Load(xmlFilePath);
 
                 // temporary replace later that support multiple bosses in 1 area (ex: a6s blaster+brawler+swindler+vortexer)
-                XmlNode xml_encounterNode = doc.DocumentElement.SelectSingleNode("encounter");
+                XmlNode xml_encounterNode = doc.DocumentElement.SelectSingleNode("/encounter");
                 if (quickMode)
                 {
-                    string encounterName = (xml_encounterNode.Attributes["name"] == null) ? "" : xml_encounterNode.Attributes["name"].Value;
+                    currentFight = (xml_encounterNode.Attributes["name"] == null) ? "" : xml_encounterNode.Attributes["name"].Value;                    
                 }
                 /////////////////////////////////////////////////////////////
 

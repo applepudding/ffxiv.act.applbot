@@ -36,11 +36,14 @@ namespace ffxiv.act.applbot
                         pattern = "=SIMSTART=";
                         if (resultLine.Contains(pattern))
                         {
-                            if (this.txt_bossName.Text != "")
+                            startNewFight();
+                            if (currentFight == "")
                             {
-                                startNewFight();
-                                currentFight = this.txt_bossName.Text; //TEMPORARY VERY UNSAFE, REMOVE ASAP------------------------------                                                                        
-                            }
+                                if (this.txt_bossName.Text != "")
+                                {
+                                    currentFight = this.txt_bossName.Text; //TEMPORARY, REMOVE later------------------------------         
+                                }
+                            }  
                         }
                         pattern = "=SIMSTOP=";
                         if (resultLine.Contains(pattern))
@@ -48,72 +51,58 @@ namespace ffxiv.act.applbot
                             stopFight();
                         }
 
-                        if (sleep_t == 0)
+                        
+                        #region fight flow temp stuff
+                        if (current_lv_index < this.list_fight.Items.Count)
                         {
-                            //fight flow temp stuff
-                            if (current_lv_index < this.list_fight.Items.Count)
+                            //if (this.combo_xml_fightFile.Text != "")
                             {
-                                //if (this.combo_xml_fightFile.Text != "")
+                                updateCurrent_lvi(current_lv_index);
+                                if (current_lvi.SubItems.Count > 0) //check if empty
                                 {
-                                    updateCurrent_lvi(current_lv_index);
-                                    if (current_lvi.SubItems.Count > 0) //check if empty
+                                    if (current_phaseChange_trigger != "") //detect if read line is phase change
                                     {
-                                        if (current_phaseChange_trigger != "") //detect if read line is phase change
+                                        if (stopWatch.Elapsed.TotalSeconds > current_phaseChange_offset)
                                         {
-                                            if (stopWatch.Elapsed.TotalSeconds > current_phaseChange_offset)
+                                            m = Regex.Match(resultLine, current_phaseChange_trigger);
+                                            if (m.Success)
                                             {
-                                                m = Regex.Match(resultLine, current_phaseChange_trigger);
-                                                if (m.Success)
-                                                {
-                                                    log("force change phase trigger: " + current_lv_index.ToString(), false, resultLine);
-                                                    nextPhase();
-                                                    list_fight.Items[current_lv_index].Selected = true;
-                                                    highlightEvent();
-                                                }
+                                                log("force change phase trigger: " + current_lv_index.ToString(), false, resultLine);
+                                                nextPhase();
+                                                list_fight.Items[current_lv_index].Selected = true;
+                                                highlightEvent();
                                             }
                                         }
+                                    }
 
-                                        if (current_lvi.Text != "") //currentline is phase indicator
+                                    if (current_lvi.Text != "") //currentline is phase indicator
+                                    {
+                                        current_phaseChange_offset = Int32.Parse(current_lvi.SubItems[2].Tag.ToString());
+                                        current_phaseChange_trigger = current_lvi.SubItems[4].Text;
+
+                                        if (chk_speakPhase.Checked)
                                         {
-                                            current_phaseChange_offset = Int32.Parse(current_lvi.SubItems[2].Tag.ToString());
-                                            current_phaseChange_trigger = current_lvi.SubItems[4].Text;
-
-                                            if (chk_speakPhase.Checked)
-                                            {
-                                                string toSpeak = current_lvi.SubItems[3].Text;
-                                                botspeak(toSpeak);
-                                            }
-
-
-                                            next_lvi();
-                                            list_fight.Items[current_lv_index].Selected = true;
-
-                                            log("phase change line to: " + current_lv_index.ToString());
-                                            highlightEvent();
+                                            string toSpeak = current_lvi.SubItems[3].Text;
+                                            botspeak(toSpeak);
                                         }
-                                        if (current_lvi.Text == "") //currentline is fight event
+
+
+                                        next_lvi();
+                                        list_fight.Items[current_lv_index].Selected = true;
+
+                                        log("phase change line to: " + current_lv_index.ToString());
+                                        highlightEvent();
+                                    }
+                                    if (current_lvi.Text == "") //currentline is fight event
+                                    {
+                                        pattern = current_lvi.SubItems[4].Text;
+                                        if (pattern != "")
                                         {
-                                            pattern = current_lvi.SubItems[4].Text;
-                                            if (pattern != "")
-                                            {
-                                                m = Regex.Match(resultLine, pattern);
-                                                if (m.Success)
-                                                {
-                                                    completeEvent();
-                                                    log("event trigger: " + current_lv_index.ToString(), false, resultLine);
-                                                    if (chk_speakEvent.Checked)
-                                                    {
-                                                        string toSpeak = current_lvi.SubItems[3].Text;
-                                                        botspeak(toSpeak);
-                                                    }
-                                                    next_lvi();
-                                                    highlightEvent();
-                                                }
-                                            }
-                                            if ((pattern == "") && (Int32.Parse(current_lvi.SubItems[2].Text) == 0)) //currentline is fight event with no trigger
+                                            m = Regex.Match(resultLine, pattern);
+                                            if (m.Success)
                                             {
                                                 completeEvent();
-                                                log("event elapsed: " + current_lv_index.ToString());
+                                                log("event trigger: " + current_lv_index.ToString(), false, resultLine);
                                                 if (chk_speakEvent.Checked)
                                                 {
                                                     string toSpeak = current_lvi.SubItems[3].Text;
@@ -123,165 +112,154 @@ namespace ffxiv.act.applbot
                                                 highlightEvent();
                                             }
                                         }
+                                        if ((pattern == "") && (Int32.Parse(current_lvi.SubItems[2].Text) == 0)) //currentline is fight event with no trigger
+                                        {
+                                            completeEvent();
+                                            log("event elapsed: " + current_lv_index.ToString());
+                                            if (chk_speakEvent.Checked)
+                                            {
+                                                string toSpeak = current_lvi.SubItems[3].Text;
+                                                botspeak(toSpeak);
+                                            }
+                                            next_lvi();
+                                            highlightEvent();
+                                        }
                                     }
                                 }
                             }
-                            //------------------------------remove later
+                        }
+                        #endregion
 
-                            #region debug boss activity
-                            if (this.txt_bossName.Text != "")
+                        #region debug boss activity
+                        if (this.txt_bossName.Text != "")
+                        {
+                            string[] bossNames = Regex.Split(this.txt_bossName.Text, "#");
+                            foreach (string bossName in bossNames)
                             {
-                                string[] bossNames = Regex.Split(this.txt_bossName.Text, "#");
-                                foreach (string bossName in bossNames)
+                                pattern = bossName + " uses ";
+                                m = Regex.Match(resultLine, pattern);
+                                if (m.Success)
                                 {
-                                    pattern = bossName + " uses ";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
-                                    {
-                                        string[] mainElements = Regex.Split(resultLine, pattern);
-                                        string toSpeak = string.Format(this.txt_speak_abilityUse.Text + " {0}", mainElements[1]);
-                                        if (this.chk_speakAbilityUse.Checked) botspeak(toSpeak);
-                                        log("Uses " + mainElements[1], false, resultLine);
-                                        break;
-                                    }
-
-                                    pattern = this.txt_bossName.Text + " readies ";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
-                                    {
-                                        string[] mainElements = Regex.Split(resultLine, pattern);
-                                        string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
-                                        if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
-                                        log("Readies " + mainElements[1], false, resultLine);
-                                        break;
-                                    }
-
-                                    pattern = this.txt_bossName.Text + " begins casting ";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
-                                    {
-                                        string[] mainElements = Regex.Split(resultLine, pattern);
-                                        string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
-                                        if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
-                                        log("Begins Casting " + mainElements[1], false, resultLine);
-                                        break;
-                                    }
-
-                                    pattern = this.txt_bossName.Text + " casts ";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
-                                    {
-                                        string[] mainElements = Regex.Split(resultLine, pattern);
-                                        string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
-                                        if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
-                                        log("Casts " + mainElements[1], false, resultLine);
-                                        break;
-                                    }
+                                    string[] mainElements = Regex.Split(resultLine, pattern);
+                                    string toSpeak = string.Format(this.txt_speak_abilityUse.Text + " {0}", mainElements[1]);
+                                    if (this.chk_speakAbilityUse.Checked) botspeak(toSpeak);
+                                    log("Uses " + mainElements[1], false, resultLine);
+                                    break;
                                 }
 
-                            }
-                            #endregion
+                                pattern = this.txt_bossName.Text + " readies ";
+                                m = Regex.Match(resultLine, pattern);
+                                if (m.Success)
+                                {
+                                    string[] mainElements = Regex.Split(resultLine, pattern);
+                                    string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
+                                    if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
+                                    log("Readies " + mainElements[1], false, resultLine);
+                                    break;
+                                }
 
+                                pattern = this.txt_bossName.Text + " begins casting ";
+                                m = Regex.Match(resultLine, pattern);
+                                if (m.Success)
+                                {
+                                    string[] mainElements = Regex.Split(resultLine, pattern);
+                                    string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
+                                    if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
+                                    log("Begins Casting " + mainElements[1], false, resultLine);
+                                    break;
+                                }
+
+                                pattern = this.txt_bossName.Text + " casts ";
+                                m = Regex.Match(resultLine, pattern);
+                                if (m.Success)
+                                {
+                                    string[] mainElements = Regex.Split(resultLine, pattern);
+                                    string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
+                                    if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
+                                    log("Casts " + mainElements[1], false, resultLine);
+                                    break;
+                                }
+                            }
+
+                        }
+                    #endregion
+
+                        if (sleep_t == 0)
+                        {
                             switch (currentFight)
                             {
 
                                 #region A11S
                                 case "Cruise Chaser":
-                                    pattern = "Armored Pauldron.0.3c.aa0.2436.0";
+                                    pattern = "Cruise Chaser.1A83.Blassty Charge..........";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
-                                        string toSpeak = "Pauldron";
-
+                                        string[] mainElements = Regex.Split(resultLine, pattern);
+                                        string[] subElements = Regex.Split(mainElements[1], "\\|");
+                                        string castTarget = getNickname(subElements[0]);
+                                        string toSpeak = string.Format("Charge {0}", castTarget);
                                         botspeak(toSpeak);
-                                        log(toSpeak);
-                                        sleep_t = 12;
+                                        log(toSpeak, false, resultLine);
+                                        sleep_t = 6;
                                     }
-                                    /*
-                                    pattern = "Cruise Chaser.1A6C.Optical Sight";
+                                    pattern = "Cruise Chaser.1A6C.Optical Sight..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
-                                        string toSpeak = "Shiva";
+                                        string toSpeak = this.txt_a11s_optical_shiva.Text;
 
                                         botspeak(toSpeak);
-                                        log(toSpeak);
-                                        sleep_t = 5;
+                                        log(toSpeak, false, resultLine);
+                                        sleep_t = 4;
                                     }
-                                    pattern = "The Cruise Chaser readies Optical Sight";
+                                    pattern = "Cruise Chaser.1A6D.Optical Sight..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
-                                        string toSpeak = "Optical";
+                                        string toSpeak = this.txt_a11s_optical_out.Text;
 
                                         botspeak(toSpeak);
-                                        log(toSpeak);
+                                        log(toSpeak, false, resultLine);
+                                        sleep_t = 4;
                                     }
-                                    pattern = "Cruise Chaser.1A6D.Optical Sight";
+                                    pattern = "Cruise Chaser.1A6E.Optical Sight..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
-                                        string toSpeak = "Out";
+                                        string toSpeak = this.txt_a11s_optical_stack.Text;
 
                                         botspeak(toSpeak);
-                                        log(toSpeak);
-                                        sleep_t = 5;
+                                        log(toSpeak, false, resultLine);
+                                        sleep_t = 4;
                                     }
-                                    pattern = "Cruise Chaser.1A6E.Optical Sight";
+                                    pattern = "Cruise Chaser.1A7A.Left Laser Sword..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
-                                        string toSpeak = "Out";
+                                        string toSpeak = this.txt_a11s_sword_left.Text;
 
                                         botspeak(toSpeak);
-                                        log(toSpeak);
-                                        sleep_t = 5;
+                                        log(toSpeak, false, resultLine);
                                     }
-                                    pattern = "readies Left Laser Sword";
+                                    pattern = "Cruise Chaser.1A79.Right Laser Sword..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
-                                        string toSpeak = "left";
+                                        string toSpeak = this.txt_a11s_sword_right.Text;
 
                                         botspeak(toSpeak);
-                                        log(toSpeak);
+                                        log(toSpeak, false, resultLine);
                                     }
-                                    pattern = "readies Right Laser Sword";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
-                                    {
-                                        string toSpeak = "right";
-
-                                        botspeak(toSpeak);
-                                        log(toSpeak);
-                                    }
-                                    pattern = "The Cruise Chaser readies Laser X Sword";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
-                                    {
-                                        string toSpeak = "Laser X";
-
-                                        botspeak(toSpeak);
-                                        log(toSpeak);
-                                    }
-                                    pattern = "The Cruise Chaser readies Propeller Wind";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
-                                    {
-                                        string toSpeak = "Hide";
-
-                                        botspeak(toSpeak);
-                                        log(toSpeak);
-                                    }
-                                    pattern = "The Cruise Chaser readies Spin Crusher";
+                                    pattern = "Cruise Chaser.1A85.Spin Crusher..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
                                         string toSpeak = "Spin Crusher";
 
                                         botspeak(toSpeak);
-                                        log(toSpeak);
-                                    }*/
+                                        log(toSpeak, false, resultLine);
+                                    }
                                     break;
                                 #endregion
 
