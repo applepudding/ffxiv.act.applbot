@@ -101,15 +101,22 @@ namespace ffxiv.act.applbot
                                             m = Regex.Match(resultLine, pattern);
                                             if (m.Success)
                                             {
-                                                completeEvent();
-                                                log("event trigger: " + current_lv_index.ToString(), false, resultLine);
-                                                if (chk_speakEvent.Checked)
+                                                if(flow_offset == 0)
                                                 {
-                                                    string toSpeak = current_lvi.SubItems[3].Text;
-                                                    botspeak(toSpeak);
-                                                }
-                                                next_lvi();
-                                                highlightEvent();
+
+                                                    completeEvent();
+                                                    flow_last = resultLine; //hold the value for repeat prev.
+                                                    flow_offset = Int32.Parse(current_lvi.SubItems[2].Tag.ToString());
+
+                                                    log("event trigger: " + current_lv_index.ToString(), false, resultLine);
+                                                    if (chk_speakEvent.Checked)
+                                                    {
+                                                        string toSpeak = current_lvi.SubItems[3].Text;
+                                                        botspeak(toSpeak);
+                                                    }
+                                                    next_lvi();
+                                                    highlightEvent();
+                                                }                                                
                                             }
                                         }
                                         if ((pattern == "") && (Int32.Parse(current_lvi.SubItems[2].Text) == 0)) //currentline is fight event with no trigger
@@ -241,6 +248,7 @@ namespace ffxiv.act.applbot
 
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
+                                        sleep_t = 4;
                                     }
                                     pattern = "Cruise Chaser.1A79.Right Laser Sword..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
@@ -250,6 +258,7 @@ namespace ffxiv.act.applbot
 
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
+                                        sleep_t = 4;
                                     }
                                     pattern = "Cruise Chaser.1A85.Spin Crusher..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
@@ -259,6 +268,7 @@ namespace ffxiv.act.applbot
 
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
+                                        sleep_t = 4;
                                     }
                                     break;
                                 #endregion
@@ -719,6 +729,7 @@ namespace ffxiv.act.applbot
 
                             }
                         }
+                        flow_last = resultLine;
                     }
                 }
             }

@@ -42,7 +42,8 @@ namespace ffxiv.act.applbot
         public int delayedMessage_t = 0;
 
         public int sleep_t = 0;
-
+        public int flow_offset = 0;
+        public string flow_last;
 
         public string errorMsg;
 
@@ -290,6 +291,10 @@ namespace ffxiv.act.applbot
                 {
                     sleep_t--;
                 }
+                if (flow_offset > 0)
+                {
+                    flow_offset--;
+                }
             }
             else
             {
@@ -524,11 +529,9 @@ namespace ffxiv.act.applbot
                             {
                                 temp_nextEvent += this.list_fight.Items[inputIndex + i].SubItems[1].Text + " (" + this.list_fight.Items[inputIndex + i].SubItems[2].Text + ")";
                             }
-
                         }
                         miniUX_update(temp_currentEvent, temp_nextEvent, this.list_fight.Items[inputIndex].SubItems[2].Text );
                     }
-                    
                 }
                 else
                 {
@@ -710,6 +713,7 @@ namespace ffxiv.act.applbot
                         string eventCountdown = eventNode.Attributes["countdown"].Value; //eventNode.SelectSingleNode("encounter-event-countdown").InnerText;
                         string eventTrigger = (eventNode.Attributes["trigger"] == null) ? "" : eventNode.Attributes["trigger"].Value; //eventNode.SelectSingleNode("encounter-event-trigger").InnerText;
                         string eventSpeak = (eventNode.Attributes["speak"] == null) ? "" : eventNode.Attributes["speak"].Value;//eventNode.SelectSingleNode("encounter-event-speak").InnerText;
+                        string eventOffset = (eventNode.Attributes["offset"] == null) ? "0" : eventNode.Attributes["offset"].Value;
 
                         lvi = new ListViewItem();
                         lvi.Text = "";
@@ -718,7 +722,7 @@ namespace ffxiv.act.applbot
 
                         lvsi = new ListViewItem.ListViewSubItem();
                         lvsi.Text = eventCountdown;
-                        lvsi.Tag = eventCountdown;
+                        lvsi.Tag = eventOffset;
                         lvi.SubItems.Add(lvsi);
 
                         lvsi = new ListViewItem.ListViewSubItem();

@@ -50,7 +50,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_a11s_sword_left = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.chk_speakAbilityReady = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chk_speakAbilityUse = new System.Windows.Forms.CheckBox();
@@ -59,7 +58,6 @@
             this.txt_a11s_sword_right = new System.Windows.Forms.TextBox();
             this.chk_showLogs = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label14 = new System.Windows.Forms.Label();
             this.chk_showMini = new System.Windows.Forms.CheckBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.grid_players = new System.Windows.Forms.DataGridView();
@@ -68,14 +66,12 @@
             this.list_log = new System.Windows.Forms.ListView();
             this.chk_speakEvent = new System.Windows.Forms.CheckBox();
             this.chk_speakPhase = new System.Windows.Forms.CheckBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txt_a11s_optical_out = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_a11s_optical_shiva = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txt_a11s_optical_stack = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.txt_a11s_pauldron = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -107,7 +103,7 @@
             this.btn_toSpeak = new System.Windows.Forms.Button();
             this.txt_partySize = new System.Windows.Forms.TextBox();
             this.lbl_partySize = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_you = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -116,6 +112,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.chk_quickMode = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -129,7 +126,6 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -350,7 +346,7 @@
             // 
             // txt_a11s_sword_left
             // 
-            this.txt_a11s_sword_left.Location = new System.Drawing.Point(142, 16);
+            this.txt_a11s_sword_left.Location = new System.Drawing.Point(139, 16);
             this.txt_a11s_sword_left.Name = "txt_a11s_sword_left";
             this.txt_a11s_sword_left.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_sword_left.TabIndex = 2;
@@ -359,20 +355,11 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 19);
+            this.label13.Location = new System.Drawing.Point(6, 19);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(124, 13);
+            this.label13.Size = new System.Drawing.Size(127, 13);
             this.label13.TabIndex = 1;
-            this.label13.Text = "Left Laser Sword callout:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(5, 42);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(131, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Right Laser Sword callout:";
+            this.label13.Text = "Laser Sword callout, Left:";
             // 
             // chk_speakAbilityReady
             // 
@@ -422,7 +409,7 @@
             // 
             // txt_a11s_sword_right
             // 
-            this.txt_a11s_sword_right.Location = new System.Drawing.Point(142, 39);
+            this.txt_a11s_sword_right.Location = new System.Drawing.Point(244, 16);
             this.txt_a11s_sword_right.Name = "txt_a11s_sword_right";
             this.txt_a11s_sword_right.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_sword_right.TabIndex = 3;
@@ -458,15 +445,6 @@
             this.tabPage3.Size = new System.Drawing.Size(846, 133);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "General";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(48, 65);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(88, 13);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Pauldron Spawn:";
             // 
             // chk_showMini
             // 
@@ -592,24 +570,9 @@
             this.chk_speakPhase.Text = "Speak Phase Flow";
             this.chk_speakPhase.UseVisualStyleBackColor = true;
             // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.txt_a11s_optical_out);
-            this.groupBox8.Controls.Add(this.label17);
-            this.groupBox8.Controls.Add(this.txt_a11s_optical_shiva);
-            this.groupBox8.Controls.Add(this.label16);
-            this.groupBox8.Controls.Add(this.txt_a11s_optical_stack);
-            this.groupBox8.Controls.Add(this.label15);
-            this.groupBox8.Location = new System.Drawing.Point(210, 16);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(168, 89);
-            this.groupBox8.TabIndex = 11;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Optical Sights";
-            // 
             // txt_a11s_optical_out
             // 
-            this.txt_a11s_optical_out.Location = new System.Drawing.Point(83, 61);
+            this.txt_a11s_optical_out.Location = new System.Drawing.Point(139, 94);
             this.txt_a11s_optical_out.Name = "txt_a11s_optical_out";
             this.txt_a11s_optical_out.Size = new System.Drawing.Size(79, 20);
             this.txt_a11s_optical_out.TabIndex = 7;
@@ -618,15 +581,15 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(50, 64);
+            this.label17.Location = new System.Drawing.Point(70, 97);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(27, 13);
+            this.label17.Size = new System.Drawing.Size(63, 13);
             this.label17.TabIndex = 10;
-            this.label17.Text = "Out:";
+            this.label17.Text = "Optical Out:";
             // 
             // txt_a11s_optical_shiva
             // 
-            this.txt_a11s_optical_shiva.Location = new System.Drawing.Point(83, 17);
+            this.txt_a11s_optical_shiva.Location = new System.Drawing.Point(139, 42);
             this.txt_a11s_optical_shiva.Name = "txt_a11s_optical_shiva";
             this.txt_a11s_optical_shiva.Size = new System.Drawing.Size(79, 20);
             this.txt_a11s_optical_shiva.TabIndex = 5;
@@ -635,15 +598,15 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(9, 42);
+            this.label16.Location = new System.Drawing.Point(29, 71);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(68, 13);
+            this.label16.Size = new System.Drawing.Size(104, 13);
             this.label16.TabIndex = 9;
-            this.label16.Text = "Stack-Move:";
+            this.label16.Text = "Optical Stack-Move:";
             // 
             // txt_a11s_optical_stack
             // 
-            this.txt_a11s_optical_stack.Location = new System.Drawing.Point(83, 39);
+            this.txt_a11s_optical_stack.Location = new System.Drawing.Point(139, 68);
             this.txt_a11s_optical_stack.Name = "txt_a11s_optical_stack";
             this.txt_a11s_optical_stack.Size = new System.Drawing.Size(79, 20);
             this.txt_a11s_optical_stack.TabIndex = 6;
@@ -652,19 +615,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(40, 20);
+            this.label15.Location = new System.Drawing.Point(60, 45);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.Size = new System.Drawing.Size(73, 13);
             this.label15.TabIndex = 8;
-            this.label15.Text = "Shiva:";
-            // 
-            // txt_a11s_pauldron
-            // 
-            this.txt_a11s_pauldron.Location = new System.Drawing.Point(142, 62);
-            this.txt_a11s_pauldron.Name = "txt_a11s_pauldron";
-            this.txt_a11s_pauldron.Size = new System.Drawing.Size(58, 20);
-            this.txt_a11s_pauldron.TabIndex = 13;
-            this.txt_a11s_pauldron.Text = "Pauldron";
+            this.label15.Text = "Optical Shiva:";
             // 
             // label10
             // 
@@ -879,6 +834,7 @@
             this.combo_xml_fightFile.Name = "combo_xml_fightFile";
             this.combo_xml_fightFile.Size = new System.Drawing.Size(121, 21);
             this.combo_xml_fightFile.TabIndex = 18;
+            this.combo_xml_fightFile.SelectedIndexChanged += new System.EventHandler(this.combo_xml_fightFile_SelectedIndexChanged);
             // 
             // btn_start
             // 
@@ -987,21 +943,21 @@
             this.lbl_partySize.TabIndex = 16;
             this.lbl_partySize.Text = "Party Size:";
             // 
-            // label5
+            // lbl_you
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(523, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Your Character Name:";
+            this.lbl_you.AutoSize = true;
+            this.lbl_you.Location = new System.Drawing.Point(523, 27);
+            this.lbl_you.Name = "lbl_you";
+            this.lbl_you.Size = new System.Drawing.Size(112, 13);
+            this.lbl_you.TabIndex = 15;
+            this.lbl_you.Text = "Your Character Name:";
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Controls.Add(this.txt_partySize);
             this.tabPage1.Controls.Add(this.lbl_partySize);
-            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.lbl_you);
             this.tabPage1.Controls.Add(this.txt_you);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.group_currentFight);
@@ -1052,16 +1008,19 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txt_a11s_pauldron);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.groupBox8);
+            this.groupBox3.Controls.Add(this.txt_a11s_optical_out);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.txt_a11s_sword_right);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Controls.Add(this.txt_a11s_optical_shiva);
+            this.groupBox3.Controls.Add(this.txt_a11s_optical_stack);
             this.groupBox3.Controls.Add(this.txt_a11s_sword_left);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(10, 3);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Location = new System.Drawing.Point(6, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(384, 113);
+            this.groupBox3.Size = new System.Drawing.Size(312, 127);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "A11S";
@@ -1093,6 +1052,15 @@
             this.chk_quickMode.UseVisualStyleBackColor = true;
             this.chk_quickMode.CheckedChanged += new System.EventHandler(this.chk_quickMode_CheckedChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(203, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Right:";
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1122,8 +1090,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1172,7 +1138,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_a11s_sword_left;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox chk_speakAbilityReady;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chk_speakAbilityUse;
@@ -1181,7 +1146,6 @@
         private System.Windows.Forms.TextBox txt_a11s_sword_right;
         private System.Windows.Forms.CheckBox chk_showLogs;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox chk_showMini;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView grid_players;
@@ -1190,14 +1154,12 @@
         private System.Windows.Forms.ListView list_log;
         private System.Windows.Forms.CheckBox chk_speakEvent;
         private System.Windows.Forms.CheckBox chk_speakPhase;
-        private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox txt_a11s_optical_out;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txt_a11s_optical_shiva;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txt_a11s_optical_stack;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txt_a11s_pauldron;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -1229,7 +1191,7 @@
         private System.Windows.Forms.Button btn_toSpeak;
         private System.Windows.Forms.TextBox txt_partySize;
         private System.Windows.Forms.Label lbl_partySize;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_you;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabControl tabControl1;
@@ -1239,5 +1201,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ComboBox combo_serverName;
         private System.Windows.Forms.CheckBox chk_quickMode;
+        private System.Windows.Forms.Label label5;
     }
 }

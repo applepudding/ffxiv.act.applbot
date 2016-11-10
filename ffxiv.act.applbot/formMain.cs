@@ -193,7 +193,6 @@ namespace ffxiv.act.applbot
             xmlSettings.AddControlSetting(txt_a11s_optical_out.Name, txt_a11s_optical_out);
             xmlSettings.AddControlSetting(txt_a11s_sword_left.Name, txt_a11s_sword_left);
             xmlSettings.AddControlSetting(txt_a11s_sword_right.Name, txt_a11s_sword_right);
-            xmlSettings.AddControlSetting(txt_a11s_pauldron.Name, txt_a11s_pauldron);
 
             if (File.Exists(settingsFile))
             {
@@ -278,8 +277,7 @@ namespace ffxiv.act.applbot
         private void btn_test_Click(object sender, EventArgs e)
         {
             myTTTVServer.varAPIAuth = "oajfd0ajfcafpsd";
-            this.txt_simFile.Text = "applbot\\output.txt";
-            this.txt_bossName.Text = "Cruise Chaser";
+            
             //test new form UX    
             //test xml
         }
@@ -397,6 +395,8 @@ namespace ffxiv.act.applbot
             {
                 this.lbl_partySize.Visible = false;
                 this.txt_partySize.Visible = false;
+                this.lbl_you.Visible = false;
+                this.txt_you.Visible = false;
                 this.splitContainer2.Panel1Collapsed = true;
                 this.splitContainer2.Panel1.Hide();
                 quickMode = true;
@@ -405,6 +405,8 @@ namespace ffxiv.act.applbot
             {
                 this.lbl_partySize.Visible = true;
                 this.txt_partySize.Visible = true;
+                this.lbl_you.Visible = true;
+                this.txt_you.Visible = true;
                 this.splitContainer2.Panel1Collapsed = false;
                 this.splitContainer2.Panel1.Show();
                 quickMode = false;
@@ -414,6 +416,24 @@ namespace ffxiv.act.applbot
         private void txt_voiceIndex_TextChanged(object sender, EventArgs e)
         {
             this.combo_voiceSelector.SelectedIndex = Int32.Parse(this.txt_voiceIndex.Text);
+        }
+
+        private void combo_xml_fightFile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.list_fight.Clear();
+            if (this.combo_xml_fightFile.Text != "")
+            {
+                string xmlFilePath = xmlFolderPath + this.combo_xml_fightFile.Text;
+                log("Test Loading XML", true, xmlFilePath);
+                loadFightXml(xmlFilePath);
+                log("XML Loaded", true, this.list_fight.Items.Count.ToString());
+
+                this.list_fight.Columns.Add("Phase #");
+                this.list_fight.Columns.Add("Details", 200);
+                this.list_fight.Columns.Add("Timing");
+                this.list_fight.Columns.Add("Speak");
+                this.list_fight.Columns.Add("Trigger", -2);
+            }            
         }
     }
 }
