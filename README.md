@@ -2,10 +2,11 @@
 Robot, callouts, and timeline plugin for boss encounters.
 
 ## Installation
-Extract .zip to ACT Folder (applbot folder inside ACT main folder)
+1. Download and unblock (if neccesary) .zip file from releases section (https://github.com/applepudding/ffxiv.act.applbot/releases).
+2. Extract .zip to ACT Folder (applbot folder inside ACT main folder)
 
 ## Usage
-er ... add+enable it in plugin listing and try out :) 
+er ... add+enable it in ACT - plugin listing and try out :) 
 
 ## Contributing (template: https://gist.github.com/zenorocha/4526327)
 1. Fork it!
