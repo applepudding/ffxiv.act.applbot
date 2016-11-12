@@ -32,6 +32,7 @@ namespace ffxiv.act.applbot
                         if (resultLine.Contains(pattern))
                         {
                             clearPlayerList();
+                            continue;
                         }
                         pattern = "=SIMSTART=";
                         if (resultLine.Contains(pattern))
@@ -43,15 +44,29 @@ namespace ffxiv.act.applbot
                                 {
                                     currentFight = this.txt_bossName.Text; //TEMPORARY, REMOVE later------------------------------         
                                 }
-                            }  
+                            }
+                            continue;
                         }
                         pattern = "=SIMSTOP=";
                         if (resultLine.Contains(pattern))
                         {
                             stopFight();
+                            continue;
                         }
 
-                        
+                        #region fun stuff
+                        pattern = "applbot\\:";
+                        m = Regex.Match(resultLine, pattern);
+                        if (m.Success)
+                        {
+                            string[] mainElements = Regex.Split(resultLine, pattern);
+                            string toSpeak = mainElements[1];
+                            botspeak(toSpeak);
+                            log(toSpeak, false, resultLine);
+                            continue;
+                        }
+                        #endregion
+
                         #region fight flow temp stuff
                         if (current_lv_index < this.list_fight.Items.Count)
                         {
@@ -209,6 +224,7 @@ namespace ffxiv.act.applbot
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
                                         sleep_t = 6;
+                                        continue;
                                     }
                                     pattern = "Cruise Chaser.1A6C.Optical Sight..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
@@ -219,6 +235,7 @@ namespace ffxiv.act.applbot
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
                                         sleep_t = 4;
+                                        continue;
                                     }
                                     pattern = "Cruise Chaser.1A6D.Optical Sight..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
@@ -229,6 +246,7 @@ namespace ffxiv.act.applbot
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
                                         sleep_t = 4;
+                                        continue;
                                     }
                                     pattern = "Cruise Chaser.1A6E.Optical Sight..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
@@ -239,6 +257,7 @@ namespace ffxiv.act.applbot
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
                                         sleep_t = 4;
+                                        continue;
                                     }
                                     pattern = "Cruise Chaser.1A7A.Left Laser Sword..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
@@ -249,6 +268,7 @@ namespace ffxiv.act.applbot
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
                                         sleep_t = 4;
+                                        continue;
                                     }
                                     pattern = "Cruise Chaser.1A79.Right Laser Sword..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
@@ -259,6 +279,7 @@ namespace ffxiv.act.applbot
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
                                         sleep_t = 4;
+                                        continue;
                                     }
                                     pattern = "Cruise Chaser.1A85.Spin Crusher..........Cruise Chaser";
                                     m = Regex.Match(resultLine, pattern);
@@ -269,6 +290,7 @@ namespace ffxiv.act.applbot
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
                                         sleep_t = 4;
+                                        continue;
                                     }
                                     break;
                                 #endregion

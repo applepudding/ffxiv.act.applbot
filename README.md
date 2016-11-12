@@ -15,21 +15,19 @@ er ... add+enable it in ACT - plugin listing and try out :)
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
 
-## History
-Recent fix/addition:
-
-+ selection highlight on log
-+ light/quick mode (no players loading)
-+ primitive broadcasting server
+## Stuffs on progress
 
 Required fixes:
-- a9s xml, phase skip stuff
+- sophia, a9s xml
 - broadcasting server (connect to channel #)
+- phase skip offset for later phases (current timer+offset)
 
 Missing features:
 - event warning notification (warning-timing, warning-speak, warning-countdown)
 - simulation on plugin (read from chosen log directly)
 - full log reader fight recognizer/separator
+- repeating sets of triggers
+- multiple encounters in 1 xml
 
 ## Credits
 Apple Pudding, Ix Xyl, Raccle Lancale @ Leviathan
