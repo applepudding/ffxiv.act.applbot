@@ -7,6 +7,7 @@ Robot, callouts, and timeline plugin for boss encounters.
 
 ## Usage
 er ... add+enable it in ACT - plugin listing and try out :) 
+visual guide: http://imgur.com/a/g1OyM
 
 ## Credits & Contacts
 Apple Pudding, Ix Xyl, Raccle Lancale @ Leviathan
