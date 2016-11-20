@@ -192,7 +192,8 @@ namespace ffxiv.act.applbot
             xmlSettings.AddControlSetting(txt_a11s_optical_stack.Name, txt_a11s_optical_stack);
             xmlSettings.AddControlSetting(txt_a11s_optical_out.Name, txt_a11s_optical_out);
             xmlSettings.AddControlSetting(txt_a11s_sword_left.Name, txt_a11s_sword_left);
-            xmlSettings.AddControlSetting(txt_a11s_sword_right.Name, txt_a11s_sword_right);
+            xmlSettings.AddControlSetting(txt_a11s_sword_right.Name, txt_a11s_sword_right); 
+            xmlSettings.AddControlSetting(chk_a10s_stopMoving.Name, chk_a10s_stopMoving);
 
             if (File.Exists(settingsFile))
             {
@@ -276,7 +277,7 @@ namespace ffxiv.act.applbot
 
         private void btn_test_Click(object sender, EventArgs e)
         {
-            myTTTVServer.varAPIAuth = "oajfd0ajfcafpsd";
+            myTTTVServer.varAPIAuth = "oaj45fd0ajf44cafp881123sd";
             
             //test new form UX    
             //test xml
@@ -377,15 +378,21 @@ namespace ffxiv.act.applbot
         {
             if ((this.btn_openServer.Text == "Connect") && (this.combo_serverName.Text != ""))
             {
-                this.btn_openServer.Text = "Disconnect";
+                this.btn_openServer.Text = "Connecting...";
+                this.btn_openServer.Enabled = false;
                 this.combo_serverName.Enabled = false;
-                broadcastServer = true;
+                requestChannel();
+                //broadcastChannel = 1;
+                //broadcastServer = true;
             }
             else
             {
                 broadcastServer = false;
+                broadcastChannel = 0; //not needed
                 this.combo_serverName.Enabled = true;
                 this.btn_openServer.Text = "Connect";
+                this.lbl_broadcastChannel.Text = "-";
+                this.txt_broadcastURL.Text = "";
             }
         }
 
@@ -434,6 +441,11 @@ namespace ffxiv.act.applbot
                 this.list_fight.Columns.Add("Speak");
                 this.list_fight.Columns.Add("Trigger", -2);
             }            
+        }
+
+        private void combo_serverName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

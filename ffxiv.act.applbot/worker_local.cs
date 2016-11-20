@@ -92,7 +92,7 @@ namespace ffxiv.act.applbot
 
                                     if (current_lvi.Text != "") //currentline is phase indicator
                                     {
-                                        current_phaseChange_offset = Int32.Parse(current_lvi.SubItems[2].Tag.ToString());
+                                        current_phaseChange_offset = Int32.Parse(current_lvi.SubItems[2].Tag.ToString()) + Convert.ToInt32(stopWatch.Elapsed.TotalSeconds); // untested ---!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                                         current_phaseChange_trigger = current_lvi.SubItems[4].Text;
 
                                         if (chk_speakPhase.Checked)
@@ -220,7 +220,7 @@ namespace ffxiv.act.applbot
                                         string[] mainElements = Regex.Split(resultLine, pattern);
                                         string[] subElements = Regex.Split(mainElements[1], "\\|");
                                         string castTarget = getNickname(subElements[0]);
-                                        string toSpeak = string.Format("Charge {0}", castTarget);
+                                        string toSpeak = string.Format("{0}", castTarget);
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
                                         sleep_t = 6;
@@ -295,6 +295,25 @@ namespace ffxiv.act.applbot
                                     break;
                                 #endregion
 
+                                #region A10S
+                                case "Lamebrix Strikebocks":
+                                    if (this.chk_a10s_stopMoving.Checked)
+                                    {
+                                        pattern = "Lamebrix Strikebocks.1AA4.Gobsnick Leghops..........Lamebrix Strikebocks";
+                                        m = Regex.Match(resultLine, pattern);
+                                        if (m.Success)
+                                        {
+                                            string toSpeak = "Stop";
+                                            botspeak(toSpeak);
+                                            log(toSpeak, false, resultLine);
+                                            sleep_t = 6;
+                                            startCountdown(3);
+                                            continue;
+                                        }
+                                    }
+                                    break;
+                                    #endregion
+                                    
                                 #region A9S
                                 //NOT WORKING YET
                                 /*

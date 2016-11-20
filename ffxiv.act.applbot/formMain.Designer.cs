@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label23 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txt_broadcastURL = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.combo_serverName = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lbl_broadcastChannel = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.btn_openServer = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.btn_browse = new System.Windows.Forms.Button();
             this.txt_simFile = new System.Windows.Forms.TextBox();
@@ -109,10 +108,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.chk_quickMode = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chk_a10s_stopMoving = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -138,89 +139,74 @@
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(111, 86);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(10, 13);
-            this.label23.TabIndex = 7;
-            this.label23.Text = "-";
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txt_broadcastURL);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.combo_serverName);
-            this.groupBox2.Controls.Add(this.label24);
-            this.groupBox2.Controls.Add(this.label23);
-            this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.lbl_broadcastChannel);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.btn_openServer);
-            this.groupBox2.Location = new System.Drawing.Point(537, 6);
+            this.groupBox2.Location = new System.Drawing.Point(571, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(304, 112);
+            this.groupBox2.Size = new System.Drawing.Size(270, 104);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Broadcast Server (Please use Moderately)";
+            this.groupBox2.Text = "Broadcast Server (Please use moderately)";
+            // 
+            // txt_broadcastURL
+            // 
+            this.txt_broadcastURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_broadcastURL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_broadcastURL.Location = new System.Drawing.Point(73, 73);
+            this.txt_broadcastURL.Name = "txt_broadcastURL";
+            this.txt_broadcastURL.ReadOnly = true;
+            this.txt_broadcastURL.Size = new System.Drawing.Size(191, 20);
+            this.txt_broadcastURL.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(35, 76);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "URL:";
             // 
             // combo_serverName
             // 
             this.combo_serverName.FormattingEnabled = true;
             this.combo_serverName.Items.AddRange(new object[] {
             "localhost",
-            "t-t.tv"});
-            this.combo_serverName.Location = new System.Drawing.Point(111, 19);
+            "t-t.tv",
+            "54.191.10.74"});
+            this.combo_serverName.Location = new System.Drawing.Point(73, 19);
             this.combo_serverName.Name = "combo_serverName";
             this.combo_serverName.Size = new System.Drawing.Size(96, 21);
             this.combo_serverName.TabIndex = 9;
             this.combo_serverName.Text = "localhost";
+            this.combo_serverName.SelectedIndexChanged += new System.EventHandler(this.combo_serverName_SelectedIndexChanged);
             // 
-            // label24
+            // lbl_broadcastChannel
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(111, 49);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(72, 13);
-            this.label24.TabIndex = 8;
-            this.label24.Text = "ready to open";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(55, 86);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(48, 13);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "Latency:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.Red;
-            this.label21.Location = new System.Drawing.Point(111, 68);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(10, 13);
-            this.label21.TabIndex = 5;
-            this.label21.Text = "-";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(18, 49);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(87, 13);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "Server Message:";
+            this.lbl_broadcastChannel.AutoSize = true;
+            this.lbl_broadcastChannel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lbl_broadcastChannel.Location = new System.Drawing.Point(73, 52);
+            this.lbl_broadcastChannel.Name = "lbl_broadcastChannel";
+            this.lbl_broadcastChannel.Size = new System.Drawing.Size(10, 13);
+            this.lbl_broadcastChannel.TabIndex = 5;
+            this.lbl_broadcastChannel.Text = "-";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(44, 23);
+            this.label11.Location = new System.Drawing.Point(6, 23);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(61, 13);
             this.label11.TabIndex = 1;
@@ -229,7 +215,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(44, 68);
+            this.label19.Location = new System.Drawing.Point(8, 52);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(59, 13);
             this.label19.TabIndex = 3;
@@ -238,7 +224,7 @@
             // btn_openServer
             // 
             this.btn_openServer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_openServer.Location = new System.Drawing.Point(213, 18);
+            this.btn_openServer.Location = new System.Drawing.Point(179, 18);
             this.btn_openServer.Name = "btn_openServer";
             this.btn_openServer.Size = new System.Drawing.Size(85, 22);
             this.btn_openServer.TabIndex = 0;
@@ -248,6 +234,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.textBox1);
             this.tabPage5.Controls.Add(this.groupBox2);
             this.tabPage5.Controls.Add(this.groupBox9);
             this.tabPage5.Controls.Add(this.btn_test);
@@ -259,6 +246,16 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Advanced";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox1.Location = new System.Drawing.Point(6, 106);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(350, 20);
+            this.textBox1.TabIndex = 19;
+            this.textBox1.Text = "https://github.com/applepudding/ffxiv.act.applbot/releases";
             // 
             // groupBox9
             // 
@@ -291,9 +288,9 @@
             // 
             // btn_test
             // 
-            this.btn_test.Location = new System.Drawing.Point(131, 77);
+            this.btn_test.Location = new System.Drawing.Point(256, 77);
             this.btn_test.Name = "btn_test";
-            this.btn_test.Size = new System.Drawing.Size(119, 23);
+            this.btn_test.Size = new System.Drawing.Size(100, 23);
             this.btn_test.TabIndex = 21;
             this.btn_test.Text = "l\'tesuto Buttonz";
             this.btn_test.UseVisualStyleBackColor = true;
@@ -311,7 +308,7 @@
             // 
             // btn_clearPlayerList
             // 
-            this.btn_clearPlayerList.Location = new System.Drawing.Point(6, 106);
+            this.btn_clearPlayerList.Location = new System.Drawing.Point(131, 77);
             this.btn_clearPlayerList.Name = "btn_clearPlayerList";
             this.btn_clearPlayerList.Size = new System.Drawing.Size(119, 23);
             this.btn_clearPlayerList.TabIndex = 20;
@@ -325,7 +322,7 @@
             this.txt_speak_abilityUse.Name = "txt_speak_abilityUse";
             this.txt_speak_abilityUse.Size = new System.Drawing.Size(100, 20);
             this.txt_speak_abilityUse.TabIndex = 24;
-            this.txt_speak_abilityUse.Text = "Uses";
+            this.txt_speak_abilityUse.Text = "uses";
             // 
             // txt_speak_abilityReady
             // 
@@ -333,7 +330,7 @@
             this.txt_speak_abilityReady.Name = "txt_speak_abilityReady";
             this.txt_speak_abilityReady.Size = new System.Drawing.Size(100, 20);
             this.txt_speak_abilityReady.TabIndex = 23;
-            this.txt_speak_abilityReady.Text = "Readies";
+            this.txt_speak_abilityReady.Text = "readies";
             // 
             // label2
             // 
@@ -350,7 +347,7 @@
             this.txt_a11s_sword_left.Name = "txt_a11s_sword_left";
             this.txt_a11s_sword_left.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_sword_left.TabIndex = 2;
-            this.txt_a11s_sword_left.Text = "Right";
+            this.txt_a11s_sword_left.Text = "right";
             // 
             // label13
             // 
@@ -413,7 +410,7 @@
             this.txt_a11s_sword_right.Name = "txt_a11s_sword_right";
             this.txt_a11s_sword_right.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_sword_right.TabIndex = 3;
-            this.txt_a11s_sword_right.Text = "Left";
+            this.txt_a11s_sword_right.Text = "left";
             // 
             // chk_showLogs
             // 
@@ -451,9 +448,9 @@
             this.chk_showMini.AutoSize = true;
             this.chk_showMini.Location = new System.Drawing.Point(89, 165);
             this.chk_showMini.Name = "chk_showMini";
-            this.chk_showMini.Size = new System.Drawing.Size(89, 17);
+            this.chk_showMini.Size = new System.Drawing.Size(74, 17);
             this.chk_showMini.TabIndex = 25;
-            this.chk_showMini.Text = "Show minibot";
+            this.chk_showMini.Text = "Show mini";
             this.chk_showMini.UseVisualStyleBackColor = true;
             this.chk_showMini.CheckedChanged += new System.EventHandler(this.chk_showMini_CheckedChanged);
             // 
@@ -576,7 +573,7 @@
             this.txt_a11s_optical_out.Name = "txt_a11s_optical_out";
             this.txt_a11s_optical_out.Size = new System.Drawing.Size(79, 20);
             this.txt_a11s_optical_out.TabIndex = 7;
-            this.txt_a11s_optical_out.Text = "Out";
+            this.txt_a11s_optical_out.Text = "out";
             // 
             // label17
             // 
@@ -593,7 +590,7 @@
             this.txt_a11s_optical_shiva.Name = "txt_a11s_optical_shiva";
             this.txt_a11s_optical_shiva.Size = new System.Drawing.Size(79, 20);
             this.txt_a11s_optical_shiva.TabIndex = 5;
-            this.txt_a11s_optical_shiva.Text = "Shiva";
+            this.txt_a11s_optical_shiva.Text = "shiva";
             // 
             // label16
             // 
@@ -610,7 +607,7 @@
             this.txt_a11s_optical_stack.Name = "txt_a11s_optical_stack";
             this.txt_a11s_optical_stack.Size = new System.Drawing.Size(79, 20);
             this.txt_a11s_optical_stack.TabIndex = 6;
-            this.txt_a11s_optical_stack.Text = "Stack, Out";
+            this.txt_a11s_optical_stack.Text = "stack, out";
             // 
             // label15
             // 
@@ -999,6 +996,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -1025,6 +1023,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "A11S";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(203, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Right:";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tabControl1);
@@ -1044,7 +1051,7 @@
             // chk_quickMode
             // 
             this.chk_quickMode.AutoSize = true;
-            this.chk_quickMode.Location = new System.Drawing.Point(184, 165);
+            this.chk_quickMode.Location = new System.Drawing.Point(169, 165);
             this.chk_quickMode.Name = "chk_quickMode";
             this.chk_quickMode.Size = new System.Drawing.Size(179, 17);
             this.chk_quickMode.TabIndex = 27;
@@ -1052,14 +1059,27 @@
             this.chk_quickMode.UseVisualStyleBackColor = true;
             this.chk_quickMode.CheckedChanged += new System.EventHandler(this.chk_quickMode_CheckedChanged);
             // 
-            // label5
+            // groupBox4
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(203, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Right:";
+            this.groupBox4.Controls.Add(this.chk_a10s_stopMoving);
+            this.groupBox4.Location = new System.Drawing.Point(324, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(195, 127);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "A10S";
+            // 
+            // chk_a10s_stopMoving
+            // 
+            this.chk_a10s_stopMoving.AutoSize = true;
+            this.chk_a10s_stopMoving.Checked = true;
+            this.chk_a10s_stopMoving.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_a10s_stopMoving.Location = new System.Drawing.Point(6, 18);
+            this.chk_a10s_stopMoving.Name = "chk_a10s_stopMoving";
+            this.chk_a10s_stopMoving.Size = new System.Drawing.Size(172, 17);
+            this.chk_a10s_stopMoving.TabIndex = 0;
+            this.chk_a10s_stopMoving.Text = "Countdown Gobsnick Leghops";
+            this.chk_a10s_stopMoving.UseVisualStyleBackColor = true;
             // 
             // formMain
             // 
@@ -1077,6 +1097,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -1110,19 +1131,16 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lbl_broadcastChannel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btn_openServer;
@@ -1202,5 +1220,10 @@
         private System.Windows.Forms.ComboBox combo_serverName;
         private System.Windows.Forms.CheckBox chk_quickMode;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txt_broadcastURL;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox chk_a10s_stopMoving;
     }
 }

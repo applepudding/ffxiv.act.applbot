@@ -76,6 +76,7 @@ namespace ffxiv.act.applbot
         bool partySorted = false;
 
         bool broadcastServer = false;
+        int broadcastChannel = 0;
 
 
         void botspeak(string toSpeak)
@@ -104,10 +105,10 @@ namespace ffxiv.act.applbot
         {
             if (!InvokeRequired)
             {
-                if (broadcastServer && ((m != "") || (e != ""))) 
+                if ((broadcastChannel > 0) && broadcastServer && ((m != "") || (e != ""))) 
                 { 
                     string URI = "http://" + this.combo_serverName.Text + "/applbot/api/up.php";
-                    string myParameters = "c=1";
+                    string myParameters = "c=" + broadcastChannel.ToString();
                     myParameters += (m != "") ? "&m=" + Uri.UnescapeDataString(m) : "" ;
                     myParameters += (e != "") ? "&e=" + Uri.UnescapeDataString(e) : "" ;
                     log("broadcasting", true, myParameters);
@@ -124,8 +125,6 @@ namespace ffxiv.act.applbot
             }
 
         }
-
-
         void clearPlayerList()
         {
             if (!InvokeRequired)
@@ -231,7 +230,7 @@ namespace ffxiv.act.applbot
                 #endregion
 
                 #region Auto Update Stuff
-
+                //log(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString());
                 #endregion
             }
             else
@@ -239,7 +238,100 @@ namespace ffxiv.act.applbot
                 Invoke(new Action(initEncounterPlugin));
             }
         }
+        
+        void requestChannel()
+        {
+            try
+            {
+                string URI = "http://" + this.combo_serverName.Text + "/applbot/api/up.php";
+                string myParameters = "r=1";
+                log("requesting channel", true);
+                using (WebClient wc = new WebClient())
+                {
+                    wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                    string HtmlResult = wc.UploadString(URI, myParameters);
+                    log("Connected", true, HtmlResult);
+                    this.btn_openServer.Text = "Disconnect";
+                    this.btn_openServer.Enabled = true;
+                    this.combo_serverName.Enabled = false;
+                    this.lbl_broadcastChannel.Text = HtmlResult;
+                    this.txt_broadcastURL.Text = "http://" + this.combo_serverName.Text + "/applbot/" + HtmlResult;
+                    broadcastChannel = Int32.Parse(HtmlResult);
+                    broadcastServer = true;
+                }
+            }
+            catch (Exception e)
+            {
+                log("error", true, e.Message);
+                this.btn_openServer.Text = "Connect";
+                this.btn_openServer.Enabled = true;
+                this.combo_serverName.Enabled = true;
+                this.txt_broadcastURL.Text = "";
+                this.lbl_broadcastChannel.Text = "-";
+            }
+        }
+        /*
+        private bool checkInternet(string webServer)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webServer + "up.php");
+                request.Timeout = 10000;
+                WebResponse response = request.GetResponse();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream);
+                string responseFromServer = reader.ReadToEnd();
 
+                reader.Close();
+                dataStream.Close();
+                response.Close();
+                if (appVersion != responseFromServer)
+                {
+
+                    log("New Update Available, Restating!");
+
+                    DownloadFile("http://xaxaxaxaxaxa/t/tminiupdater.exe", getFolder() + "tminiupdater.exe");
+
+                    ProcessStartInfo processStartInfo = new ProcessStartInfo();
+                    processStartInfo.FileName = getFolder() + "tminiupdater.exe";
+                    Process.Start(processStartInfo);
+                    Application.Exit();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                errorMsg = e.Message;
+                return false;
+            }
+        }
+        */
+        public static void DownloadFile(String url, String destination)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Timeout = 10000; // 10 seconds            
+            using (var response = request.GetResponse())
+            {
+                using (var responseStream = response.GetResponseStream())
+                {
+                    using (var fileStream = File.Open(destination, FileMode.Create, FileAccess.Write, FileShare.None))
+                    {
+                        var MaxBytesToRead = 10 * 1024;
+                        var buffer = new Byte[MaxBytesToRead];
+                        var totalBytesRead = 0;
+                        var bytesRead = responseStream.Read(buffer, 0, MaxBytesToRead);
+
+                        while (bytesRead > 0)
+                        {
+                            totalBytesRead += bytesRead;
+                            fileStream.Write(buffer, 0, bytesRead);
+                            bytesRead = responseStream.Read(buffer, 0, MaxBytesToRead);
+                        }
+                    }
+                }
+            }
+        }
+        
         void disposeEncounterPlugin()
         {
             uxForm.Close();
@@ -660,84 +752,90 @@ namespace ffxiv.act.applbot
         {
             if (!InvokeRequired)
             {
-                XmlDocument doc = new XmlDocument();
-                doc.Load(xmlFilePath);
-
-                // temporary replace later that support multiple bosses in 1 area (ex: a6s blaster+brawler+swindler+vortexer)
-                XmlNode xml_encounterNode = doc.DocumentElement.SelectSingleNode("/encounter");
-                if (quickMode)
+                try
                 {
-                    currentFight = (xml_encounterNode.Attributes["name"] == null) ? "" : xml_encounterNode.Attributes["name"].Value;                    
-                }
-                /////////////////////////////////////////////////////////////
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(xmlFilePath);
 
-                XmlNodeList xml_phaseNodes = doc.DocumentElement.SelectNodes("/encounter/encounter-phase");
-
-                foreach (XmlNode phaseNode in xml_phaseNodes)
-                {
-                    string phaseName = phaseNode.Attributes["id"].Value;  //.SelectSingleNode("encounter-phase-name").InnerText;
-                    string phaseDetail = (phaseNode.Attributes["detail"] == null) ? "" : phaseNode.Attributes["detail"].Value; //.SelectSingleNode("encounter-phase-detail").InnerText;
-                    string phaseRepeat = (phaseNode.Attributes["repeat"] == null) ? "" : "\u27F3";  //(phaseNode.SelectSingleNode("encounter-phase-repeat").InnerText == "true") ? "\u27F3" : "";
-                    string phaseChangeTrigger = (phaseNode.Attributes["skip-trigger"] == null) ? "" : phaseNode.Attributes["skip-trigger"].Value; //.SelectSingleNode("encounter-phase-changeTrigger").InnerText;
-                    string phaseChangeOffset = (phaseNode.Attributes["skip-offset"] == null) ? "0" : phaseNode.Attributes["skip-offset"].Value;//phaseNode.SelectSingleNode("encounter-phase-changeTriggerOffset").InnerText;
-                    string phaseChangeSpeak = (phaseNode.Attributes["speak"] == null) ? "" : phaseNode.Attributes["speak"].Value;//phaseNode.SelectSingleNode("encounter-phase-changeSpeak").InnerText;
-
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Text = phaseName;
-                    lvi.ForeColor = Color.Gray;
-                    lvi.SubItems.Add(phaseDetail);
-
-                    ListViewItem.ListViewSubItem lvsi = new ListViewItem.ListViewSubItem();
-                    lvsi.Text = phaseRepeat;
-                    lvsi.Tag = phaseChangeOffset;
-                    lvi.SubItems.Add(lvsi);
-
-                    lvsi = new ListViewItem.ListViewSubItem();
-                    lvsi.Text = phaseChangeSpeak;
-                    lvsi.ForeColor = Color.Gray;
-                    lvi.SubItems.Add(lvsi);
-
-                    lvsi = new ListViewItem.ListViewSubItem();
-                    lvsi.Text = phaseChangeTrigger;
-                    lvsi.ForeColor = Color.Gray;
-                    lvi.SubItems.Add(lvsi);
-
-                    lvi.UseItemStyleForSubItems = false;
-                    this.list_fight.Items.Add(lvi);
-
-                    XmlNodeList xml_eventNodes = phaseNode.SelectSingleNode("encounter-phase-eventFlow").SelectNodes("encounter-event");
-
-                    foreach (XmlNode eventNode in xml_eventNodes)
+                    // temporary replace later that support multiple bosses in 1 area (ex: a6s blaster+brawler+swindler+vortexer)
+                    XmlNode xml_encounterNode = doc.DocumentElement.SelectSingleNode("/encounter");
+                    if (quickMode)
                     {
-                        string eventDetail = (eventNode.Attributes["detail"] == null) ? "" : eventNode.Attributes["detail"].Value; //eventNode.SelectSingleNode("encounter-event-detail").InnerText;
-                        string eventCountdown = eventNode.Attributes["countdown"].Value; //eventNode.SelectSingleNode("encounter-event-countdown").InnerText;
-                        string eventTrigger = (eventNode.Attributes["trigger"] == null) ? "" : eventNode.Attributes["trigger"].Value; //eventNode.SelectSingleNode("encounter-event-trigger").InnerText;
-                        string eventSpeak = (eventNode.Attributes["speak"] == null) ? "" : eventNode.Attributes["speak"].Value;//eventNode.SelectSingleNode("encounter-event-speak").InnerText;
-                        string eventOffset = (eventNode.Attributes["offset"] == null) ? "0" : eventNode.Attributes["offset"].Value;
+                        currentFight = (xml_encounterNode.Attributes["name"] == null) ? "" : xml_encounterNode.Attributes["name"].Value;
+                    }
+                    /////////////////////////////////////////////////////////////
 
-                        lvi = new ListViewItem();
-                        lvi.Text = "";
+                    XmlNodeList xml_phaseNodes = doc.DocumentElement.SelectNodes("/encounter/encounter-phase");
+
+                    foreach (XmlNode phaseNode in xml_phaseNodes)
+                    {
+                        string phaseName = phaseNode.Attributes["id"].Value;  //.SelectSingleNode("encounter-phase-name").InnerText;
+                        string phaseDetail = (phaseNode.Attributes["detail"] == null) ? "" : phaseNode.Attributes["detail"].Value; //.SelectSingleNode("encounter-phase-detail").InnerText;
+                        string phaseRepeat = (phaseNode.Attributes["repeat"] == null) ? "" : "\u27F3";  //(phaseNode.SelectSingleNode("encounter-phase-repeat").InnerText == "true") ? "\u27F3" : "";
+                        string phaseChangeTrigger = (phaseNode.Attributes["skip-trigger"] == null) ? "" : phaseNode.Attributes["skip-trigger"].Value; //.SelectSingleNode("encounter-phase-changeTrigger").InnerText;
+                        string phaseChangeOffset = (phaseNode.Attributes["skip-offset"] == null) ? "0" : phaseNode.Attributes["skip-offset"].Value;//phaseNode.SelectSingleNode("encounter-phase-changeTriggerOffset").InnerText;
+                        string phaseChangeSpeak = (phaseNode.Attributes["speak"] == null) ? "" : phaseNode.Attributes["speak"].Value;//phaseNode.SelectSingleNode("encounter-phase-changeSpeak").InnerText;
+
+                        ListViewItem lvi = new ListViewItem();
+                        lvi.Text = phaseName;
                         lvi.ForeColor = Color.Gray;
-                        lvi.SubItems.Add(eventDetail);
+                        lvi.SubItems.Add(phaseDetail);
 
-                        lvsi = new ListViewItem.ListViewSubItem();
-                        lvsi.Text = eventCountdown;
-                        lvsi.Tag = eventOffset;
+                        ListViewItem.ListViewSubItem lvsi = new ListViewItem.ListViewSubItem();
+                        lvsi.Text = phaseRepeat;
+                        lvsi.Tag = phaseChangeOffset;
                         lvi.SubItems.Add(lvsi);
 
                         lvsi = new ListViewItem.ListViewSubItem();
-                        lvsi.Text = eventSpeak;
+                        lvsi.Text = phaseChangeSpeak;
+                        lvsi.ForeColor = Color.Gray;
                         lvi.SubItems.Add(lvsi);
 
                         lvsi = new ListViewItem.ListViewSubItem();
-                        lvsi.Text = eventTrigger;
+                        lvsi.Text = phaseChangeTrigger;
+                        lvsi.ForeColor = Color.Gray;
                         lvi.SubItems.Add(lvsi);
 
-                        lvi.UseItemStyleForSubItems = true;
+                        lvi.UseItemStyleForSubItems = false;
                         this.list_fight.Items.Add(lvi);
+
+                        XmlNodeList xml_eventNodes = phaseNode.SelectSingleNode("encounter-phase-eventFlow").SelectNodes("encounter-event");
+
+                        foreach (XmlNode eventNode in xml_eventNodes)
+                        {
+                            string eventDetail = (eventNode.Attributes["detail"] == null) ? "" : eventNode.Attributes["detail"].Value; //eventNode.SelectSingleNode("encounter-event-detail").InnerText;
+                            string eventCountdown = eventNode.Attributes["countdown"].Value; //eventNode.SelectSingleNode("encounter-event-countdown").InnerText;
+                            string eventTrigger = (eventNode.Attributes["trigger"] == null) ? "" : eventNode.Attributes["trigger"].Value; //eventNode.SelectSingleNode("encounter-event-trigger").InnerText;
+                            string eventSpeak = (eventNode.Attributes["speak"] == null) ? "" : eventNode.Attributes["speak"].Value;//eventNode.SelectSingleNode("encounter-event-speak").InnerText;
+                            string eventOffset = (eventNode.Attributes["offset"] == null) ? "0" : eventNode.Attributes["offset"].Value;
+
+                            lvi = new ListViewItem();
+                            lvi.Text = "";
+                            lvi.ForeColor = Color.Gray;
+                            lvi.SubItems.Add(eventDetail);
+
+                            lvsi = new ListViewItem.ListViewSubItem();
+                            lvsi.Text = eventCountdown;
+                            lvsi.Tag = eventOffset;
+                            lvi.SubItems.Add(lvsi);
+
+                            lvsi = new ListViewItem.ListViewSubItem();
+                            lvsi.Text = eventSpeak;
+                            lvi.SubItems.Add(lvsi);
+
+                            lvsi = new ListViewItem.ListViewSubItem();
+                            lvsi.Text = eventTrigger;
+                            lvi.SubItems.Add(lvsi);
+
+                            lvi.UseItemStyleForSubItems = true;
+                            this.list_fight.Items.Add(lvi);
+                        }
                     }
                 }
-
+                catch (Exception e)
+                {
+                    log("error", true, e.Message);
+                }                
             }
             else
             {
