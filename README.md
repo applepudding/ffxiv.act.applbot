@@ -7,6 +7,8 @@ Robot, callouts, and timeline plugin for boss encounters.
 
 ## Usage
 er ... add+enable it in ACT - plugin listing and try out :) 
+Make sure ACT reset is set to around 40s. Options - Main Table/Encounters - General - Number of seconds....
+
 visual guide: http://imgur.com/a/g1OyM
 
 ## Credits & Contacts
