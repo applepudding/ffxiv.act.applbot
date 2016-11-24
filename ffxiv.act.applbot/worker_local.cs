@@ -2,11 +2,16 @@
 using System.IO;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace ffxiv.act.applbot
 {
     partial class formMain
     {
+        bool a12s_temporalStasis = false;
+        int a12s_ts_countdown = 2;
+        int a12s_ts_count = 0;
+
         public void myBackgroudWorker()
         {
             Match m;
@@ -28,6 +33,7 @@ namespace ffxiv.act.applbot
                         while (sr.EndOfStream) Thread.Sleep(threadSleepLength); //sleeps if no input
                         string resultLine = sr.ReadLine();
 
+                        #region init/stop fight triggers
                         pattern = " has begun.";
                         if (resultLine.Contains(pattern))
                         {
@@ -53,16 +59,20 @@ namespace ffxiv.act.applbot
                             stopFight();
                             continue;
                         }
+                        #endregion
 
                         #region fun stuff
                         pattern = "applbot\\:";
                         m = Regex.Match(resultLine, pattern);
                         if (m.Success)
                         {
-                            string[] mainElements = Regex.Split(resultLine, pattern);
-                            string toSpeak = mainElements[1];
-                            botspeak(toSpeak);
-                            log(toSpeak, false, resultLine);
+                            if (resultLine.Length < 50)
+                            {
+                                string[] mainElements = Regex.Split(resultLine, pattern);
+                                string toSpeak = mainElements[1];
+                                botspeak(toSpeak);
+                                log(toSpeak, false, resultLine);
+                            }
                             continue;
                         }
                         #endregion
@@ -210,6 +220,88 @@ namespace ffxiv.act.applbot
                         {
                             switch (currentFight)
                             {
+                                #region A12S
+                                case "Alexander Prime":
+                                    pattern = "Alexander Prime.19FB.Temporal Stasis..........Alexander Prime";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        if (!a12s_temporalStasis)
+                                        {
+                                            a12s_temporalStasis = true;
+                                            a12s_ts_count = 0;
+                                            a12s_ts_countdown = 2;
+                                            a12s_cleanPlayerListDebuff();
+                                        }
+                                        continue;
+                                    }
+                                    pattern = "Alexander Prime.1A08.Inception..........Alexander Prime";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        if (!a12s_temporalStasis)
+                                        {
+                                            a12s_temporalStasis = true;
+                                            a12s_ts_count = 0;
+                                            a12s_ts_countdown = 2;
+                                            a12s_cleanPlayerListDebuff();
+                                        }
+                                        continue;
+                                    }
+                                    if (a12s_temporalStasis)
+                                    {
+                                        
+                                        //resolve temporal stasis
+                                        pattern = "Alexander Prime readies Temporal Stasis";
+                                        m = Regex.Match(resultLine, pattern);
+                                        if (m.Success)
+                                        {
+                                            a12s_resolveTemporalStasis();
+                                            a12s_temporalStasis = false;
+                                            continue;
+                                        }
+                                        //same with inception
+                                        pattern = "Alexander Prime readies Inception";
+                                        m = Regex.Match(resultLine, pattern);
+                                        if (m.Success)
+                                        {
+                                            a12s_resolveTemporalStasis();
+                                            a12s_temporalStasis = false;
+                                            continue;
+                                        }
+                                        
+                                        //temporal stasis debuffs
+                                        string[] debuff_temporalStasis = new string[4] { "Defamation", "Shared Sentence", "Restraining Order", "House Arrest" };
+                                        foreach(string debuff in debuff_temporalStasis)
+                                        {
+                                            pattern = "[a-zA-Z']{6,7} the effect of.{43}." + debuff;
+                                            m = Regex.Match(resultLine, pattern);
+                                            if (m.Success)
+                                            {
+                                                string[] mainElements = Regex.Split(resultLine, pattern);
+                                                //remove useless characters
+                                                Regex rgx = new Regex("[^a-zA-Z' -]");                                                
+                                                mainElements[0] = rgx.Replace(mainElements[0], "#");
+                                                string[] subElements = Regex.Split(mainElements[0], "#");
+                                                subElements = subElements.Where(s => !String.IsNullOrEmpty(s)).ToArray();
+                                                string playerName = subElements[subElements.Length - 3];
+                                                //fix for YOU
+                                                if (playerName == "T")
+                                                {
+                                                    playerName = txt_you.Text;
+                                                }
+
+                                                a12s_ts_count++;
+                                                a12s_setDebuff(playerName, debuff, a12s_ts_count);  
+                                                                                              
+                                                log(playerName + "=" + debuff, false, resultLine);
+                                                continue;
+                                            }
+                                        }
+                                    }
+
+                                    break;
+                                #endregion
 
                                 #region A11S
                                 case "Cruise Chaser":

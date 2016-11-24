@@ -173,6 +173,7 @@ namespace ffxiv.act.applbot
         #region SETTINGS (save and load)
         void LoadSettings()
         {
+            xmlSettings.AddControlSetting(txt_simFile.Name, txt_simFile);
             xmlSettings.AddControlSetting(txt_toSpeak.Name, txt_toSpeak);
             xmlSettings.AddControlSetting(trackBar_volumeSlider.Name, trackBar_volumeSlider);
             xmlSettings.AddControlSetting(txt_voiceIndex.Name, txt_voiceIndex);

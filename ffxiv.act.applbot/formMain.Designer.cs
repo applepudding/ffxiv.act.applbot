@@ -107,13 +107,20 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chk_a10s_stopMoving = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.chk_quickMode = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.chk_a10s_stopMoving = new System.Windows.Forms.CheckBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -137,9 +144,10 @@
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -996,6 +1004,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tabPage4.Controls.Add(this.groupBox8);
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -1003,6 +1012,89 @@
             this.tabPage4.Size = new System.Drawing.Size(846, 133);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Alexander: Creator";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textBox6);
+            this.groupBox8.Controls.Add(this.textBox5);
+            this.groupBox8.Controls.Add(this.textBox4);
+            this.groupBox8.Controls.Add(this.textBox3);
+            this.groupBox8.Controls.Add(this.textBox2);
+            this.groupBox8.Controls.Add(this.checkBox1);
+            this.groupBox8.Location = new System.Drawing.Point(525, 3);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(222, 127);
+            this.groupBox8.TabIndex = 2;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "A12S";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(160, 71);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(51, 20);
+            this.textBox5.TabIndex = 6;
+            this.textBox5.Text = "3";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(9, 71);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(51, 20);
+            this.textBox4.TabIndex = 4;
+            this.textBox4.Text = "9";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(88, 94);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(51, 20);
+            this.textBox3.TabIndex = 3;
+            this.textBox3.Text = "6";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(58, 45);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(51, 20);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "11";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(163, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Xeno/Aeternum strat callouts";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.chk_a10s_stopMoving);
+            this.groupBox4.Location = new System.Drawing.Point(324, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(195, 127);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "A10S";
+            // 
+            // chk_a10s_stopMoving
+            // 
+            this.chk_a10s_stopMoving.AutoSize = true;
+            this.chk_a10s_stopMoving.Checked = true;
+            this.chk_a10s_stopMoving.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_a10s_stopMoving.Location = new System.Drawing.Point(6, 18);
+            this.chk_a10s_stopMoving.Name = "chk_a10s_stopMoving";
+            this.chk_a10s_stopMoving.Size = new System.Drawing.Size(172, 17);
+            this.chk_a10s_stopMoving.TabIndex = 0;
+            this.chk_a10s_stopMoving.Text = "Countdown Gobsnick Leghops";
+            this.chk_a10s_stopMoving.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -1059,27 +1151,14 @@
             this.chk_quickMode.UseVisualStyleBackColor = true;
             this.chk_quickMode.CheckedChanged += new System.EventHandler(this.chk_quickMode_CheckedChanged);
             // 
-            // groupBox4
+            // textBox6
             // 
-            this.groupBox4.Controls.Add(this.chk_a10s_stopMoving);
-            this.groupBox4.Location = new System.Drawing.Point(324, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(195, 127);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "A10S";
-            // 
-            // chk_a10s_stopMoving
-            // 
-            this.chk_a10s_stopMoving.AutoSize = true;
-            this.chk_a10s_stopMoving.Checked = true;
-            this.chk_a10s_stopMoving.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_a10s_stopMoving.Location = new System.Drawing.Point(6, 18);
-            this.chk_a10s_stopMoving.Name = "chk_a10s_stopMoving";
-            this.chk_a10s_stopMoving.Size = new System.Drawing.Size(172, 17);
-            this.chk_a10s_stopMoving.TabIndex = 0;
-            this.chk_a10s_stopMoving.Text = "Countdown Gobsnick Leghops";
-            this.chk_a10s_stopMoving.UseVisualStyleBackColor = true;
+            this.textBox6.Location = new System.Drawing.Point(115, 45);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(51, 20);
+            this.textBox6.TabIndex = 7;
+            this.textBox6.Text = "1";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // formMain
             // 
@@ -1128,11 +1207,13 @@
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1225,5 +1306,12 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox chk_a10s_stopMoving;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
