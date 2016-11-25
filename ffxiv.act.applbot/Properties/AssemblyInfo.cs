@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ffxiv.act.applbot")]
 [assembly: AssemblyDescription("Robot, timeline, and callouts plugin for boss encounters")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Apple Pudding, Ix Xyl, Raccle Lancale @ Leviathan")]
+[assembly: AssemblyCompany("Apple Pudding, Ix Xyl, Raccle Lancale, Akela Freya @ Leviathan")]
 [assembly: AssemblyProduct("ffxiv.act.applbot")]
 [assembly: AssemblyCopyright("Copyright © Apple Pudding 2016")]
 [assembly: AssemblyTrademark("")]

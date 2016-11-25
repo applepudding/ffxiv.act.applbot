@@ -12,7 +12,8 @@ Make sure ACT reset is set to around 40s. Options - Main Table/Encounters - Gene
 visual guide: http://imgur.com/a/g1OyM
 
 ## Credits & Contacts
-Apple Pudding, Ix Xyl, Raccle Lancale @ Leviathan
+- Apple Pudding, Ix Xyl, Raccle Lancale, Akela Freya @ Leviathan
+- A'oshane Taru @ Odin
 
 ## Stuffs on progress
 Required fixes:
@@ -20,7 +21,7 @@ Required fixes:
 - a10s + a11s timings
 
 Missing features:
-- a12s + sophia ex xml (lazy)
+- sophia ex xml (lazy)
 - event warning notification (warning-timing, warning-speak, warning-countdown)
 - simulation on plugin (read from chosen log directly)
 - full log reader fight recognizer/separator
