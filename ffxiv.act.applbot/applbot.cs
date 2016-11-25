@@ -155,7 +155,7 @@ namespace ffxiv.act.applbot
             {
                 log("clearing player list", true);
                 ffxiv_player_list.Clear();
-                this.grid_players.DataSource = null;
+                //this.grid_players.DataSource = null;
                 partySorted = false;
             }
             else
@@ -193,7 +193,7 @@ namespace ffxiv.act.applbot
                     }
                 }
                 objReader.Close();
-                this.grid_players.DataSource = ffxiv_player_list;
+                //this.grid_players.DataSource = ffxiv_player_list;
             }
         }
         #region init and dispose plugin
@@ -256,6 +256,7 @@ namespace ffxiv.act.applbot
                 #region Auto Update Stuff
                 //log(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString());
                 #endregion
+                this.grid_players.DataSource = ffxiv_player_list;
             }
             else
             {
@@ -582,6 +583,7 @@ namespace ffxiv.act.applbot
             string resultPosition = "";
             int tempPosition = 1;
             int defamationCount = a12s_countDefamation();
+            int sharedSentenceCount = a12s_countSharedSentence();
             string tetherType = "";
             bool tempPosition1Claimed = false;
             bool tempPosition2Claimed = false;
@@ -592,7 +594,7 @@ namespace ffxiv.act.applbot
             //sort partylist by debuff order
             List<ffxiv_player> SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varInt).ToList();
             ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
-            this.grid_players.DataSource = ffxiv_player_list;
+            //this.grid_players.DataSource = ffxiv_player_list;
 
             //position all defamation
 
@@ -605,7 +607,7 @@ namespace ffxiv.act.applbot
                 }
             }
 
-            if (defamationCount > 1)
+            if ((defamationCount > 1) || (sharedSentenceCount == 2))
             {   
                 //position shared sentence (same for 2 and 3 defamations)
                 foreach (ffxiv_player player in ffxiv_player_list)
@@ -740,6 +742,18 @@ namespace ffxiv.act.applbot
                 }
             }
             return defamationCount;
+        }
+        int a12s_countSharedSentence()
+        {
+            int sharedSentenceCount = 0;
+            foreach (ffxiv_player player in ffxiv_player_list)
+            {
+                if (player.varDebuff == "Shared Sentence")
+                {
+                    sharedSentenceCount++;
+                }
+            }
+            return sharedSentenceCount;
         }
         void a12s_cleanPlayerListDebuff()
         {

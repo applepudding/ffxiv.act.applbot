@@ -225,7 +225,7 @@ namespace ffxiv.act.applbot
                                 #region A12S
                                 case "Alexander Prime":
                                     //call prey target's name
-                                    pattern = ".0000.E42F.001E.0000.0000.0000.";
+                                    pattern = ".0000......001E.0000.0000.0000.";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
@@ -251,7 +251,7 @@ namespace ffxiv.act.applbot
                                     }
 
                                     //sacrament normal/radiant
-                                    pattern = "Sacrament........Alexander Prime";
+                                    pattern = "Sacrament..........Alexander Prime.{1}\\B";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
@@ -267,35 +267,9 @@ namespace ffxiv.act.applbot
                                         continue;
                                     }
 
-                                    pattern = "Alexander Prime.19FB.Temporal Stasis..........Alexander Prime";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
-                                    {
-                                        if (!a12s_temporalStasis)
-                                        {
-                                            a12s_temporalStasis = true;
-                                            a12s_ts_count = 0;
-                                            a12s_ts_countdown = 2;
-                                            a12s_cleanPlayerListDebuff();
-                                        }
-                                        continue;
-                                    }
-                                    pattern = "Alexander Prime.1A08.Inception..........Alexander Prime";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
-                                    {
-                                        if (!a12s_temporalStasis)
-                                        {
-                                            a12s_temporalStasis = true;
-                                            a12s_ts_count = 0;
-                                            a12s_ts_countdown = 2;
-                                            a12s_cleanPlayerListDebuff();
-                                        }
-                                        continue;
-                                    }
                                     if (a12s_temporalStasis)
                                     {
-                                        
+
                                         //resolve temporal stasis
                                         pattern = "Alexander Prime readies Temporal Stasis";
                                         m = Regex.Match(resultLine, pattern);
@@ -305,6 +279,9 @@ namespace ffxiv.act.applbot
                                             botspeak(toSpeak);
                                             log("Temporal Stasis", true, toSpeak);
                                             a12s_temporalStasis = false;
+                                            a12s_ts_count = 0;
+                                            grid_players.Refresh();
+                                            a12s_cleanPlayerListDebuff();
                                             continue;
                                         }
                                         //same with inception
@@ -316,38 +293,47 @@ namespace ffxiv.act.applbot
                                             botspeak(toSpeak);
                                             log("Temporal Stasis", true, toSpeak);
                                             a12s_temporalStasis = false;
+                                            a12s_ts_count = 0;
+                                            grid_players.Refresh();
+                                            a12s_cleanPlayerListDebuff();
                                             continue;
                                         }
-                                        
-                                        //temporal stasis debuffs
-                                        string[] debuff_temporalStasis = new string[4] { "Defamation", "Shared Sentence", "Restraining Order", "House Arrest" };
-                                        foreach(string debuff in debuff_temporalStasis)
-                                        {
-                                            pattern = "[a-zA-Z']{6,7} the effect of.{43}." + debuff;
-                                            m = Regex.Match(resultLine, pattern);
-                                            if (m.Success)
-                                            {
-                                                string[] mainElements = Regex.Split(resultLine, pattern);
-                                                //remove useless characters
-                                                Regex rgx = new Regex("[^a-zA-Z' -]");                                                
-                                                mainElements[0] = rgx.Replace(mainElements[0], "#");
-                                                string[] subElements = Regex.Split(mainElements[0], "#");
-                                                subElements = subElements.Where(s => !String.IsNullOrEmpty(s)).ToArray();
-                                                string playerName = subElements[subElements.Length - 3];
-                                                //fix for YOU
-                                                if (playerName == "T")
-                                                {
-                                                    playerName = txt_you.Text;
-                                                }
+                                    }
 
-                                                a12s_ts_count++;
-                                                a12s_setDebuff(playerName, debuff, a12s_ts_count);  
-                                                                                              
-                                                log(playerName + "=" + debuff, false, resultLine);
-                                                continue;
+                                    //temporal stasis debuffs
+                                    string[] debuff_temporalStasis = new string[4] { "Defamation", "Shared Sentence", "Restraining Order", "House Arrest" };
+                                    foreach(string debuff in debuff_temporalStasis)
+                                    {
+                                        pattern = "[a-zA-Z']{6,7} the effect of.{43}." + debuff;
+                                        m = Regex.Match(resultLine, pattern);
+                                        if (m.Success)
+                                        {
+                                            if (!a12s_temporalStasis)
+                                            {
+                                                a12s_temporalStasis = true;
+                                                a12s_ts_countdown = 3;
                                             }
+                                            string[] mainElements = Regex.Split(resultLine, pattern);
+                                            //remove useless characters
+                                            Regex rgx = new Regex("[^a-zA-Z' -]");                                                
+                                            mainElements[0] = rgx.Replace(mainElements[0], "#");
+                                            string[] subElements = Regex.Split(mainElements[0], "#");
+                                            subElements = subElements.Where(s => !String.IsNullOrEmpty(s)).ToArray();
+                                            string playerName = subElements[subElements.Length - 3];
+                                            //fix for YOU
+                                            if (playerName == "-")
+                                            {
+                                                playerName = txt_you.Text;
+                                            }
+
+                                            a12s_ts_count++;
+                                            a12s_setDebuff(playerName, debuff, a12s_ts_count);  
+                                                                                              
+                                            log(playerName + "=" + debuff, false, resultLine);
+                                            continue;
                                         }
                                     }
+                                    
 
                                     break;
                                 #endregion

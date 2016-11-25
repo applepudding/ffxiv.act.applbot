@@ -18,7 +18,7 @@ visual guide: http://imgur.com/a/g1OyM
 ## Stuffs on progress
 Required fixes:
 - a9s xml (stop working when player dies)
-- a10s + a11s timings
+- a10s + a11s + a12s timings
 
 Missing features:
 - sophia ex xml (lazy)

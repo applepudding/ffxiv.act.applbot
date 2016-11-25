@@ -132,7 +132,7 @@ namespace ffxiv.act.applbot
                             List<ffxiv_player> SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varOrder).ToList();
                             ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
                             partySorted = true;
-                            this.grid_players.DataSource = ffxiv_player_list;
+                            //this.grid_players.DataSource = ffxiv_player_list;
                         }
 
                         if (currentFight == "")
