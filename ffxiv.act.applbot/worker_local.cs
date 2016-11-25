@@ -11,6 +11,8 @@ namespace ffxiv.act.applbot
         bool a12s_temporalStasis = false;
         int a12s_ts_countdown = 2;
         int a12s_ts_count = 0;
+        string a12s_preyTarget = "";
+        int a12s_preyCount = 0;     
 
         public void myBackgroudWorker()
         {
@@ -222,6 +224,49 @@ namespace ffxiv.act.applbot
                             {
                                 #region A12S
                                 case "Alexander Prime":
+                                    //call prey target's name
+                                    pattern = ".0000.E42F.001E.0000.0000.0000.";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string[] mainElements = Regex.Split(resultLine, pattern);
+                                        string[] subElements = Regex.Split(mainElements[0], "\\|");
+                                        string castTarget = getNickname(subElements[subElements.Length-1]);
+                                        a12s_preyCount++;
+
+                                        if (a12s_preyCount == 2)
+                                        {
+                                            a12s_preyTarget += ", " + castTarget;
+                                        }
+                                        else
+                                        {
+                                            a12s_preyTarget = castTarget;
+                                        }
+                                        if (a12s_preyCount > 1)
+                                        {
+                                            botspeak(a12s_preyTarget);
+                                            log(a12s_preyTarget, false, resultLine);
+                                        }
+                                        continue;
+                                    }
+
+                                    //sacrament normal/radiant
+                                    pattern = "Sacrament........Alexander Prime";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string toSpeak = "cross";
+                                        pattern = "Radiant";
+                                        m = Regex.Match(resultLine, pattern);
+                                        if (m.Success)
+                                        {
+                                            toSpeak = "donut";
+                                        }
+                                        botspeak(toSpeak);
+                                        log(toSpeak, false, resultLine);
+                                        continue;
+                                    }
+
                                     pattern = "Alexander Prime.19FB.Temporal Stasis..........Alexander Prime";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
@@ -256,7 +301,9 @@ namespace ffxiv.act.applbot
                                         m = Regex.Match(resultLine, pattern);
                                         if (m.Success)
                                         {
-                                            a12s_resolveTemporalStasis();
+                                            var toSpeak = a12s_resolveTemporalStasis();
+                                            botspeak(toSpeak);
+                                            log("Temporal Stasis", true, toSpeak);
                                             a12s_temporalStasis = false;
                                             continue;
                                         }
@@ -265,7 +312,9 @@ namespace ffxiv.act.applbot
                                         m = Regex.Match(resultLine, pattern);
                                         if (m.Success)
                                         {
-                                            a12s_resolveTemporalStasis();
+                                            var toSpeak = a12s_resolveTemporalStasis();
+                                            botspeak(toSpeak);
+                                            log("Temporal Stasis", true, toSpeak);
                                             a12s_temporalStasis = false;
                                             continue;
                                         }

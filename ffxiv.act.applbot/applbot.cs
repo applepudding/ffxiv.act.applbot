@@ -79,10 +79,29 @@ namespace ffxiv.act.applbot
         int broadcastChannel = 0;
 
 
-        void botspeak(string toSpeak)
+        void botspeak(string inputString)
         {
             if (!InvokeRequired)
             {
+                string toSpeak = inputString;
+                //handle personalized speak @ and : symbol
+                if (inputString.Contains("@"))
+                {
+                    toSpeak = "";
+                    string[] mainElements = Regex.Split(inputString, "@");
+                    foreach (string ele in mainElements)
+                    {
+                        if (ele.Contains(txt_you.Text))
+                        {
+                            string[] subElements = Regex.Split(ele, ":");
+                            toSpeak = subElements[1];
+                            continue;
+                        }
+                    }
+                }
+
+
+                //speak
                 if (combo_voiceSelector.SelectedIndex != combo_voiceSelector.Items.Count-1)
                 {
                     synthesizer.SpeakAsync(toSpeak);
@@ -92,11 +111,11 @@ namespace ffxiv.act.applbot
                     ActGlobals.oFormActMain.PlayTtsMethod(toSpeak);
                 }
                     
-                broadcast(toSpeak, "");
+                broadcast(inputString, "");
             }
             else
             {
-                Invoke(new Action<string>(botspeak), toSpeak);
+                Invoke(new Action<string>(botspeak), inputString);
             }
 
         }
@@ -694,9 +713,14 @@ namespace ffxiv.act.applbot
                             player.varPosition = tempPosition.ToString();
                             tempPosition = 1;
                         }
-                        
                     }
                 }
+            }
+
+            //build output
+            foreach (ffxiv_player player in ffxiv_player_list)
+            {
+                resultPosition += "@" + player.varName + ":" + player.varPosition;
             }
             return resultPosition;
         }
@@ -758,6 +782,8 @@ namespace ffxiv.act.applbot
                 current_phaseChange_offset = 0;
 
                 a12s_temporalStasis = false;
+                a12s_preyTarget = "";
+                a12s_preyCount = 0;
 
                 countdown = 0;
                 temp_number1 = 0;
