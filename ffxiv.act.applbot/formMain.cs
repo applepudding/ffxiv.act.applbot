@@ -91,6 +91,7 @@ namespace ffxiv.act.applbot
         {
             if (workerRunning) // implement in new way later PLZ, too resource intensive
             {
+                log(quickMode.ToString());
                 if (!quickMode)
                 {
                     #region add players to list, sort it, and get boss name
@@ -132,6 +133,7 @@ namespace ffxiv.act.applbot
                             List<ffxiv_player> SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varOrder).ToList();
                             ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
                             partySorted = true;
+                            grid_players.Refresh();
                             //this.grid_players.DataSource = ffxiv_player_list;
                         }
 

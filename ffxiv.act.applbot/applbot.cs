@@ -28,7 +28,7 @@ namespace ffxiv.act.applbot
         string simulationFile = "";
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
 
-        bool quickMode = true;
+        bool quickMode;
 
         //background worker stuff
         Stopwatch stopWatch = new Stopwatch();
