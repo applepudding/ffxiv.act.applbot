@@ -126,6 +126,12 @@ namespace ffxiv.act.applbot
             {
                 if ((broadcastChannel > 0) && broadcastServer && ((m != "") || (e != ""))) 
                 { 
+                    //repair single quotes '
+                    if (m.Contains("'"))
+                    {
+                        m = m.Replace("'", "''");
+                        log("replacing '");
+                    }
                     string URI = "http://" + this.combo_serverName.Text + "/applbot/api/up.php";
                     string myParameters = "c=" + broadcastChannel.ToString();
                     myParameters += (m != "") ? "&m=" + Uri.UnescapeDataString(m) : "" ;
