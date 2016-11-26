@@ -9,7 +9,9 @@ Robot, callouts, and timeline plugin for boss encounters.
 er ... add+enable it in ACT - plugin listing and try out :) 
 Make sure ACT reset is set to around 40s. Options - Main Table/Encounters - General - Number of seconds....
 
-visual guide: http://imgur.com/a/g1OyM
+## Screenshots
+- visual guide: http://imgur.com/a/g1OyM
+- a12s settings: http://imgur.com/a/5s4Us
 
 ## Credits & Contacts
 - Apple Pudding, Ix Xyl, Raccle Lancale, Akela Freya @ Leviathan
@@ -17,8 +19,7 @@ visual guide: http://imgur.com/a/g1OyM
 
 ## Stuffs on progress
 Required fixes:
-- a9s xml (stop working when player dies)
-- a10s + a11s + a12s timings
+- a9s + a10s xml (stop working when player dies, and timings)
 
 Missing features:
 - sophia ex xml (lazy)
