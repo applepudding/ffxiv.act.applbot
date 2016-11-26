@@ -91,7 +91,6 @@ namespace ffxiv.act.applbot
         {
             if (workerRunning) // implement in new way later PLZ, too resource intensive
             {
-                log(quickMode.ToString());
                 if (!quickMode)
                 {
                     #region add players to list, sort it, and get boss name
@@ -188,7 +187,19 @@ namespace ffxiv.act.applbot
             xmlSettings.AddControlSetting(chk_showMini.Name, chk_showMini);
             xmlSettings.AddControlSetting(chk_quickMode.Name, chk_quickMode);
             xmlSettings.AddControlSetting(combo_serverName.Name, combo_serverName);
-            
+
+            //a12s stuff
+            xmlSettings.AddControlSetting(chk_a12s_tscallout.Name, chk_a12s_tscallout);
+            xmlSettings.AddControlSetting(chk_a12s_preycallout.Name, chk_a12s_preycallout);
+            xmlSettings.AddControlSetting(txt_a12s_sacRadiant.Name, txt_a12s_sacRadiant);
+            xmlSettings.AddControlSetting(txt_a12s_sac.Name, txt_a12s_sac);
+            xmlSettings.AddControlSetting(txt_a12s_pos1.Name, txt_a12s_pos1);
+            xmlSettings.AddControlSetting(txt_a12s_pos2.Name, txt_a12s_pos2);
+            xmlSettings.AddControlSetting(txt_a12s_pos3.Name, txt_a12s_pos3);
+            xmlSettings.AddControlSetting(txt_a12s_pos4.Name, txt_a12s_pos4);
+            xmlSettings.AddControlSetting(txt_a12s_pos5.Name, txt_a12s_pos5);
+            xmlSettings.AddControlSetting(txt_a12s_left.Name, txt_a12s_left);
+            xmlSettings.AddControlSetting(txt_a12s_right.Name, txt_a12s_right);
 
             //a11s stuff
             xmlSettings.AddControlSetting(txt_a11s_optical_shiva.Name, txt_a11s_optical_shiva);
@@ -196,6 +207,7 @@ namespace ffxiv.act.applbot
             xmlSettings.AddControlSetting(txt_a11s_optical_out.Name, txt_a11s_optical_out);
             xmlSettings.AddControlSetting(txt_a11s_sword_left.Name, txt_a11s_sword_left);
             xmlSettings.AddControlSetting(txt_a11s_sword_right.Name, txt_a11s_sword_right); 
+
             xmlSettings.AddControlSetting(chk_a10s_stopMoving.Name, chk_a10s_stopMoving);
 
             if (File.Exists(settingsFile))
@@ -270,6 +282,7 @@ namespace ffxiv.act.applbot
         private void btn_reloadPlayers_Click(object sender, EventArgs e)
         {
             loadPlayersFromFile(playerFile);
+            grid_players.Refresh();
         }
 
         private void btn_a7s_setPriority_Click(object sender, EventArgs e)

@@ -155,6 +155,7 @@ namespace ffxiv.act.applbot
             {
                 log("clearing player list", true);
                 ffxiv_player_list.Clear();
+                grid_players.Refresh();
                 //this.grid_players.DataSource = null;
                 partySorted = false;
             }
@@ -581,153 +582,174 @@ namespace ffxiv.act.applbot
         string a12s_resolveTemporalStasis()
         {
             string resultPosition = "";
-            int tempPosition = 1;
-            int defamationCount = a12s_countDefamation();
-            int sharedSentenceCount = a12s_countSharedSentence();
-            string tetherType = "";
-            bool tempPosition1Claimed = false;
-            bool tempPosition2Claimed = false;
-            bool tempPosition5Claimed = false;
 
-            log("resolving stasis");
+            if (chk_a12s_tscallout.Checked)
+            { 
+                int tempPosition = 1;
+                int defamationCount = a12s_countDefamation();
+                int sharedSentenceCount = a12s_countSharedSentence();
+                string tetherType = "";
 
-            //sort partylist by debuff order
-            List<ffxiv_player> SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varInt).ToList();
-            ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
-            //this.grid_players.DataSource = ffxiv_player_list;
+                bool tempPosition1Claimed = false;
+                bool tempPosition2Claimed = false;
+                bool tempPosition5Claimed = false;
 
-            //position all defamation
+                log("resolving stasis");
 
-            foreach (ffxiv_player player in ffxiv_player_list)
-            {
-                if (player.varDebuff == "Defamation")
-                {
-                    player.varPosition = tempPosition.ToString();
-                    tempPosition++;
-                }
-            }
+                //sort partylist by debuff order
+                List<ffxiv_player> SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varInt).ToList();
+                ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
+                //this.grid_players.DataSource = ffxiv_player_list;
 
-            if ((defamationCount > 1) || (sharedSentenceCount == 2))
-            {   
-                //position shared sentence (same for 2 and 3 defamations)
+                //position all defamation
+
                 foreach (ffxiv_player player in ffxiv_player_list)
                 {
-                    if (player.varDebuff == "Shared Sentence")
+                    if (player.varDebuff == "Defamation")
                     {
-                        //if (player.varClass == "heal")
-                        if (tempPosition5Claimed)
+                        player.varPosition = tempPosition.ToString();
+                        tempPosition++;
+                    }
+                }
+
+                if ((defamationCount > 1) || (sharedSentenceCount == 2))
+                {
+                    //position shared sentence (same for 2 and 3 defamations)
+                    foreach (ffxiv_player player in ffxiv_player_list)
+                    {
+                        if (player.varDebuff == "Shared Sentence")
+                        {
+                            //if (player.varClass == "heal")
+                            if (tempPosition5Claimed)
+                            {
+                                tempPosition = 4;
+                            }
+                            else
+                            {
+                                tempPosition = 5;
+                                tempPosition5Claimed = true;
+                            }
+                            player.varPosition = tempPosition.ToString();
+                        }
+                    }
+
+                    //position Restraining Order 
+                    foreach (ffxiv_player player in ffxiv_player_list)
+                    {
+                        if (player.varDebuff == "Restraining Order")
+                        {
+                            tetherType = "Restraining Order";
+                            //if (player.varClass == "tank")
+                            if (tempPosition2Claimed)
+                            {
+                                tempPosition = 5;
+                            }
+                            else
+                            {
+                                tempPosition = 2;
+                                tempPosition2Claimed = true;
+                            }
+
+                            player.varPosition = tempPosition.ToString();
+                        }
+                    }
+                    //position House Arrest    
+                    foreach (ffxiv_player player in ffxiv_player_list)
+                    {
+                        if (player.varDebuff == "House Arrest")
                         {
                             tempPosition = 4;
+                            player.varPosition = tempPosition.ToString();
                         }
-                        else
-                        {
-                            tempPosition = 5;
-                            tempPosition5Claimed = true;
-                        }
-                        player.varPosition = tempPosition.ToString();
                     }
-                }
 
-                //position Restraining Order 
-                foreach (ffxiv_player player in ffxiv_player_list)
-                {
-                    if (player.varDebuff == "Restraining Order")
+                    //position floater  
+                    foreach (ffxiv_player player in ffxiv_player_list)
                     {
-                        tetherType = "Restraining Order";
-                        //if (player.varClass == "tank")
-                        if (tempPosition2Claimed)
+                        if (player.varInt == 0)
                         {
-                            tempPosition = 5;
+                            if (tetherType == "Restraining Order")
+                            {
+                                tempPosition = 4;
+                            }
+                            else
+                            {
+                                tempPosition = 5;
+                            }
+                            player.varPosition = tempPosition.ToString();
                         }
-                        else
-                        {
-                            tempPosition = 2;
-                            tempPosition2Claimed = true;
-                        }
-                        
-                        player.varPosition = tempPosition.ToString();
                     }
                 }
-                //position House Arrest    
-                foreach (ffxiv_player player in ffxiv_player_list)
+                else
                 {
-                    if (player.varDebuff == "House Arrest")
+                    //position shared sentence (same for 1 and 0 defamations)
+                    foreach (ffxiv_player player in ffxiv_player_list)
                     {
-                        tempPosition = 4;
-                        player.varPosition = tempPosition.ToString();
-                    }
-                }
+                        if (player.varDebuff == "Shared Sentence")
+                        {
+                            if (tempPosition1Claimed)
+                            {
+                                tempPosition = 3;
+                            }
+                            else
+                            {
+                                tempPosition = 1;
+                                tempPosition1Claimed = true;
+                            }
 
-                //position floater  
-                foreach (ffxiv_player player in ffxiv_player_list)
-                {
-                    if (player.varInt == 0)
-                    {
-                        if (tetherType == "Restraining Order")
-                        {
-                            tempPosition = 4;
+                            player.varPosition = tempPosition.ToString();
                         }
-                        else
-                        {
-                            tempPosition = 5;
-                        }
-                        player.varPosition = tempPosition.ToString();
                     }
-                }
-            }
-            else
-            {
-                //position shared sentence (same for 1 and 0 defamations)
-                foreach (ffxiv_player player in ffxiv_player_list)
-                {
-                    if (player.varDebuff == "Shared Sentence")
+                    //position House Arrest
+                    foreach (ffxiv_player player in ffxiv_player_list)
                     {
-                        if (tempPosition1Claimed)
+                        if (player.varDebuff == "House Arrest")
                         {
                             tempPosition = 3;
-                        }
-                        else
-                        {
-                            tempPosition = 1;
-                            tempPosition1Claimed = true;
-                        }
-                        
-                        player.varPosition = tempPosition.ToString();
-                    }
-                }
-                //position House Arrest
-                foreach (ffxiv_player player in ffxiv_player_list)
-                {
-                    if (player.varDebuff == "House Arrest")
-                    {
-                        tempPosition = 3;
-                        player.varPosition = tempPosition.ToString();
-                    }
-                }
-                //position Restraining Order   
-                tempPosition = 1;
-                foreach (ffxiv_player player in ffxiv_player_list)
-                {
-                    if (player.varDebuff == "Restraining Order")
-                    {
-                        if (tempPosition == 1)
-                        {
                             player.varPosition = tempPosition.ToString();
-                            tempPosition = 3;
                         }
-                        else
+                    }
+                    //position Restraining Order   
+                    tempPosition = 1;
+                    foreach (ffxiv_player player in ffxiv_player_list)
+                    {
+                        if (player.varDebuff == "Restraining Order")
                         {
-                            player.varPosition = tempPosition.ToString();
-                            tempPosition = 1;
+                            if (tempPosition == 1)
+                            {
+                                player.varPosition = tempPosition.ToString();
+                                tempPosition = 3;
+                            }
+                            else
+                            {
+                                player.varPosition = tempPosition.ToString();
+                                tempPosition = 1;
+                            }
                         }
                     }
                 }
-            }
 
-            //build output
-            foreach (ffxiv_player player in ffxiv_player_list)
-            {
-                resultPosition += "@" + player.varName + ":" + player.varPosition;
+                //build output
+
+                string[] temp_pos = new string[] { txt_a12s_pos1.Text, txt_a12s_pos2.Text, txt_a12s_pos3.Text, txt_a12s_pos4.Text, txt_a12s_pos5.Text };
+                string[] temp_direction = new string[] { txt_a12s_left.Text, "center", txt_a12s_right.Text };
+
+                foreach (ffxiv_player player in ffxiv_player_list)
+                {
+                    if ((defamationCount > 1) || (sharedSentenceCount == 2))
+                    {
+                        resultPosition += "@" + player.varName + ":" + temp_pos[Int32.Parse(player.varPosition) - 1];
+                    }
+                    else
+                    {
+                        string resultDirection = "";
+                        if ((player.varPosition != "") || (player.varPosition != "0"))
+                        {
+                            resultDirection = temp_direction[Int32.Parse(player.varPosition) - 1];
+                        }
+                        resultPosition += "@" + player.varName + ":" + resultDirection;
+                    }
+                }
             }
             return resultPosition;
         }
@@ -1003,7 +1025,7 @@ namespace ffxiv.act.applbot
 
                     // temporary replace later that support multiple bosses in 1 area (ex: a6s blaster+brawler+swindler+vortexer)
                     XmlNode xml_encounterNode = doc.DocumentElement.SelectSingleNode("/encounter");
-                    if (quickMode)
+                    //if (quickMode)
                     {
                         currentFight = (xml_encounterNode.Attributes["name"] == null) ? "" : xml_encounterNode.Attributes["name"].Value;
                     }
@@ -1110,19 +1132,19 @@ namespace ffxiv.act.applbot
             get { return _varOrder; }
             set { _varOrder = value; }
         }
-        //[Browsable(false)]
+        [Browsable(false)]
         public string varPosition
         {
             get { return _varPosition; }
             set { _varPosition = value; }
         }
-        //[Browsable(false)]
+        [Browsable(false)]
         public string varDebuff
         {
             get { return _varDebuff; }
             set { _varDebuff = value; }
         }
-        //[Browsable(false)]
+        [Browsable(false)]
         public int varInt
         {
             get { return _varInt; }

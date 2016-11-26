@@ -225,29 +225,32 @@ namespace ffxiv.act.applbot
                                 #region A12S
                                 case "Alexander Prime":
                                     //call prey target's name
-                                    pattern = ".0000......001E.0000.0000.0000.";
-                                    m = Regex.Match(resultLine, pattern);
-                                    if (m.Success)
+                                    if (chk_a12s_preycallout.Checked)
                                     {
-                                        string[] mainElements = Regex.Split(resultLine, pattern);
-                                        string[] subElements = Regex.Split(mainElements[0], "\\|");
-                                        string castTarget = getNickname(subElements[subElements.Length-1]);
-                                        a12s_preyCount++;
+                                        pattern = ".0000......001E.0000.0000.0000.";
+                                        m = Regex.Match(resultLine, pattern);
+                                        if (m.Success)
+                                        {
+                                            string[] mainElements = Regex.Split(resultLine, pattern);
+                                            string[] subElements = Regex.Split(mainElements[0], "\\|");
+                                            string castTarget = getNickname(subElements[subElements.Length - 1]);
+                                            a12s_preyCount++;
 
-                                        if (a12s_preyCount == 2)
-                                        {
-                                            a12s_preyTarget += ", " + castTarget;
+                                            if (a12s_preyCount == 2)
+                                            {
+                                                a12s_preyTarget += ", " + castTarget;
+                                            }
+                                            else
+                                            {
+                                                a12s_preyTarget = castTarget;
+                                            }
+                                            if (a12s_preyCount > 1)
+                                            {
+                                                botspeak(a12s_preyTarget);
+                                                log(a12s_preyTarget, false, resultLine);
+                                            }
+                                            continue;
                                         }
-                                        else
-                                        {
-                                            a12s_preyTarget = castTarget;
-                                        }
-                                        if (a12s_preyCount > 1)
-                                        {
-                                            botspeak(a12s_preyTarget);
-                                            log(a12s_preyTarget, false, resultLine);
-                                        }
-                                        continue;
                                     }
 
                                     //sacrament normal/radiant
@@ -255,12 +258,12 @@ namespace ffxiv.act.applbot
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
-                                        string toSpeak = "cross";
+                                        string toSpeak = txt_a12s_sac.Text;
                                         pattern = "Radiant";
                                         m = Regex.Match(resultLine, pattern);
                                         if (m.Success)
                                         {
-                                            toSpeak = "donut";
+                                            toSpeak = txt_a12s_sacRadiant.Text;
                                         }
                                         botspeak(toSpeak);
                                         log(toSpeak, false, resultLine);
@@ -269,7 +272,6 @@ namespace ffxiv.act.applbot
 
                                     if (a12s_temporalStasis)
                                     {
-
                                         //resolve temporal stasis
                                         pattern = "Alexander Prime readies Temporal Stasis";
                                         m = Regex.Match(resultLine, pattern);

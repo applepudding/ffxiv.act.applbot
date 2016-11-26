@@ -108,11 +108,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txt_a12s_right = new System.Windows.Forms.TextBox();
+            this.txt_a12s_left = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txt_a12s_pos4 = new System.Windows.Forms.TextBox();
+            this.txt_a12s_pos3 = new System.Windows.Forms.TextBox();
+            this.txt_a12s_pos1 = new System.Windows.Forms.TextBox();
+            this.txt_a12s_pos2 = new System.Windows.Forms.TextBox();
+            this.txt_a12s_pos5 = new System.Windows.Forms.TextBox();
+            this.chk_a12s_tscallout = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chk_a10s_stopMoving = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -120,7 +125,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.chk_quickMode = new System.Windows.Forms.CheckBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txt_a12s_sac = new System.Windows.Forms.TextBox();
+            this.txt_a12s_sacRadiant = new System.Windows.Forms.TextBox();
+            this.chk_a12s_preycallout = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -250,7 +259,7 @@
             this.tabPage5.Controls.Add(this.btn_clearPlayerList);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(846, 133);
+            this.tabPage5.Size = new System.Drawing.Size(875, 133);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Advanced";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -447,7 +456,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(846, 133);
+            this.tabPage3.Size = new System.Drawing.Size(875, 133);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "General";
             // 
@@ -477,8 +486,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.list_fight);
-            this.splitContainer2.Size = new System.Drawing.Size(840, 106);
-            this.splitContainer2.SplitterDistance = 275;
+            this.splitContainer2.Size = new System.Drawing.Size(869, 106);
+            this.splitContainer2.SplitterDistance = 284;
             this.splitContainer2.TabIndex = 0;
             // 
             // grid_players
@@ -495,7 +504,7 @@
             this.grid_players.Location = new System.Drawing.Point(3, 3);
             this.grid_players.Name = "grid_players";
             this.grid_players.RowHeadersVisible = false;
-            this.grid_players.Size = new System.Drawing.Size(269, 100);
+            this.grid_players.Size = new System.Drawing.Size(278, 100);
             this.grid_players.TabIndex = 6;
             // 
             // list_fight
@@ -509,7 +518,7 @@
             this.list_fight.Location = new System.Drawing.Point(3, 3);
             this.list_fight.MultiSelect = false;
             this.list_fight.Name = "list_fight";
-            this.list_fight.Size = new System.Drawing.Size(555, 100);
+            this.list_fight.Size = new System.Drawing.Size(575, 100);
             this.list_fight.TabIndex = 8;
             this.list_fight.UseCompatibleStateImageBehavior = false;
             this.list_fight.View = System.Windows.Forms.View.Details;
@@ -530,7 +539,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.list_log);
-            this.splitContainer1.Size = new System.Drawing.Size(846, 270);
+            this.splitContainer1.Size = new System.Drawing.Size(875, 270);
             this.splitContainer1.SplitterDistance = 112;
             this.splitContainer1.TabIndex = 21;
             // 
@@ -543,7 +552,7 @@
             this.list_log.HideSelection = false;
             this.list_log.Location = new System.Drawing.Point(3, 3);
             this.list_log.Name = "list_log";
-            this.list_log.Size = new System.Drawing.Size(840, 148);
+            this.list_log.Size = new System.Drawing.Size(869, 148);
             this.list_log.TabIndex = 3;
             this.list_log.UseCompatibleStateImageBehavior = false;
             this.list_log.View = System.Windows.Forms.View.Details;
@@ -555,7 +564,7 @@
             this.chk_speakEvent.AutoSize = true;
             this.chk_speakEvent.Checked = true;
             this.chk_speakEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_speakEvent.Location = new System.Drawing.Point(616, 165);
+            this.chk_speakEvent.Location = new System.Drawing.Point(645, 165);
             this.chk_speakEvent.Name = "chk_speakEvent";
             this.chk_speakEvent.Size = new System.Drawing.Size(113, 17);
             this.chk_speakEvent.TabIndex = 22;
@@ -568,7 +577,7 @@
             this.chk_speakPhase.AutoSize = true;
             this.chk_speakPhase.Checked = true;
             this.chk_speakPhase.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_speakPhase.Location = new System.Drawing.Point(735, 165);
+            this.chk_speakPhase.Location = new System.Drawing.Point(764, 165);
             this.chk_speakPhase.Name = "chk_speakPhase";
             this.chk_speakPhase.Size = new System.Drawing.Size(115, 17);
             this.chk_speakPhase.TabIndex = 23;
@@ -579,7 +588,7 @@
             // 
             this.txt_a11s_optical_out.Location = new System.Drawing.Point(139, 94);
             this.txt_a11s_optical_out.Name = "txt_a11s_optical_out";
-            this.txt_a11s_optical_out.Size = new System.Drawing.Size(79, 20);
+            this.txt_a11s_optical_out.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_optical_out.TabIndex = 7;
             this.txt_a11s_optical_out.Text = "out";
             // 
@@ -596,7 +605,7 @@
             // 
             this.txt_a11s_optical_shiva.Location = new System.Drawing.Point(139, 42);
             this.txt_a11s_optical_shiva.Name = "txt_a11s_optical_shiva";
-            this.txt_a11s_optical_shiva.Size = new System.Drawing.Size(79, 20);
+            this.txt_a11s_optical_shiva.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_optical_shiva.TabIndex = 5;
             this.txt_a11s_optical_shiva.Text = "shiva";
             // 
@@ -613,7 +622,7 @@
             // 
             this.txt_a11s_optical_stack.Location = new System.Drawing.Point(139, 68);
             this.txt_a11s_optical_stack.Name = "txt_a11s_optical_stack";
-            this.txt_a11s_optical_stack.Size = new System.Drawing.Size(79, 20);
+            this.txt_a11s_optical_stack.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_optical_stack.TabIndex = 6;
             this.txt_a11s_optical_stack.Text = "stack, out";
             // 
@@ -645,7 +654,7 @@
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(846, 133);
+            this.tabPage2.Size = new System.Drawing.Size(875, 133);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Alexander: Midas";
             // 
@@ -969,7 +978,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(846, 133);
+            this.tabPage1.Size = new System.Drawing.Size(875, 133);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             // 
@@ -998,7 +1007,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(854, 159);
+            this.tabControl1.Size = new System.Drawing.Size(883, 159);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage4
@@ -1009,77 +1018,135 @@
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(846, 133);
+            this.tabPage4.Size = new System.Drawing.Size(875, 133);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Alexander: Creator";
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.textBox6);
-            this.groupBox8.Controls.Add(this.textBox5);
-            this.groupBox8.Controls.Add(this.textBox4);
-            this.groupBox8.Controls.Add(this.textBox3);
-            this.groupBox8.Controls.Add(this.textBox2);
-            this.groupBox8.Controls.Add(this.checkBox1);
-            this.groupBox8.Location = new System.Drawing.Point(525, 3);
+            this.groupBox8.Controls.Add(this.chk_a12s_preycallout);
+            this.groupBox8.Controls.Add(this.txt_a12s_sacRadiant);
+            this.groupBox8.Controls.Add(this.txt_a12s_sac);
+            this.groupBox8.Controls.Add(this.label20);
+            this.groupBox8.Controls.Add(this.label18);
+            this.groupBox8.Controls.Add(this.label14);
+            this.groupBox8.Controls.Add(this.txt_a12s_right);
+            this.groupBox8.Controls.Add(this.txt_a12s_left);
+            this.groupBox8.Controls.Add(this.label12);
+            this.groupBox8.Controls.Add(this.txt_a12s_pos4);
+            this.groupBox8.Controls.Add(this.txt_a12s_pos3);
+            this.groupBox8.Controls.Add(this.txt_a12s_pos1);
+            this.groupBox8.Controls.Add(this.txt_a12s_pos2);
+            this.groupBox8.Controls.Add(this.txt_a12s_pos5);
+            this.groupBox8.Controls.Add(this.chk_a12s_tscallout);
+            this.groupBox8.Location = new System.Drawing.Point(465, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(222, 127);
+            this.groupBox8.Size = new System.Drawing.Size(404, 127);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "A12S";
             // 
-            // textBox5
+            // label14
             // 
-            this.textBox5.Location = new System.Drawing.Point(160, 71);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(51, 20);
-            this.textBox5.TabIndex = 6;
-            this.textBox5.Text = "3";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(246, 76);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(97, 13);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Inception+TS right:";
             // 
-            // textBox4
+            // txt_a12s_right
             // 
-            this.textBox4.Location = new System.Drawing.Point(9, 71);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(51, 20);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "9";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_a12s_right.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_a12s_right.Location = new System.Drawing.Point(349, 73);
+            this.txt_a12s_right.Name = "txt_a12s_right";
+            this.txt_a12s_right.Size = new System.Drawing.Size(49, 20);
+            this.txt_a12s_right.TabIndex = 10;
+            this.txt_a12s_right.Text = "right";
             // 
-            // textBox3
+            // txt_a12s_left
             // 
-            this.textBox3.Location = new System.Drawing.Point(88, 94);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(51, 20);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "6";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_a12s_left.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_a12s_left.Location = new System.Drawing.Point(349, 45);
+            this.txt_a12s_left.Name = "txt_a12s_left";
+            this.txt_a12s_left.Size = new System.Drawing.Size(49, 20);
+            this.txt_a12s_left.TabIndex = 9;
+            this.txt_a12s_left.Text = "left";
             // 
-            // textBox2
+            // label12
             // 
-            this.textBox2.Location = new System.Drawing.Point(58, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(51, 20);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "11";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(215, 48);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(128, 13);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Inception+TS+Defam left:";
             // 
-            // checkBox1
+            // txt_a12s_pos4
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(163, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Xeno/Aeternum strat callouts";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.txt_a12s_pos4.Location = new System.Drawing.Point(92, 41);
+            this.txt_a12s_pos4.Name = "txt_a12s_pos4";
+            this.txt_a12s_pos4.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos4.TabIndex = 7;
+            this.txt_a12s_pos4.Text = "1";
+            this.txt_a12s_pos4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_a12s_pos3
+            // 
+            this.txt_a12s_pos3.Location = new System.Drawing.Point(113, 67);
+            this.txt_a12s_pos3.Name = "txt_a12s_pos3";
+            this.txt_a12s_pos3.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos3.TabIndex = 6;
+            this.txt_a12s_pos3.Text = "3";
+            this.txt_a12s_pos3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_a12s_pos1
+            // 
+            this.txt_a12s_pos1.Location = new System.Drawing.Point(9, 67);
+            this.txt_a12s_pos1.Name = "txt_a12s_pos1";
+            this.txt_a12s_pos1.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos1.TabIndex = 4;
+            this.txt_a12s_pos1.Text = "9";
+            this.txt_a12s_pos1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_a12s_pos2
+            // 
+            this.txt_a12s_pos2.Location = new System.Drawing.Point(60, 90);
+            this.txt_a12s_pos2.Name = "txt_a12s_pos2";
+            this.txt_a12s_pos2.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos2.TabIndex = 3;
+            this.txt_a12s_pos2.Text = "6";
+            this.txt_a12s_pos2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_a12s_pos5
+            // 
+            this.txt_a12s_pos5.Location = new System.Drawing.Point(26, 41);
+            this.txt_a12s_pos5.Name = "txt_a12s_pos5";
+            this.txt_a12s_pos5.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos5.TabIndex = 2;
+            this.txt_a12s_pos5.Text = "11";
+            this.txt_a12s_pos5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // chk_a12s_tscallout
+            // 
+            this.chk_a12s_tscallout.AutoSize = true;
+            this.chk_a12s_tscallout.Checked = true;
+            this.chk_a12s_tscallout.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_a12s_tscallout.Location = new System.Drawing.Point(6, 19);
+            this.chk_a12s_tscallout.Name = "chk_a12s_tscallout";
+            this.chk_a12s_tscallout.Size = new System.Drawing.Size(192, 17);
+            this.chk_a12s_tscallout.TabIndex = 0;
+            this.chk_a12s_tscallout.Text = "Xeno/Aeternum strat stasis callouts";
+            this.chk_a12s_tscallout.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.chk_a10s_stopMoving);
             this.groupBox4.Location = new System.Drawing.Point(324, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(195, 127);
+            this.groupBox4.Size = new System.Drawing.Size(135, 127);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "A10S";
@@ -1091,9 +1158,9 @@
             this.chk_a10s_stopMoving.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_a10s_stopMoving.Location = new System.Drawing.Point(6, 18);
             this.chk_a10s_stopMoving.Name = "chk_a10s_stopMoving";
-            this.chk_a10s_stopMoving.Size = new System.Drawing.Size(172, 17);
+            this.chk_a10s_stopMoving.Size = new System.Drawing.Size(124, 17);
             this.chk_a10s_stopMoving.TabIndex = 0;
-            this.chk_a10s_stopMoving.Text = "Countdown Gobsnick Leghops";
+            this.chk_a10s_stopMoving.Text = "Countdown Leghops";
             this.chk_a10s_stopMoving.UseVisualStyleBackColor = true;
             // 
             // groupBox3
@@ -1130,7 +1197,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(854, 159);
+            this.panel1.Size = new System.Drawing.Size(883, 159);
             this.panel1.TabIndex = 20;
             // 
             // openFileDialog1
@@ -1151,14 +1218,52 @@
             this.chk_quickMode.UseVisualStyleBackColor = true;
             this.chk_quickMode.CheckedChanged += new System.EventHandler(this.chk_quickMode_CheckedChanged);
             // 
-            // textBox6
+            // label18
             // 
-            this.textBox6.Location = new System.Drawing.Point(115, 45);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(51, 20);
-            this.textBox6.TabIndex = 7;
-            this.textBox6.Text = "1";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(174, 101);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(61, 13);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Sacrament:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(296, 101);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(47, 13);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Radiant:";
+            // 
+            // txt_a12s_sac
+            // 
+            this.txt_a12s_sac.Location = new System.Drawing.Point(241, 98);
+            this.txt_a12s_sac.Name = "txt_a12s_sac";
+            this.txt_a12s_sac.Size = new System.Drawing.Size(49, 20);
+            this.txt_a12s_sac.TabIndex = 14;
+            this.txt_a12s_sac.Text = "cross";
+            // 
+            // txt_a12s_sacRadiant
+            // 
+            this.txt_a12s_sacRadiant.Location = new System.Drawing.Point(349, 98);
+            this.txt_a12s_sacRadiant.Name = "txt_a12s_sacRadiant";
+            this.txt_a12s_sacRadiant.Size = new System.Drawing.Size(49, 20);
+            this.txt_a12s_sacRadiant.TabIndex = 15;
+            this.txt_a12s_sacRadiant.Text = "donut";
+            // 
+            // chk_a12s_preycallout
+            // 
+            this.chk_a12s_preycallout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chk_a12s_preycallout.AutoSize = true;
+            this.chk_a12s_preycallout.Checked = true;
+            this.chk_a12s_preycallout.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_a12s_preycallout.Location = new System.Drawing.Point(282, 19);
+            this.chk_a12s_preycallout.Name = "chk_a12s_preycallout";
+            this.chk_a12s_preycallout.Size = new System.Drawing.Size(116, 17);
+            this.chk_a12s_preycallout.TabIndex = 16;
+            this.chk_a12s_preycallout.Text = "Callout Prey Target";
+            this.chk_a12s_preycallout.UseVisualStyleBackColor = true;
             // 
             // formMain
             // 
@@ -1172,7 +1277,7 @@
             this.Controls.Add(this.chk_speakPhase);
             this.Controls.Add(this.panel1);
             this.Name = "formMain";
-            this.Size = new System.Drawing.Size(854, 461);
+            this.Size = new System.Drawing.Size(883, 461);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -1307,11 +1412,20 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox chk_a10s_stopMoving;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_a12s_pos3;
+        private System.Windows.Forms.TextBox txt_a12s_pos1;
+        private System.Windows.Forms.TextBox txt_a12s_pos2;
+        private System.Windows.Forms.TextBox txt_a12s_pos5;
+        private System.Windows.Forms.CheckBox chk_a12s_tscallout;
+        private System.Windows.Forms.TextBox txt_a12s_pos4;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txt_a12s_right;
+        private System.Windows.Forms.TextBox txt_a12s_left;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txt_a12s_sacRadiant;
+        private System.Windows.Forms.TextBox txt_a12s_sac;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.CheckBox chk_a12s_preycallout;
     }
 }
