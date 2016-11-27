@@ -455,7 +455,8 @@ namespace ffxiv.act.applbot
                 this.list_fight.Columns.Add("Details", 200);
                 this.list_fight.Columns.Add("Timing");
                 this.list_fight.Columns.Add("Speak");
-                this.list_fight.Columns.Add("Trigger", -2);
+                this.list_fight.Columns.Add("Trigger", 200);
+                this.list_fight.Columns.Add("--", -1);
             }            
         }
 

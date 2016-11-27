@@ -108,6 +108,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.chk_a12s_preycallout = new System.Windows.Forms.CheckBox();
+            this.txt_a12s_sacRadiant = new System.Windows.Forms.TextBox();
+            this.txt_a12s_sac = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txt_a12s_right = new System.Windows.Forms.TextBox();
             this.txt_a12s_left = new System.Windows.Forms.TextBox();
@@ -125,11 +130,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.chk_quickMode = new System.Windows.Forms.CheckBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txt_a12s_sac = new System.Windows.Forms.TextBox();
-            this.txt_a12s_sacRadiant = new System.Windows.Forms.TextBox();
-            this.chk_a12s_preycallout = new System.Windows.Forms.CheckBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -157,6 +158,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -486,8 +488,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.list_fight);
-            this.splitContainer2.Size = new System.Drawing.Size(869, 106);
-            this.splitContainer2.SplitterDistance = 284;
+            this.splitContainer2.Size = new System.Drawing.Size(892, 106);
+            this.splitContainer2.SplitterDistance = 291;
             this.splitContainer2.TabIndex = 0;
             // 
             // grid_players
@@ -504,7 +506,7 @@
             this.grid_players.Location = new System.Drawing.Point(3, 3);
             this.grid_players.Name = "grid_players";
             this.grid_players.RowHeadersVisible = false;
-            this.grid_players.Size = new System.Drawing.Size(278, 100);
+            this.grid_players.Size = new System.Drawing.Size(285, 100);
             this.grid_players.TabIndex = 6;
             // 
             // list_fight
@@ -518,7 +520,7 @@
             this.list_fight.Location = new System.Drawing.Point(3, 3);
             this.list_fight.MultiSelect = false;
             this.list_fight.Name = "list_fight";
-            this.list_fight.Size = new System.Drawing.Size(575, 100);
+            this.list_fight.Size = new System.Drawing.Size(591, 100);
             this.list_fight.TabIndex = 8;
             this.list_fight.UseCompatibleStateImageBehavior = false;
             this.list_fight.View = System.Windows.Forms.View.Details;
@@ -539,7 +541,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.list_log);
-            this.splitContainer1.Size = new System.Drawing.Size(875, 270);
+            this.splitContainer1.Size = new System.Drawing.Size(898, 270);
             this.splitContainer1.SplitterDistance = 112;
             this.splitContainer1.TabIndex = 21;
             // 
@@ -552,7 +554,7 @@
             this.list_log.HideSelection = false;
             this.list_log.Location = new System.Drawing.Point(3, 3);
             this.list_log.Name = "list_log";
-            this.list_log.Size = new System.Drawing.Size(869, 148);
+            this.list_log.Size = new System.Drawing.Size(892, 148);
             this.list_log.TabIndex = 3;
             this.list_log.UseCompatibleStateImageBehavior = false;
             this.list_log.View = System.Windows.Forms.View.Details;
@@ -564,7 +566,7 @@
             this.chk_speakEvent.AutoSize = true;
             this.chk_speakEvent.Checked = true;
             this.chk_speakEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_speakEvent.Location = new System.Drawing.Point(645, 165);
+            this.chk_speakEvent.Location = new System.Drawing.Point(668, 165);
             this.chk_speakEvent.Name = "chk_speakEvent";
             this.chk_speakEvent.Size = new System.Drawing.Size(113, 17);
             this.chk_speakEvent.TabIndex = 22;
@@ -577,7 +579,7 @@
             this.chk_speakPhase.AutoSize = true;
             this.chk_speakPhase.Checked = true;
             this.chk_speakPhase.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_speakPhase.Location = new System.Drawing.Point(764, 165);
+            this.chk_speakPhase.Location = new System.Drawing.Point(787, 165);
             this.chk_speakPhase.Name = "chk_speakPhase";
             this.chk_speakPhase.Size = new System.Drawing.Size(115, 17);
             this.chk_speakPhase.TabIndex = 23;
@@ -1007,7 +1009,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(883, 159);
+            this.tabControl1.Size = new System.Drawing.Size(906, 159);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage4
@@ -1018,12 +1020,13 @@
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(875, 133);
+            this.tabPage4.Size = new System.Drawing.Size(898, 133);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Alexander: Creator";
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.groupBox10);
             this.groupBox8.Controls.Add(this.chk_a12s_preycallout);
             this.groupBox8.Controls.Add(this.txt_a12s_sacRadiant);
             this.groupBox8.Controls.Add(this.txt_a12s_sac);
@@ -1033,24 +1036,70 @@
             this.groupBox8.Controls.Add(this.txt_a12s_right);
             this.groupBox8.Controls.Add(this.txt_a12s_left);
             this.groupBox8.Controls.Add(this.label12);
-            this.groupBox8.Controls.Add(this.txt_a12s_pos4);
-            this.groupBox8.Controls.Add(this.txt_a12s_pos3);
-            this.groupBox8.Controls.Add(this.txt_a12s_pos1);
-            this.groupBox8.Controls.Add(this.txt_a12s_pos2);
-            this.groupBox8.Controls.Add(this.txt_a12s_pos5);
             this.groupBox8.Controls.Add(this.chk_a12s_tscallout);
-            this.groupBox8.Location = new System.Drawing.Point(465, 3);
+            this.groupBox8.Location = new System.Drawing.Point(462, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(404, 127);
+            this.groupBox8.Size = new System.Drawing.Size(426, 127);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "A12S";
+            // 
+            // chk_a12s_preycallout
+            // 
+            this.chk_a12s_preycallout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chk_a12s_preycallout.AutoSize = true;
+            this.chk_a12s_preycallout.Checked = true;
+            this.chk_a12s_preycallout.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_a12s_preycallout.Location = new System.Drawing.Point(304, 19);
+            this.chk_a12s_preycallout.Name = "chk_a12s_preycallout";
+            this.chk_a12s_preycallout.Size = new System.Drawing.Size(116, 17);
+            this.chk_a12s_preycallout.TabIndex = 16;
+            this.chk_a12s_preycallout.Text = "Callout Prey Target";
+            this.chk_a12s_preycallout.UseVisualStyleBackColor = true;
+            // 
+            // txt_a12s_sacRadiant
+            // 
+            this.txt_a12s_sacRadiant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_a12s_sacRadiant.Location = new System.Drawing.Point(371, 97);
+            this.txt_a12s_sacRadiant.Name = "txt_a12s_sacRadiant";
+            this.txt_a12s_sacRadiant.Size = new System.Drawing.Size(49, 20);
+            this.txt_a12s_sacRadiant.TabIndex = 15;
+            this.txt_a12s_sacRadiant.Text = "donut";
+            // 
+            // txt_a12s_sac
+            // 
+            this.txt_a12s_sac.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_a12s_sac.Location = new System.Drawing.Point(263, 97);
+            this.txt_a12s_sac.Name = "txt_a12s_sac";
+            this.txt_a12s_sac.Size = new System.Drawing.Size(49, 20);
+            this.txt_a12s_sac.TabIndex = 14;
+            this.txt_a12s_sac.Text = "cross";
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(318, 100);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(47, 13);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Radiant:";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(196, 100);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(61, 13);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Sacrament:";
             // 
             // label14
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(246, 76);
+            this.label14.Location = new System.Drawing.Point(268, 76);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(97, 13);
             this.label14.TabIndex = 11;
@@ -1059,7 +1108,7 @@
             // txt_a12s_right
             // 
             this.txt_a12s_right.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_a12s_right.Location = new System.Drawing.Point(349, 73);
+            this.txt_a12s_right.Location = new System.Drawing.Point(371, 73);
             this.txt_a12s_right.Name = "txt_a12s_right";
             this.txt_a12s_right.Size = new System.Drawing.Size(49, 20);
             this.txt_a12s_right.TabIndex = 10;
@@ -1068,7 +1117,7 @@
             // txt_a12s_left
             // 
             this.txt_a12s_left.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_a12s_left.Location = new System.Drawing.Point(349, 45);
+            this.txt_a12s_left.Location = new System.Drawing.Point(371, 45);
             this.txt_a12s_left.Name = "txt_a12s_left";
             this.txt_a12s_left.Size = new System.Drawing.Size(49, 20);
             this.txt_a12s_left.TabIndex = 9;
@@ -1078,7 +1127,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(215, 48);
+            this.label12.Location = new System.Drawing.Point(237, 48);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(128, 13);
             this.label12.TabIndex = 8;
@@ -1086,7 +1135,7 @@
             // 
             // txt_a12s_pos4
             // 
-            this.txt_a12s_pos4.Location = new System.Drawing.Point(92, 41);
+            this.txt_a12s_pos4.Location = new System.Drawing.Point(90, 12);
             this.txt_a12s_pos4.Name = "txt_a12s_pos4";
             this.txt_a12s_pos4.Size = new System.Drawing.Size(60, 20);
             this.txt_a12s_pos4.TabIndex = 7;
@@ -1095,7 +1144,7 @@
             // 
             // txt_a12s_pos3
             // 
-            this.txt_a12s_pos3.Location = new System.Drawing.Point(113, 67);
+            this.txt_a12s_pos3.Location = new System.Drawing.Point(111, 38);
             this.txt_a12s_pos3.Name = "txt_a12s_pos3";
             this.txt_a12s_pos3.Size = new System.Drawing.Size(60, 20);
             this.txt_a12s_pos3.TabIndex = 6;
@@ -1104,7 +1153,7 @@
             // 
             // txt_a12s_pos1
             // 
-            this.txt_a12s_pos1.Location = new System.Drawing.Point(9, 67);
+            this.txt_a12s_pos1.Location = new System.Drawing.Point(7, 38);
             this.txt_a12s_pos1.Name = "txt_a12s_pos1";
             this.txt_a12s_pos1.Size = new System.Drawing.Size(60, 20);
             this.txt_a12s_pos1.TabIndex = 4;
@@ -1113,7 +1162,7 @@
             // 
             // txt_a12s_pos2
             // 
-            this.txt_a12s_pos2.Location = new System.Drawing.Point(60, 90);
+            this.txt_a12s_pos2.Location = new System.Drawing.Point(58, 61);
             this.txt_a12s_pos2.Name = "txt_a12s_pos2";
             this.txt_a12s_pos2.Size = new System.Drawing.Size(60, 20);
             this.txt_a12s_pos2.TabIndex = 3;
@@ -1122,7 +1171,7 @@
             // 
             // txt_a12s_pos5
             // 
-            this.txt_a12s_pos5.Location = new System.Drawing.Point(26, 41);
+            this.txt_a12s_pos5.Location = new System.Drawing.Point(24, 12);
             this.txt_a12s_pos5.Name = "txt_a12s_pos5";
             this.txt_a12s_pos5.Size = new System.Drawing.Size(60, 20);
             this.txt_a12s_pos5.TabIndex = 2;
@@ -1134,7 +1183,7 @@
             this.chk_a12s_tscallout.AutoSize = true;
             this.chk_a12s_tscallout.Checked = true;
             this.chk_a12s_tscallout.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_a12s_tscallout.Location = new System.Drawing.Point(6, 19);
+            this.chk_a12s_tscallout.Location = new System.Drawing.Point(6, 16);
             this.chk_a12s_tscallout.Name = "chk_a12s_tscallout";
             this.chk_a12s_tscallout.Size = new System.Drawing.Size(192, 17);
             this.chk_a12s_tscallout.TabIndex = 0;
@@ -1144,7 +1193,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.chk_a10s_stopMoving);
-            this.groupBox4.Location = new System.Drawing.Point(324, 3);
+            this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(135, 127);
             this.groupBox4.TabIndex = 1;
@@ -1175,7 +1224,7 @@
             this.groupBox3.Controls.Add(this.txt_a11s_sword_left);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Location = new System.Drawing.Point(6, 3);
+            this.groupBox3.Location = new System.Drawing.Point(144, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(312, 127);
             this.groupBox3.TabIndex = 0;
@@ -1197,7 +1246,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(883, 159);
+            this.panel1.Size = new System.Drawing.Size(906, 159);
             this.panel1.TabIndex = 20;
             // 
             // openFileDialog1
@@ -1218,52 +1267,18 @@
             this.chk_quickMode.UseVisualStyleBackColor = true;
             this.chk_quickMode.CheckedChanged += new System.EventHandler(this.chk_quickMode_CheckedChanged);
             // 
-            // label18
+            // groupBox10
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(174, 101);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(61, 13);
-            this.label18.TabIndex = 12;
-            this.label18.Text = "Sacrament:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(296, 101);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(47, 13);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Radiant:";
-            // 
-            // txt_a12s_sac
-            // 
-            this.txt_a12s_sac.Location = new System.Drawing.Point(241, 98);
-            this.txt_a12s_sac.Name = "txt_a12s_sac";
-            this.txt_a12s_sac.Size = new System.Drawing.Size(49, 20);
-            this.txt_a12s_sac.TabIndex = 14;
-            this.txt_a12s_sac.Text = "cross";
-            // 
-            // txt_a12s_sacRadiant
-            // 
-            this.txt_a12s_sacRadiant.Location = new System.Drawing.Point(349, 98);
-            this.txt_a12s_sacRadiant.Name = "txt_a12s_sacRadiant";
-            this.txt_a12s_sacRadiant.Size = new System.Drawing.Size(49, 20);
-            this.txt_a12s_sacRadiant.TabIndex = 15;
-            this.txt_a12s_sacRadiant.Text = "donut";
-            // 
-            // chk_a12s_preycallout
-            // 
-            this.chk_a12s_preycallout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chk_a12s_preycallout.AutoSize = true;
-            this.chk_a12s_preycallout.Checked = true;
-            this.chk_a12s_preycallout.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_a12s_preycallout.Location = new System.Drawing.Point(282, 19);
-            this.chk_a12s_preycallout.Name = "chk_a12s_preycallout";
-            this.chk_a12s_preycallout.Size = new System.Drawing.Size(116, 17);
-            this.chk_a12s_preycallout.TabIndex = 16;
-            this.chk_a12s_preycallout.Text = "Callout Prey Target";
-            this.chk_a12s_preycallout.UseVisualStyleBackColor = true;
+            this.groupBox10.Controls.Add(this.txt_a12s_pos3);
+            this.groupBox10.Controls.Add(this.txt_a12s_pos5);
+            this.groupBox10.Controls.Add(this.txt_a12s_pos2);
+            this.groupBox10.Controls.Add(this.txt_a12s_pos1);
+            this.groupBox10.Controls.Add(this.txt_a12s_pos4);
+            this.groupBox10.Location = new System.Drawing.Point(6, 33);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(177, 88);
+            this.groupBox10.TabIndex = 17;
+            this.groupBox10.TabStop = false;
             // 
             // formMain
             // 
@@ -1277,7 +1292,7 @@
             this.Controls.Add(this.chk_speakPhase);
             this.Controls.Add(this.panel1);
             this.Name = "formMain";
-            this.Size = new System.Drawing.Size(883, 461);
+            this.Size = new System.Drawing.Size(906, 461);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -1319,6 +1334,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1427,5 +1444,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox chk_a12s_preycallout;
+        private System.Windows.Forms.GroupBox groupBox10;
     }
 }

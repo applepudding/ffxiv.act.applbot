@@ -590,7 +590,7 @@ namespace ffxiv.act.applbot
                 int sharedSentenceCount = a12s_countSharedSentence();
                 string tetherType = "";
 
-                bool tempPosition1Claimed = false;
+                bool tempPosition3Claimed = false;
                 bool tempPosition2Claimed = false;
                 bool tempPosition5Claimed = false;
 
@@ -687,14 +687,14 @@ namespace ffxiv.act.applbot
                     {
                         if (player.varDebuff == "Shared Sentence")
                         {
-                            if (tempPosition1Claimed)
+                            if (tempPosition3Claimed)
                             {
-                                tempPosition = 3;
+                                tempPosition = 1;
                             }
                             else
                             {
-                                tempPosition = 1;
-                                tempPosition1Claimed = true;
+                                tempPosition = 3;
+                                tempPosition3Claimed = true;
                             }
 
                             player.varPosition = tempPosition.ToString();
@@ -815,7 +815,8 @@ namespace ffxiv.act.applbot
                     this.list_fight.Columns.Add("Details", 200);
                     this.list_fight.Columns.Add("Timing");
                     this.list_fight.Columns.Add("Speak");
-                    this.list_fight.Columns.Add("Trigger", -2);
+                    this.list_fight.Columns.Add("Trigger", 200);
+                    this.list_fight.Columns.Add("--", -1);
                 }
                 current_lv_index = 0;
                 current_lvi = new ListViewItem();
@@ -905,10 +906,33 @@ namespace ffxiv.act.applbot
         {
             if (!InvokeRequired)
             {
+
                 if (this.list_fight.Items.Count > current_lv_index + 1)
                 {
                     current_lv_index++;
                     updateCurrent_lvi(current_lv_index);
+
+                    if (list_fight.Items[current_lv_index].SubItems[0].Text == "")
+                    {
+                        list_fight.Items[current_lv_index].SubItems[2].Text = list_fight.Items[current_lv_index].SubItems[2].Tag.ToString();
+                    }
+                    else
+                    {
+                        if (currentRepeatPhaseLvi >= 0)
+                        {
+                            current_lv_index = currentRepeatPhaseLvi;
+                            updateCurrent_lvi(current_lv_index);
+                        }
+                    }
+
+                }
+                else
+                {
+                    if (currentRepeatPhaseLvi >= 0)
+                    {
+                        current_lv_index = currentRepeatPhaseLvi;
+                        updateCurrent_lvi(current_lv_index);
+                    }
                 }
             }
             else
@@ -1033,6 +1057,8 @@ namespace ffxiv.act.applbot
 
                     XmlNodeList xml_phaseNodes = doc.DocumentElement.SelectNodes("/encounter/encounter-phase");
 
+                    int lineCount = 0;////
+
                     foreach (XmlNode phaseNode in xml_phaseNodes)
                     {
                         string phaseName = phaseNode.Attributes["id"].Value;  //.SelectSingleNode("encounter-phase-name").InnerText;
@@ -1049,7 +1075,7 @@ namespace ffxiv.act.applbot
 
                         ListViewItem.ListViewSubItem lvsi = new ListViewItem.ListViewSubItem();
                         lvsi.Text = phaseRepeat;
-                        lvsi.Tag = phaseChangeOffset;
+                        
                         lvi.SubItems.Add(lvsi);
 
                         lvsi = new ListViewItem.ListViewSubItem();
@@ -1059,8 +1085,12 @@ namespace ffxiv.act.applbot
 
                         lvsi = new ListViewItem.ListViewSubItem();
                         lvsi.Text = phaseChangeTrigger;
+                        lvsi.Tag = phaseChangeOffset;
                         lvsi.ForeColor = Color.Gray;
                         lvi.SubItems.Add(lvsi);
+
+                        lvi.SubItems.Add(lineCount.ToString());////
+                        lineCount++;
 
                         lvi.UseItemStyleForSubItems = false;
                         this.list_fight.Items.Add(lvi);
@@ -1082,7 +1112,7 @@ namespace ffxiv.act.applbot
 
                             lvsi = new ListViewItem.ListViewSubItem();
                             lvsi.Text = eventCountdown;
-                            lvsi.Tag = eventOffset;
+                            lvsi.Tag = eventCountdown;
                             lvi.SubItems.Add(lvsi);
 
                             lvsi = new ListViewItem.ListViewSubItem();
@@ -1091,7 +1121,11 @@ namespace ffxiv.act.applbot
 
                             lvsi = new ListViewItem.ListViewSubItem();
                             lvsi.Text = eventTrigger;
+                            lvsi.Tag = eventOffset;
                             lvi.SubItems.Add(lvsi);
+
+                            lvi.SubItems.Add(lineCount.ToString());////
+                            lineCount++;
 
                             lvi.UseItemStyleForSubItems = true;
                             this.list_fight.Items.Add(lvi);
@@ -1132,13 +1166,13 @@ namespace ffxiv.act.applbot
             get { return _varOrder; }
             set { _varOrder = value; }
         }
-        [Browsable(false)]
+        //[Browsable(false)]
         public string varPosition
         {
             get { return _varPosition; }
             set { _varPosition = value; }
         }
-        [Browsable(false)]
+        //[Browsable(false)]
         public string varDebuff
         {
             get { return _varDebuff; }

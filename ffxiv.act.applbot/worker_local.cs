@@ -12,7 +12,9 @@ namespace ffxiv.act.applbot
         int a12s_ts_countdown = 2;
         int a12s_ts_count = 0;
         string a12s_preyTarget = "";
-        int a12s_preyCount = 0;     
+        int a12s_preyCount = 0;
+
+        int currentRepeatPhaseLvi = -1;
 
         public void myBackgroudWorker()
         {
@@ -82,7 +84,7 @@ namespace ffxiv.act.applbot
                         #region fight flow temp stuff
                         if (current_lv_index < this.list_fight.Items.Count)
                         {
-                            //if (this.combo_xml_fightFile.Text != "")
+                            if (this.combo_xml_fightFile.Text != "")
                             {
                                 updateCurrent_lvi(current_lv_index);
                                 if (current_lvi.SubItems.Count > 0) //check if empty
@@ -98,14 +100,22 @@ namespace ffxiv.act.applbot
                                                 nextPhase();
                                                 list_fight.Items[current_lv_index].Selected = true;
                                                 highlightEvent();
+                                                currentRepeatPhaseLvi = -1;/////
+                                                log("disabling repeat");
                                             }
                                         }
                                     }
 
                                     if (current_lvi.Text != "") //currentline is phase indicator
                                     {
-                                        current_phaseChange_offset = Int32.Parse(current_lvi.SubItems[2].Tag.ToString()) + Convert.ToInt32(stopWatch.Elapsed.TotalSeconds); // untested ---!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                                        current_phaseChange_offset = Int32.Parse(current_lvi.SubItems[4].Tag.ToString()) + Convert.ToInt32(stopWatch.Elapsed.TotalSeconds); // untested ---!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                                         current_phaseChange_trigger = current_lvi.SubItems[4].Text;
+                                        if (current_lvi.SubItems[2].Text != "") ///
+                                        {
+                                            
+                                            currentRepeatPhaseLvi = current_lv_index;
+                                            log("setting repeat", true, currentRepeatPhaseLvi.ToString());
+                                        }
 
                                         if (chk_speakPhase.Checked)
                                         {
@@ -133,7 +143,7 @@ namespace ffxiv.act.applbot
 
                                                     completeEvent();
                                                     flow_last = resultLine; //hold the value for repeat prev.
-                                                    flow_offset = Int32.Parse(current_lvi.SubItems[2].Tag.ToString());
+                                                    flow_offset = Int32.Parse(current_lvi.SubItems[4].Tag.ToString());
 
                                                     log("event trigger: " + current_lv_index.ToString(), false, resultLine);
                                                     if (chk_speakEvent.Checked)
