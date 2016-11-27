@@ -829,6 +829,7 @@ namespace ffxiv.act.applbot
                 a12s_temporalStasis = false;
                 a12s_preyTarget = "";
                 a12s_preyCount = 0;
+                currentRepeatPhaseLvi = -1;
 
                 countdown = 0;
                 temp_number1 = 0;
