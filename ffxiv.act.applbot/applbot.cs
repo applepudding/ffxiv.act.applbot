@@ -743,10 +743,13 @@ namespace ffxiv.act.applbot
                     else
                     {
                         string resultDirection = "";
-                        if ((player.varPosition != "") || (player.varPosition != "0"))
+                        
+                        if ((player.varPosition != "") && (player.varPosition != null) && (player.varDebuff != ""))
                         {
+                            log(player.varName, true, player.varDebuff);
                             resultDirection = temp_direction[Int32.Parse(player.varPosition) - 1];
                         }
+                        
                         resultPosition += "@" + player.varName + ":" + resultDirection;
                     }
                 }
