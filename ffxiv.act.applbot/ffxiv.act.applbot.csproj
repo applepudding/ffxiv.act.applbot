@@ -52,6 +52,12 @@
     <Compile Include="applbot.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="encounters\a12s.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="encounters\a7s.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="formMain.cs">
       <SubType>UserControl</SubType>
     </Compile>

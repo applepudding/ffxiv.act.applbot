@@ -54,9 +54,9 @@
             this.chk_speakAbilityUse = new System.Windows.Forms.CheckBox();
             this.txt_bossName = new System.Windows.Forms.TextBox();
             this.chk_saveLog = new System.Windows.Forms.CheckBox();
-            this.txt_a11s_sword_right = new System.Windows.Forms.TextBox();
             this.chk_showLogs = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chk_ingameSpeak = new System.Windows.Forms.CheckBox();
             this.chk_showMini = new System.Windows.Forms.CheckBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.grid_players = new System.Windows.Forms.DataGridView();
@@ -108,29 +108,34 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txt_a12s_pos3 = new System.Windows.Forms.TextBox();
+            this.txt_a12s_pos5 = new System.Windows.Forms.TextBox();
+            this.txt_a12s_pos2 = new System.Windows.Forms.TextBox();
+            this.txt_a12s_pos1 = new System.Windows.Forms.TextBox();
+            this.txt_a12s_pos4 = new System.Windows.Forms.TextBox();
             this.chk_a12s_preycallout = new System.Windows.Forms.CheckBox();
             this.txt_a12s_sacRadiant = new System.Windows.Forms.TextBox();
             this.txt_a12s_sac = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txt_a12s_right = new System.Windows.Forms.TextBox();
             this.txt_a12s_left = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txt_a12s_pos4 = new System.Windows.Forms.TextBox();
-            this.txt_a12s_pos3 = new System.Windows.Forms.TextBox();
-            this.txt_a12s_pos1 = new System.Windows.Forms.TextBox();
-            this.txt_a12s_pos2 = new System.Windows.Forms.TextBox();
-            this.txt_a12s_pos5 = new System.Windows.Forms.TextBox();
             this.chk_a12s_tscallout = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chk_a10s_stopMoving = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.chk_quickMode = new System.Windows.Forms.CheckBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.txt_a11s_sword_right = new System.Windows.Forms.TextBox();
+            this.chk_a12s_halfGravityCount = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -155,10 +160,10 @@
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -171,7 +176,7 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.btn_openServer);
-            this.groupBox2.Location = new System.Drawing.Point(571, 6);
+            this.groupBox2.Location = new System.Drawing.Point(614, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(270, 104);
             this.groupBox2.TabIndex = 26;
@@ -210,7 +215,6 @@
             this.combo_serverName.Size = new System.Drawing.Size(96, 21);
             this.combo_serverName.TabIndex = 9;
             this.combo_serverName.Text = "localhost";
-            this.combo_serverName.SelectedIndexChanged += new System.EventHandler(this.combo_serverName_SelectedIndexChanged);
             // 
             // lbl_broadcastChannel
             // 
@@ -261,7 +265,7 @@
             this.tabPage5.Controls.Add(this.btn_clearPlayerList);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(875, 133);
+            this.tabPage5.Size = new System.Drawing.Size(890, 133);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Advanced";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -337,7 +341,7 @@
             // 
             // txt_speak_abilityUse
             // 
-            this.txt_speak_abilityUse.Location = new System.Drawing.Point(161, 47);
+            this.txt_speak_abilityUse.Location = new System.Drawing.Point(161, 49);
             this.txt_speak_abilityUse.Name = "txt_speak_abilityUse";
             this.txt_speak_abilityUse.Size = new System.Drawing.Size(100, 20);
             this.txt_speak_abilityUse.TabIndex = 24;
@@ -345,7 +349,7 @@
             // 
             // txt_speak_abilityReady
             // 
-            this.txt_speak_abilityReady.Location = new System.Drawing.Point(161, 70);
+            this.txt_speak_abilityReady.Location = new System.Drawing.Point(161, 72);
             this.txt_speak_abilityReady.Name = "txt_speak_abilityReady";
             this.txt_speak_abilityReady.Size = new System.Drawing.Size(100, 20);
             this.txt_speak_abilityReady.TabIndex = 23;
@@ -362,25 +366,25 @@
             // 
             // txt_a11s_sword_left
             // 
-            this.txt_a11s_sword_left.Location = new System.Drawing.Point(139, 16);
+            this.txt_a11s_sword_left.Location = new System.Drawing.Point(104, 15);
             this.txt_a11s_sword_left.Name = "txt_a11s_sword_left";
-            this.txt_a11s_sword_left.Size = new System.Drawing.Size(58, 20);
+            this.txt_a11s_sword_left.Size = new System.Drawing.Size(36, 20);
             this.txt_a11s_sword_left.TabIndex = 2;
             this.txt_a11s_sword_left.Text = "right";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 19);
+            this.label13.Location = new System.Drawing.Point(7, 18);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(127, 13);
+            this.label13.Size = new System.Drawing.Size(91, 13);
             this.label13.TabIndex = 1;
-            this.label13.Text = "Laser Sword callout, Left:";
+            this.label13.Text = "Laser Sword L/R:";
             // 
             // chk_speakAbilityReady
             // 
             this.chk_speakAbilityReady.AutoSize = true;
-            this.chk_speakAbilityReady.Location = new System.Drawing.Point(22, 72);
+            this.chk_speakAbilityReady.Location = new System.Drawing.Point(22, 74);
             this.chk_speakAbilityReady.Name = "chk_speakAbilityReady";
             this.chk_speakAbilityReady.Size = new System.Drawing.Size(133, 17);
             this.chk_speakAbilityReady.TabIndex = 18;
@@ -399,7 +403,7 @@
             // chk_speakAbilityUse
             // 
             this.chk_speakAbilityUse.AutoSize = true;
-            this.chk_speakAbilityUse.Location = new System.Drawing.Point(22, 49);
+            this.chk_speakAbilityUse.Location = new System.Drawing.Point(22, 51);
             this.chk_speakAbilityUse.Name = "chk_speakAbilityUse";
             this.chk_speakAbilityUse.Size = new System.Drawing.Size(124, 17);
             this.chk_speakAbilityUse.TabIndex = 17;
@@ -416,20 +420,12 @@
             // chk_saveLog
             // 
             this.chk_saveLog.AutoSize = true;
-            this.chk_saveLog.Location = new System.Drawing.Point(22, 95);
+            this.chk_saveLog.Location = new System.Drawing.Point(22, 97);
             this.chk_saveLog.Name = "chk_saveLog";
             this.chk_saveLog.Size = new System.Drawing.Size(116, 17);
             this.chk_saveLog.TabIndex = 16;
             this.chk_saveLog.Text = "Save logs to log.txt";
             this.chk_saveLog.UseVisualStyleBackColor = true;
-            // 
-            // txt_a11s_sword_right
-            // 
-            this.txt_a11s_sword_right.Location = new System.Drawing.Point(244, 16);
-            this.txt_a11s_sword_right.Name = "txt_a11s_sword_right";
-            this.txt_a11s_sword_right.Size = new System.Drawing.Size(58, 20);
-            this.txt_a11s_sword_right.TabIndex = 3;
-            this.txt_a11s_sword_right.Text = "left";
             // 
             // chk_showLogs
             // 
@@ -447,6 +443,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.chk_ingameSpeak);
             this.tabPage3.Controls.Add(this.txt_speak_abilityUse);
             this.tabPage3.Controls.Add(this.txt_speak_abilityReady);
             this.tabPage3.Controls.Add(this.label2);
@@ -458,9 +455,19 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(875, 133);
+            this.tabPage3.Size = new System.Drawing.Size(890, 133);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "General";
+            // 
+            // chk_ingameSpeak
+            // 
+            this.chk_ingameSpeak.AutoSize = true;
+            this.chk_ingameSpeak.Location = new System.Drawing.Point(161, 97);
+            this.chk_ingameSpeak.Name = "chk_ingameSpeak";
+            this.chk_ingameSpeak.Size = new System.Drawing.Size(150, 17);
+            this.chk_ingameSpeak.TabIndex = 25;
+            this.chk_ingameSpeak.Text = "Enable in-game \"applbot:\"";
+            this.chk_ingameSpeak.UseVisualStyleBackColor = true;
             // 
             // chk_showMini
             // 
@@ -488,8 +495,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.list_fight);
-            this.splitContainer2.Size = new System.Drawing.Size(892, 106);
-            this.splitContainer2.SplitterDistance = 291;
+            this.splitContainer2.Size = new System.Drawing.Size(884, 106);
+            this.splitContainer2.SplitterDistance = 288;
             this.splitContainer2.TabIndex = 0;
             // 
             // grid_players
@@ -506,7 +513,7 @@
             this.grid_players.Location = new System.Drawing.Point(3, 3);
             this.grid_players.Name = "grid_players";
             this.grid_players.RowHeadersVisible = false;
-            this.grid_players.Size = new System.Drawing.Size(285, 100);
+            this.grid_players.Size = new System.Drawing.Size(282, 100);
             this.grid_players.TabIndex = 6;
             // 
             // list_fight
@@ -520,7 +527,7 @@
             this.list_fight.Location = new System.Drawing.Point(3, 3);
             this.list_fight.MultiSelect = false;
             this.list_fight.Name = "list_fight";
-            this.list_fight.Size = new System.Drawing.Size(591, 100);
+            this.list_fight.Size = new System.Drawing.Size(586, 100);
             this.list_fight.TabIndex = 8;
             this.list_fight.UseCompatibleStateImageBehavior = false;
             this.list_fight.View = System.Windows.Forms.View.Details;
@@ -541,7 +548,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.list_log);
-            this.splitContainer1.Size = new System.Drawing.Size(898, 270);
+            this.splitContainer1.Size = new System.Drawing.Size(890, 270);
             this.splitContainer1.SplitterDistance = 112;
             this.splitContainer1.TabIndex = 21;
             // 
@@ -554,7 +561,7 @@
             this.list_log.HideSelection = false;
             this.list_log.Location = new System.Drawing.Point(3, 3);
             this.list_log.Name = "list_log";
-            this.list_log.Size = new System.Drawing.Size(892, 148);
+            this.list_log.Size = new System.Drawing.Size(884, 148);
             this.list_log.TabIndex = 3;
             this.list_log.UseCompatibleStateImageBehavior = false;
             this.list_log.View = System.Windows.Forms.View.Details;
@@ -566,7 +573,7 @@
             this.chk_speakEvent.AutoSize = true;
             this.chk_speakEvent.Checked = true;
             this.chk_speakEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_speakEvent.Location = new System.Drawing.Point(668, 165);
+            this.chk_speakEvent.Location = new System.Drawing.Point(660, 165);
             this.chk_speakEvent.Name = "chk_speakEvent";
             this.chk_speakEvent.Size = new System.Drawing.Size(113, 17);
             this.chk_speakEvent.TabIndex = 22;
@@ -579,7 +586,7 @@
             this.chk_speakPhase.AutoSize = true;
             this.chk_speakPhase.Checked = true;
             this.chk_speakPhase.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_speakPhase.Location = new System.Drawing.Point(787, 165);
+            this.chk_speakPhase.Location = new System.Drawing.Point(779, 165);
             this.chk_speakPhase.Name = "chk_speakPhase";
             this.chk_speakPhase.Size = new System.Drawing.Size(115, 17);
             this.chk_speakPhase.TabIndex = 23;
@@ -588,7 +595,7 @@
             // 
             // txt_a11s_optical_out
             // 
-            this.txt_a11s_optical_out.Location = new System.Drawing.Point(139, 94);
+            this.txt_a11s_optical_out.Location = new System.Drawing.Point(124, 94);
             this.txt_a11s_optical_out.Name = "txt_a11s_optical_out";
             this.txt_a11s_optical_out.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_optical_out.TabIndex = 7;
@@ -597,7 +604,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(70, 97);
+            this.label17.Location = new System.Drawing.Point(55, 97);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(63, 13);
             this.label17.TabIndex = 10;
@@ -605,7 +612,7 @@
             // 
             // txt_a11s_optical_shiva
             // 
-            this.txt_a11s_optical_shiva.Location = new System.Drawing.Point(139, 42);
+            this.txt_a11s_optical_shiva.Location = new System.Drawing.Point(124, 42);
             this.txt_a11s_optical_shiva.Name = "txt_a11s_optical_shiva";
             this.txt_a11s_optical_shiva.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_optical_shiva.TabIndex = 5;
@@ -614,7 +621,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(29, 71);
+            this.label16.Location = new System.Drawing.Point(14, 71);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(104, 13);
             this.label16.TabIndex = 9;
@@ -622,7 +629,7 @@
             // 
             // txt_a11s_optical_stack
             // 
-            this.txt_a11s_optical_stack.Location = new System.Drawing.Point(139, 68);
+            this.txt_a11s_optical_stack.Location = new System.Drawing.Point(124, 68);
             this.txt_a11s_optical_stack.Name = "txt_a11s_optical_stack";
             this.txt_a11s_optical_stack.Size = new System.Drawing.Size(58, 20);
             this.txt_a11s_optical_stack.TabIndex = 6;
@@ -631,7 +638,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(60, 45);
+            this.label15.Location = new System.Drawing.Point(45, 45);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(73, 13);
             this.label15.TabIndex = 8;
@@ -656,7 +663,7 @@
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(875, 133);
+            this.tabPage2.Size = new System.Drawing.Size(890, 133);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Alexander: Midas";
             // 
@@ -980,7 +987,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(875, 133);
+            this.tabPage1.Size = new System.Drawing.Size(890, 133);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             // 
@@ -1009,7 +1016,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(906, 159);
+            this.tabControl1.Size = new System.Drawing.Size(898, 159);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage4
@@ -1020,29 +1027,137 @@
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(898, 133);
+            this.tabPage4.Size = new System.Drawing.Size(890, 133);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Alexander: Creator";
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.chk_a12s_halfGravityCount);
             this.groupBox8.Controls.Add(this.groupBox10);
             this.groupBox8.Controls.Add(this.chk_a12s_preycallout);
             this.groupBox8.Controls.Add(this.txt_a12s_sacRadiant);
             this.groupBox8.Controls.Add(this.txt_a12s_sac);
-            this.groupBox8.Controls.Add(this.label20);
             this.groupBox8.Controls.Add(this.label18);
             this.groupBox8.Controls.Add(this.label14);
             this.groupBox8.Controls.Add(this.txt_a12s_right);
             this.groupBox8.Controls.Add(this.txt_a12s_left);
             this.groupBox8.Controls.Add(this.label12);
             this.groupBox8.Controls.Add(this.chk_a12s_tscallout);
-            this.groupBox8.Location = new System.Drawing.Point(462, 3);
+            this.groupBox8.Location = new System.Drawing.Point(350, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(426, 127);
+            this.groupBox8.Size = new System.Drawing.Size(449, 127);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "A12S";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label24);
+            this.groupBox10.Controls.Add(this.label23);
+            this.groupBox10.Controls.Add(this.label22);
+            this.groupBox10.Controls.Add(this.label20);
+            this.groupBox10.Controls.Add(this.label21);
+            this.groupBox10.Controls.Add(this.txt_a12s_pos3);
+            this.groupBox10.Controls.Add(this.txt_a12s_pos5);
+            this.groupBox10.Controls.Add(this.txt_a12s_pos2);
+            this.groupBox10.Controls.Add(this.txt_a12s_pos1);
+            this.groupBox10.Controls.Add(this.txt_a12s_pos4);
+            this.groupBox10.Location = new System.Drawing.Point(6, 33);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(225, 88);
+            this.groupBox10.TabIndex = 17;
+            this.groupBox10.TabStop = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(112, 64);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(16, 13);
+            this.label24.TabIndex = 18;
+            this.label24.Text = "5:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(25, 67);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(16, 13);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "4:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(68, 12);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(16, 13);
+            this.label22.TabIndex = 20;
+            this.label22.Text = "3:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(137, 38);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(16, 13);
+            this.label20.TabIndex = 19;
+            this.label20.Text = "2:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(4, 38);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(16, 13);
+            this.label21.TabIndex = 18;
+            this.label21.Text = "1:";
+            // 
+            // txt_a12s_pos3
+            // 
+            this.txt_a12s_pos3.Location = new System.Drawing.Point(90, 9);
+            this.txt_a12s_pos3.Name = "txt_a12s_pos3";
+            this.txt_a12s_pos3.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos3.TabIndex = 6;
+            this.txt_a12s_pos3.Text = "north";
+            this.txt_a12s_pos3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_a12s_pos5
+            // 
+            this.txt_a12s_pos5.Location = new System.Drawing.Point(134, 61);
+            this.txt_a12s_pos5.Name = "txt_a12s_pos5";
+            this.txt_a12s_pos5.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos5.TabIndex = 2;
+            this.txt_a12s_pos5.Text = "south, right";
+            this.txt_a12s_pos5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_a12s_pos2
+            // 
+            this.txt_a12s_pos2.Location = new System.Drawing.Point(159, 35);
+            this.txt_a12s_pos2.Name = "txt_a12s_pos2";
+            this.txt_a12s_pos2.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos2.TabIndex = 3;
+            this.txt_a12s_pos2.Text = "east";
+            this.txt_a12s_pos2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_a12s_pos1
+            // 
+            this.txt_a12s_pos1.Location = new System.Drawing.Point(26, 35);
+            this.txt_a12s_pos1.Name = "txt_a12s_pos1";
+            this.txt_a12s_pos1.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos1.TabIndex = 4;
+            this.txt_a12s_pos1.Text = "west";
+            this.txt_a12s_pos1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_a12s_pos4
+            // 
+            this.txt_a12s_pos4.Location = new System.Drawing.Point(47, 61);
+            this.txt_a12s_pos4.Name = "txt_a12s_pos4";
+            this.txt_a12s_pos4.Size = new System.Drawing.Size(60, 20);
+            this.txt_a12s_pos4.TabIndex = 7;
+            this.txt_a12s_pos4.Text = "south, left";
+            this.txt_a12s_pos4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // chk_a12s_preycallout
             // 
@@ -1050,7 +1165,7 @@
             this.chk_a12s_preycallout.AutoSize = true;
             this.chk_a12s_preycallout.Checked = true;
             this.chk_a12s_preycallout.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_a12s_preycallout.Location = new System.Drawing.Point(304, 19);
+            this.chk_a12s_preycallout.Location = new System.Drawing.Point(327, 16);
             this.chk_a12s_preycallout.Name = "chk_a12s_preycallout";
             this.chk_a12s_preycallout.Size = new System.Drawing.Size(116, 17);
             this.chk_a12s_preycallout.TabIndex = 16;
@@ -1060,7 +1175,7 @@
             // txt_a12s_sacRadiant
             // 
             this.txt_a12s_sacRadiant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_a12s_sacRadiant.Location = new System.Drawing.Point(371, 97);
+            this.txt_a12s_sacRadiant.Location = new System.Drawing.Point(394, 97);
             this.txt_a12s_sacRadiant.Name = "txt_a12s_sacRadiant";
             this.txt_a12s_sacRadiant.Size = new System.Drawing.Size(49, 20);
             this.txt_a12s_sacRadiant.TabIndex = 15;
@@ -1069,37 +1184,27 @@
             // txt_a12s_sac
             // 
             this.txt_a12s_sac.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_a12s_sac.Location = new System.Drawing.Point(263, 97);
+            this.txt_a12s_sac.Location = new System.Drawing.Point(339, 97);
             this.txt_a12s_sac.Name = "txt_a12s_sac";
             this.txt_a12s_sac.Size = new System.Drawing.Size(49, 20);
             this.txt_a12s_sac.TabIndex = 14;
             this.txt_a12s_sac.Text = "cross";
             // 
-            // label20
-            // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(318, 100);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(47, 13);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Radiant:";
-            // 
             // label18
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(196, 100);
+            this.label18.Location = new System.Drawing.Point(260, 100);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(61, 13);
+            this.label18.Size = new System.Drawing.Size(74, 13);
             this.label18.TabIndex = 12;
-            this.label18.Text = "Sacrament:";
+            this.label18.Text = "Sacrament/R:";
             // 
             // label14
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(268, 76);
+            this.label14.Location = new System.Drawing.Point(291, 76);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(97, 13);
             this.label14.TabIndex = 11;
@@ -1108,7 +1213,7 @@
             // txt_a12s_right
             // 
             this.txt_a12s_right.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_a12s_right.Location = new System.Drawing.Point(371, 73);
+            this.txt_a12s_right.Location = new System.Drawing.Point(394, 73);
             this.txt_a12s_right.Name = "txt_a12s_right";
             this.txt_a12s_right.Size = new System.Drawing.Size(49, 20);
             this.txt_a12s_right.TabIndex = 10;
@@ -1117,7 +1222,7 @@
             // txt_a12s_left
             // 
             this.txt_a12s_left.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_a12s_left.Location = new System.Drawing.Point(371, 45);
+            this.txt_a12s_left.Location = new System.Drawing.Point(394, 45);
             this.txt_a12s_left.Name = "txt_a12s_left";
             this.txt_a12s_left.Size = new System.Drawing.Size(49, 20);
             this.txt_a12s_left.TabIndex = 9;
@@ -1127,56 +1232,11 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(237, 48);
+            this.label12.Location = new System.Drawing.Point(260, 48);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(128, 13);
             this.label12.TabIndex = 8;
             this.label12.Text = "Inception+TS+Defam left:";
-            // 
-            // txt_a12s_pos4
-            // 
-            this.txt_a12s_pos4.Location = new System.Drawing.Point(90, 12);
-            this.txt_a12s_pos4.Name = "txt_a12s_pos4";
-            this.txt_a12s_pos4.Size = new System.Drawing.Size(60, 20);
-            this.txt_a12s_pos4.TabIndex = 7;
-            this.txt_a12s_pos4.Text = "1";
-            this.txt_a12s_pos4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txt_a12s_pos3
-            // 
-            this.txt_a12s_pos3.Location = new System.Drawing.Point(111, 38);
-            this.txt_a12s_pos3.Name = "txt_a12s_pos3";
-            this.txt_a12s_pos3.Size = new System.Drawing.Size(60, 20);
-            this.txt_a12s_pos3.TabIndex = 6;
-            this.txt_a12s_pos3.Text = "3";
-            this.txt_a12s_pos3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txt_a12s_pos1
-            // 
-            this.txt_a12s_pos1.Location = new System.Drawing.Point(7, 38);
-            this.txt_a12s_pos1.Name = "txt_a12s_pos1";
-            this.txt_a12s_pos1.Size = new System.Drawing.Size(60, 20);
-            this.txt_a12s_pos1.TabIndex = 4;
-            this.txt_a12s_pos1.Text = "9";
-            this.txt_a12s_pos1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txt_a12s_pos2
-            // 
-            this.txt_a12s_pos2.Location = new System.Drawing.Point(58, 61);
-            this.txt_a12s_pos2.Name = "txt_a12s_pos2";
-            this.txt_a12s_pos2.Size = new System.Drawing.Size(60, 20);
-            this.txt_a12s_pos2.TabIndex = 3;
-            this.txt_a12s_pos2.Text = "6";
-            this.txt_a12s_pos2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txt_a12s_pos5
-            // 
-            this.txt_a12s_pos5.Location = new System.Drawing.Point(24, 12);
-            this.txt_a12s_pos5.Name = "txt_a12s_pos5";
-            this.txt_a12s_pos5.Size = new System.Drawing.Size(60, 20);
-            this.txt_a12s_pos5.TabIndex = 2;
-            this.txt_a12s_pos5.Text = "11";
-            this.txt_a12s_pos5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // chk_a12s_tscallout
             // 
@@ -1216,7 +1276,6 @@
             // 
             this.groupBox3.Controls.Add(this.txt_a11s_optical_out);
             this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.txt_a11s_sword_right);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.txt_a11s_optical_shiva);
@@ -1226,19 +1285,10 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Location = new System.Drawing.Point(144, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(312, 127);
+            this.groupBox3.Size = new System.Drawing.Size(200, 127);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "A11S";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(203, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Right:";
             // 
             // panel1
             // 
@@ -1246,7 +1296,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(906, 159);
+            this.panel1.Size = new System.Drawing.Size(898, 159);
             this.panel1.TabIndex = 20;
             // 
             // openFileDialog1
@@ -1267,18 +1317,25 @@
             this.chk_quickMode.UseVisualStyleBackColor = true;
             this.chk_quickMode.CheckedChanged += new System.EventHandler(this.chk_quickMode_CheckedChanged);
             // 
-            // groupBox10
+            // txt_a11s_sword_right
             // 
-            this.groupBox10.Controls.Add(this.txt_a12s_pos3);
-            this.groupBox10.Controls.Add(this.txt_a12s_pos5);
-            this.groupBox10.Controls.Add(this.txt_a12s_pos2);
-            this.groupBox10.Controls.Add(this.txt_a12s_pos1);
-            this.groupBox10.Controls.Add(this.txt_a12s_pos4);
-            this.groupBox10.Location = new System.Drawing.Point(6, 33);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(177, 88);
-            this.groupBox10.TabIndex = 17;
-            this.groupBox10.TabStop = false;
+            this.txt_a11s_sword_right.Location = new System.Drawing.Point(146, 16);
+            this.txt_a11s_sword_right.Name = "txt_a11s_sword_right";
+            this.txt_a11s_sword_right.Size = new System.Drawing.Size(36, 20);
+            this.txt_a11s_sword_right.TabIndex = 3;
+            this.txt_a11s_sword_right.Text = "left";
+            // 
+            // chk_a12s_halfGravityCount
+            // 
+            this.chk_a12s_halfGravityCount.AutoSize = true;
+            this.chk_a12s_halfGravityCount.Checked = true;
+            this.chk_a12s_halfGravityCount.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_a12s_halfGravityCount.Location = new System.Drawing.Point(204, 17);
+            this.chk_a12s_halfGravityCount.Name = "chk_a12s_halfGravityCount";
+            this.chk_a12s_halfGravityCount.Size = new System.Drawing.Size(112, 17);
+            this.chk_a12s_halfGravityCount.TabIndex = 18;
+            this.chk_a12s_halfGravityCount.Text = "Half Gravity Count";
+            this.chk_a12s_halfGravityCount.UseVisualStyleBackColor = true;
             // 
             // formMain
             // 
@@ -1292,7 +1349,7 @@
             this.Controls.Add(this.chk_speakPhase);
             this.Controls.Add(this.panel1);
             this.Name = "formMain";
-            this.Size = new System.Drawing.Size(906, 461);
+            this.Size = new System.Drawing.Size(898, 461);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -1329,13 +1386,13 @@
             this.tabPage4.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1364,7 +1421,6 @@
         private System.Windows.Forms.CheckBox chk_speakAbilityUse;
         private System.Windows.Forms.TextBox txt_bossName;
         private System.Windows.Forms.CheckBox chk_saveLog;
-        private System.Windows.Forms.TextBox txt_a11s_sword_right;
         private System.Windows.Forms.CheckBox chk_showLogs;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.CheckBox chk_showMini;
@@ -1422,7 +1478,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ComboBox combo_serverName;
         private System.Windows.Forms.CheckBox chk_quickMode;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_broadcastURL;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox1;
@@ -1441,9 +1496,16 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txt_a12s_sacRadiant;
         private System.Windows.Forms.TextBox txt_a12s_sac;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox chk_a12s_preycallout;
         private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.CheckBox chk_ingameSpeak;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txt_a11s_sword_right;
+        private System.Windows.Forms.CheckBox chk_a12s_halfGravityCount;
     }
 }

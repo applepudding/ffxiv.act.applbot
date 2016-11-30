@@ -26,7 +26,6 @@ Missing features:
 - event warning notification (warning-timing, warning-speak, warning-countdown)
 - simulation on plugin (read from chosen log directly)
 - full log reader fight recognizer/separator
-- repeating sets of triggers
 - multiple encounters in 1 xml
 
 ## Contributing 

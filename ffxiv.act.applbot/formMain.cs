@@ -191,6 +191,7 @@ namespace ffxiv.act.applbot
             //a12s stuff
             xmlSettings.AddControlSetting(chk_a12s_tscallout.Name, chk_a12s_tscallout);
             xmlSettings.AddControlSetting(chk_a12s_preycallout.Name, chk_a12s_preycallout);
+            xmlSettings.AddControlSetting(chk_a12s_halfGravityCount.Name, chk_a12s_halfGravityCount);
             xmlSettings.AddControlSetting(txt_a12s_sacRadiant.Name, txt_a12s_sacRadiant);
             xmlSettings.AddControlSetting(txt_a12s_sac.Name, txt_a12s_sac);
             xmlSettings.AddControlSetting(txt_a12s_pos1.Name, txt_a12s_pos1);
@@ -293,7 +294,7 @@ namespace ffxiv.act.applbot
 
         private void btn_test_Click(object sender, EventArgs e)
         {
-            myTTTVServer.varAPIAuth = "oaj45fd0ajf44cafp881123sd";
+            //myTTTVServer.varAPIAuth = "oaj45fd0ajf44cafp881123sd";
             
             //test new form UX    
             //test xml
@@ -458,11 +459,6 @@ namespace ffxiv.act.applbot
                 this.list_fight.Columns.Add("Trigger", 200);
                 this.list_fight.Columns.Add("--", -1);
             }            
-        }
-
-        private void combo_serverName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

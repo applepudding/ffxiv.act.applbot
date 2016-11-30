@@ -8,14 +8,6 @@ namespace ffxiv.act.applbot
 {
     partial class formMain
     {
-        bool a12s_temporalStasis = false;
-        int a12s_ts_countdown = 2;
-        int a12s_ts_count = 0;
-        string a12s_preyTarget = "";
-        int a12s_preyCount = 0;
-
-        int currentRepeatPhaseLvi = -1;
-
         public void myBackgroudWorker()
         {
             Match m;
@@ -66,18 +58,18 @@ namespace ffxiv.act.applbot
                         #endregion
 
                         #region fun stuff
-                        pattern = "applbot\\:";
-                        m = Regex.Match(resultLine, pattern);
-                        if (m.Success)
+                        if (chk_ingameSpeak.Checked)
                         {
-                            if (resultLine.Length < 50)
+                            pattern = "applbot\\:";
+                            m = Regex.Match(resultLine, pattern);
+                            if (m.Success)
                             {
                                 string[] mainElements = Regex.Split(resultLine, pattern);
                                 string toSpeak = mainElements[1];
                                 botspeak(toSpeak);
                                 log(toSpeak, false, resultLine);
+                                continue;
                             }
-                            continue;
                         }
                         #endregion
 
@@ -263,6 +255,26 @@ namespace ffxiv.act.applbot
                                         }
                                     }
 
+                                    //count half gravity
+                                    if (chk_a12s_halfGravityCount.Checked)
+                                    {
+                                        pattern = "The General's Time.19F5.Half Gravity";
+                                        m = Regex.Match(resultLine, pattern);
+                                        if (m.Success)
+                                        {
+                                            pattern = "0.0.0.0.0.0.0.0";
+                                            m = Regex.Match(resultLine, pattern);
+                                            if (!m.Success)
+                                            {
+                                                a12s_halfGravityCount++;
+                                                string toSpeak = a12s_halfGravityCount.ToString();
+                                                botspeak(toSpeak);
+                                                log(toSpeak, false, resultLine);
+                                            }
+                                            continue;
+                                        }
+                                    }
+
                                     //sacrament normal/radiant
                                     pattern = "Sacrament..........Alexander Prime.{1}\\B";
                                     m = Regex.Match(resultLine, pattern);
@@ -287,12 +299,14 @@ namespace ffxiv.act.applbot
                                         m = Regex.Match(resultLine, pattern);
                                         if (m.Success)
                                         {
-                                            var toSpeak = a12s_resolveTemporalStasis();
+                                            a12s_ts_id++;
+
+                                            var toSpeak = a12s_resolveTemporalStasis_2();
+                                            this.grid_players.Refresh();
                                             botspeak(toSpeak);
-                                            log("Temporal Stasis", true, toSpeak);
+                                            log("Temporal Stasis " + a12s_ts_id, true, toSpeak);
                                             a12s_temporalStasis = false;
                                             a12s_ts_count = 0;
-                                            grid_players.Refresh();
                                             a12s_cleanPlayerListDebuff();
                                             continue;
                                         }
@@ -301,12 +315,14 @@ namespace ffxiv.act.applbot
                                         m = Regex.Match(resultLine, pattern);
                                         if (m.Success)
                                         {
-                                            var toSpeak = a12s_resolveTemporalStasis();
+                                            a12s_ts_id = 3;
+
+                                            var toSpeak = a12s_resolveTemporalStasis_2();
+                                            this.grid_players.Refresh();
                                             botspeak(toSpeak);
-                                            log("Temporal Stasis", true, toSpeak);
+                                            log("Temporal Stasis " + a12s_ts_id, true, toSpeak);
                                             a12s_temporalStasis = false;
                                             a12s_ts_count = 0;
-                                            grid_players.Refresh();
                                             a12s_cleanPlayerListDebuff();
                                             continue;
                                         }
@@ -333,7 +349,7 @@ namespace ffxiv.act.applbot
                                             subElements = subElements.Where(s => !String.IsNullOrEmpty(s)).ToArray();
                                             string playerName = subElements[subElements.Length - 3];
                                             //fix for YOU
-                                            if (playerName == "-")
+                                            if ((playerName == "-") || (playerName == "T"))
                                             {
                                                 playerName = txt_you.Text;
                                             }
