@@ -222,7 +222,7 @@ namespace ffxiv.act.applbot
                 //sort partylist by debuff order
                 List<ffxiv_player> SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varInt).ToList();
                 ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
-
+                
                 switch (a12s_ts_id)
                 {
                     case 1:
@@ -230,7 +230,7 @@ namespace ffxiv.act.applbot
                         //===========================================================
                         //sort partylist by name (for consistency)
                         
-                        SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varName).ToList();
+                        SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderByDescending(o => o.varName).ToList();
                         ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
                         
 
@@ -244,6 +244,7 @@ namespace ffxiv.act.applbot
                             }
                         }
                         
+
                         //swap floater with Shared Sentence
                         int dpsCount = 0;
                         for (dpsCount = 0; dpsCount <3; dpsCount++)
@@ -256,7 +257,8 @@ namespace ffxiv.act.applbot
                                 break;
                             }
                         }
-                                               
+                        
+
                         //position all DPS
                         foreach (ffxiv_player player in ffxiv_player_list)
                         {
@@ -352,6 +354,7 @@ namespace ffxiv.act.applbot
                                 if (player.varClass == "tank")
                                 {
                                     tempPosition = 3;
+                                    tempPosition3Claimed = !tempPosition3Claimed;
                                 }
                                 else
                                 {
@@ -361,7 +364,7 @@ namespace ffxiv.act.applbot
                                     }
                                     else //DPS
                                     {
-                                        tempPosition = (tempPosition3Claimed) ? 5 : 3; // 4 : 3
+                                        tempPosition = (tempPosition3Claimed) ? 4 : 3; // 4 : 3
                                         tempPosition3Claimed = !tempPosition3Claimed;
                                     }
                                 }
@@ -477,7 +480,7 @@ namespace ffxiv.act.applbot
             }
             return resultPosition;
         }
-        /*
+        
         int a12s_countDefamation()
         {
             int defamationCount = 0;
@@ -502,7 +505,7 @@ namespace ffxiv.act.applbot
             }
             return sharedSentenceCount;
         }
-        */
+        
         void a12s_cleanPlayerListDebuff()
         {
             //clean player list from debuffs

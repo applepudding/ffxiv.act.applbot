@@ -299,7 +299,9 @@ namespace ffxiv.act.applbot
                                         m = Regex.Match(resultLine, pattern);
                                         if (m.Success)
                                         {
-                                            a12s_ts_id++;
+
+                                            //a12s_ts_id++;                                            
+                                            a12s_ts_id = (a12s_countDefamation() == 3) ? 1 : 2;
 
                                             var toSpeak = a12s_resolveTemporalStasis_2();
                                             this.grid_players.Refresh();
