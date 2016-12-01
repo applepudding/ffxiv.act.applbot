@@ -266,10 +266,16 @@ namespace ffxiv.act.applbot
                                             m = Regex.Match(resultLine, pattern);
                                             if (!m.Success)
                                             {
-                                                a12s_halfGravityCount++;
-                                                string toSpeak = a12s_halfGravityCount.ToString();
-                                                botspeak(toSpeak);
-                                                log(toSpeak, false, resultLine);
+                                                pattern = "Interrupted";
+                                                m = Regex.Match(resultLine, pattern);
+                                                if (!m.Success)
+                                                {
+                                                    a12s_halfGravityCount++;
+                                                    string toSpeak = a12s_halfGravityCount.ToString();
+                                                    botspeak(toSpeak);
+                                                    log(toSpeak, false, resultLine);
+                                                }
+                                                
                                             }
                                             continue;
                                         }
