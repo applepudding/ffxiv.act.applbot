@@ -364,8 +364,6 @@ namespace ffxiv.act.applbot
 
                                             a12s_ts_count++;
                                             a12s_setDebuff(playerName, debuff, a12s_ts_count);  
-                                                                                              
-                                            log(playerName + "=" + debuff, false, resultLine);
                                             continue;
                                         }
                                     }

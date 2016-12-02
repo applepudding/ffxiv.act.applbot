@@ -156,9 +156,8 @@ namespace ffxiv.act.applbot
             {
                 log("clearing player list", true);
                 ffxiv_player_list.Clear();
-                //this.grid_players.DataSource = ffxiv_player_list;
-                //grid_players.Refresh();
                 
+                this.grid_players.DataSource = ffxiv_player_list; //this may crash
                 partySorted = false;
             }
             else
@@ -889,12 +888,19 @@ namespace ffxiv.act.applbot
         private string _varDebuff;
         private string _varPosition;
         private int _varInt;
+        private int _varOI;
 
         [Browsable(false)]
         public string varOrder
         {
             get { return _varOrder; }
             set { _varOrder = value; }
+        }
+        //[Browsable(false)]
+        public int varOI
+        {
+            get { return _varOI; }
+            set { _varOI = value; }
         }
         //[Browsable(false)]
         public string varPosition

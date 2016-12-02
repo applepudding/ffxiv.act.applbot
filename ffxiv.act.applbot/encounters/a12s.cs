@@ -231,6 +231,7 @@ namespace ffxiv.act.applbot
                         //sort partylist by name (for consistency)
                         
                         SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderByDescending(o => o.varName).ToList();
+                        SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderByDescending(o => o.varOI).ToList();
                         ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
                         
 
