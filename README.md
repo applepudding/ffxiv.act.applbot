@@ -9,9 +9,12 @@ Robot, callouts, and timeline plugin for boss encounters.
 er ... add+enable it in ACT - plugin listing and try out :) 
 Make sure ACT reset is set to around 40s. Options - Main Table/Encounters - General - Number of seconds....
 
-## Screenshots
+## Screenshots and Videos
 - visual guide: http://imgur.com/a/g1OyM
 - a12s settings: http://imgur.com/a/5s4Us
+- a12s dps spot assignment: https://imgur.com/a/Tna90
+
+- a12s video: 2nd personal kill, full pugs PF @ levi https://www.twitch.tv/melonpudding/v/106460362
 
 ## Credits & Contacts
 - Apple Pudding, Ix Xyl, Raccle Lancale, Akela Freya @ Leviathan
