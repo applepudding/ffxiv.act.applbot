@@ -7,7 +7,7 @@ applbot is an ACT plugin that covers robot, callouts, event broadcast, and timel
 
 ## Usage
 er ... add+enable it in ACT - plugin listing and try out :) 
-Make sure ACT reset is set to around 40s. Options - Main Table/Encounters - General - Number of seconds....
+Make sure ACT reset is set to around 35s or 40s. Options - Main Table/Encounters - General - Number of seconds....
 
 ## Guides and Screenshots
 - visual guide: http://imgur.com/a/g1OyM
@@ -15,7 +15,7 @@ Make sure ACT reset is set to around 40s. Options - Main Table/Encounters - Gene
 - a12s dps spot assignment: https://imgur.com/a/Tna90
 
 ## Videos
-- a12s,2nd personal kill, full pugs PF @ levi: https://www.twitch.tv/melonpudding/v/106460362
+- a12s, 2nd personal kill, full pugs PF @ levi: https://www.twitch.tv/melonpudding/v/106460362
 
 ## Credits & Contacts
 - Apple Pudding, Ix Xyl, Raccle Lancale, Akela Freya @ Leviathan
@@ -31,6 +31,7 @@ Missing features:
 - simulation on plugin (read from chosen log directly)
 - full log reader fight recognizer/separator
 - multiple encounters in 1 xml
+- broadcastable BEEP
 
 ## Contributing 
 1. Fork it!
