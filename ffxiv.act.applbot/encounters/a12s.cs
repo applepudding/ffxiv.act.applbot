@@ -230,8 +230,8 @@ namespace ffxiv.act.applbot
                         //===========================================================
                         //sort partylist by name (for consistency)
                         
-                        SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderByDescending(o => o.varName).ToList();
-                        SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderByDescending(o => o.varOI).ToList();
+                        SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varName).ToList();
+                        SortedList = ffxiv_player_list.ToList<ffxiv_player>().OrderBy(o => o.varOI).ToList();
                         ffxiv_player_list = new BindingList<ffxiv_player>(SortedList);
                         
 
@@ -439,7 +439,8 @@ namespace ffxiv.act.applbot
                                     tempPosition = 1;
                                 }
                                 tempPosition1Claimed = !tempPosition1Claimed;
-
+                                //====================================================================================================================
+                                /*
                                 if ((restrainCount % 2) == 0) //swap if heal/tank got position 1
                                 {
                                     if ((restrainList[restrainCount-2].varClass == "tank") || (restrainList[restrainCount - 2].varClass == "heal"))
@@ -447,7 +448,24 @@ namespace ffxiv.act.applbot
                                         tempPosition = 1;
                                         restrainList[restrainCount - 2].varPosition = "2";
                                     }
+
                                 }
+                                */
+                                if ((restrainCount % 2) == 0) 
+                                {
+                                    if ((!chk_a12s_inceptionTanksStack.Checked && (restrainList[restrainCount - 2].varClass == "tank")) || (restrainList[restrainCount - 2].varClass == "heal")) //swap if heal got position 1
+                                    {                                        
+                                        tempPosition = 1;
+                                        restrainList[restrainCount - 2].varPosition = "2";
+                                    }
+                                    if ((chk_a12s_inceptionTanksStack.Checked) && (restrainList[restrainCount - 1].varClass == "tank")) //swap if tank get position 2
+                                    { 
+                                        tempPosition = 1;
+                                        restrainList[restrainCount - 2].varPosition = "2";
+                                    }
+
+                                }
+                                //--------------------------------------------------------------------------------------------------------------------
                                 player.varPosition = tempPosition.ToString();
                             }
                         }

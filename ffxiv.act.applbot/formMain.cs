@@ -191,6 +191,7 @@ namespace ffxiv.act.applbot
             //a12s stuff
             xmlSettings.AddControlSetting(chk_a12s_tscallout.Name, chk_a12s_tscallout);
             xmlSettings.AddControlSetting(chk_a12s_preycallout.Name, chk_a12s_preycallout);
+            xmlSettings.AddControlSetting(chk_a12s_inceptionTanksStack.Name, chk_a12s_inceptionTanksStack);
             xmlSettings.AddControlSetting(chk_a12s_halfGravityCount.Name, chk_a12s_halfGravityCount);
             xmlSettings.AddControlSetting(txt_a12s_sacRadiant.Name, txt_a12s_sacRadiant);
             xmlSettings.AddControlSetting(txt_a12s_sac.Name, txt_a12s_sac);

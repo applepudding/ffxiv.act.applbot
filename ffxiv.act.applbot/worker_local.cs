@@ -467,7 +467,7 @@ namespace ffxiv.act.applbot
                                             string toSpeak = "Stop";
                                             botspeak(toSpeak);
                                             log(toSpeak, false, resultLine);
-                                            sleep_t = 6;
+                                            sleep_t = 7;
                                             startCountdown(3);
                                             continue;
                                         }
