@@ -65,7 +65,8 @@ namespace ffxiv.act.applbot
                             if (m.Success)
                             {
                                 string[] mainElements = Regex.Split(resultLine, pattern);
-                                string toSpeak = mainElements[1];
+                                string[] subElements = Regex.Split(mainElements[1], "\\|");
+                                string toSpeak = subElements[0];
                                 botspeak(toSpeak);
                                 log(toSpeak, false, resultLine);
                                 continue;
@@ -177,9 +178,10 @@ namespace ffxiv.act.applbot
                                 if (m.Success)
                                 {
                                     string[] mainElements = Regex.Split(resultLine, pattern);
-                                    string toSpeak = string.Format(this.txt_speak_abilityUse.Text + " {0}", mainElements[1]);
+                                    string[] subElements = Regex.Split(mainElements[1], "\\|");
+                                    string toSpeak = string.Format(this.txt_speak_abilityUse.Text + " {0}", subElements[0]);
                                     if (this.chk_speakAbilityUse.Checked) botspeak(toSpeak);
-                                    log("Uses " + mainElements[1], false, resultLine);
+                                    log("Uses " + subElements[0], false, resultLine);
                                     break;
                                 }
 
@@ -188,9 +190,10 @@ namespace ffxiv.act.applbot
                                 if (m.Success)
                                 {
                                     string[] mainElements = Regex.Split(resultLine, pattern);
-                                    string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
+                                    string[] subElements = Regex.Split(mainElements[1], "\\|");
+                                    string toSpeak = string.Format(this.txt_speak_abilityUse.Text + " {0}", subElements[0]);
                                     if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
-                                    log("Readies " + mainElements[1], false, resultLine);
+                                    log("Readies " + subElements[0], false, resultLine);
                                     break;
                                 }
 
@@ -199,9 +202,10 @@ namespace ffxiv.act.applbot
                                 if (m.Success)
                                 {
                                     string[] mainElements = Regex.Split(resultLine, pattern);
-                                    string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
+                                    string[] subElements = Regex.Split(mainElements[1], "\\|");
+                                    string toSpeak = string.Format(this.txt_speak_abilityUse.Text + " {0}", subElements[0]);
                                     if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
-                                    log("Begins Casting " + mainElements[1], false, resultLine);
+                                    log("Begins Casting " + subElements[0], false, resultLine);
                                     break;
                                 }
 
@@ -210,9 +214,10 @@ namespace ffxiv.act.applbot
                                 if (m.Success)
                                 {
                                     string[] mainElements = Regex.Split(resultLine, pattern);
-                                    string toSpeak = string.Format(this.txt_speak_abilityReady.Text + " {0}", mainElements[1]);
-                                    if (this.chk_speakAbilityReady.Checked) botspeak(toSpeak);
-                                    log("Casts " + mainElements[1], false, resultLine);
+                                    string[] subElements = Regex.Split(mainElements[1], "\\|");
+                                    string toSpeak = string.Format(this.txt_speak_abilityUse.Text + " {0}", subElements[0]);
+                                    if (this.chk_speakAbilityUse.Checked) botspeak(toSpeak);
+                                    log("Casts " + subElements[0], false, resultLine);
                                     break;
                                 }
                             }
@@ -421,6 +426,7 @@ namespace ffxiv.act.applbot
                                         continue;
                                     }
                                     pattern = "Cruise Chaser.1A7A.Left Laser Sword..........Cruise Chaser";
+                                    //pattern = "The Cruise Chaser readies Left Laser Sword";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
@@ -432,6 +438,7 @@ namespace ffxiv.act.applbot
                                         continue;
                                     }
                                     pattern = "Cruise Chaser.1A79.Right Laser Sword..........Cruise Chaser";
+                                    //pattern = "The Cruise Chaser readies Right Laser Sword";
                                     m = Regex.Match(resultLine, pattern);
                                     if (m.Success)
                                     {
@@ -927,8 +934,25 @@ namespace ffxiv.act.applbot
                                             break;
                                     }
                                     break;
-                                    #endregion
+                                #endregion
 
+                                #region EX-Zurvan
+                                case "Zurvan":
+                                    pattern = ".0000......000E.0000.0000.0000.";
+                                    m = Regex.Match(resultLine, pattern);
+                                    if (m.Success)
+                                    {
+                                        string[] mainElements = Regex.Split(resultLine, pattern);
+                                        string[] subElements = Regex.Split(mainElements[0], "\\|");
+                                        string castTarget = getNickname(subElements[subElements.Length-1]);
+                                        string toSpeak = string.Format("{0}", castTarget);
+                                        botspeak(toSpeak);
+                                        log(toSpeak, false, resultLine);
+                                        //sleep_t = 6;
+                                        continue;
+                                    }
+                                    break;
+                                    #endregion
                             }
                         }
                         flow_last = resultLine;

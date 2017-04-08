@@ -108,6 +108,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.chk_a12s_inceptionTanksStack = new System.Windows.Forms.CheckBox();
             this.chk_a12s_halfGravityCount = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -136,7 +137,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.chk_quickMode = new System.Windows.Forms.CheckBox();
-            this.chk_a12s_inceptionTanksStack = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -209,8 +209,7 @@
             this.combo_serverName.FormattingEnabled = true;
             this.combo_serverName.Items.AddRange(new object[] {
             "localhost",
-            "t-t.tv",
-            "54.191.10.74"});
+            "34.208.224.216"});
             this.combo_serverName.Location = new System.Drawing.Point(73, 19);
             this.combo_serverName.Name = "combo_serverName";
             this.combo_serverName.Size = new System.Drawing.Size(96, 21);
@@ -266,7 +265,7 @@
             this.tabPage5.Controls.Add(this.btn_clearPlayerList);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(815, 133);
+            this.tabPage5.Size = new System.Drawing.Size(846, 133);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Advanced";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -456,7 +455,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(815, 133);
+            this.tabPage3.Size = new System.Drawing.Size(846, 133);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "General";
             // 
@@ -664,7 +663,7 @@
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(815, 133);
+            this.tabPage2.Size = new System.Drawing.Size(846, 133);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Alexander: Midas";
             // 
@@ -988,7 +987,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(815, 133);
+            this.tabPage1.Size = new System.Drawing.Size(846, 133);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             // 
@@ -1052,6 +1051,18 @@
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "A12S";
+            // 
+            // chk_a12s_inceptionTanksStack
+            // 
+            this.chk_a12s_inceptionTanksStack.AutoSize = true;
+            this.chk_a12s_inceptionTanksStack.Checked = true;
+            this.chk_a12s_inceptionTanksStack.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_a12s_inceptionTanksStack.Location = new System.Drawing.Point(228, 17);
+            this.chk_a12s_inceptionTanksStack.Name = "chk_a12s_inceptionTanksStack";
+            this.chk_a12s_inceptionTanksStack.Size = new System.Drawing.Size(128, 17);
+            this.chk_a12s_inceptionTanksStack.TabIndex = 19;
+            this.chk_a12s_inceptionTanksStack.Text = "Inception tanks stack";
+            this.chk_a12s_inceptionTanksStack.UseVisualStyleBackColor = true;
             // 
             // chk_a12s_halfGravityCount
             // 
@@ -1193,7 +1204,7 @@
             this.txt_a12s_sacRadiant.Name = "txt_a12s_sacRadiant";
             this.txt_a12s_sacRadiant.Size = new System.Drawing.Size(49, 20);
             this.txt_a12s_sacRadiant.TabIndex = 15;
-            this.txt_a12s_sacRadiant.Text = "donut";
+            this.txt_a12s_sacRadiant.Text = "in";
             // 
             // txt_a12s_sac
             // 
@@ -1202,7 +1213,7 @@
             this.txt_a12s_sac.Name = "txt_a12s_sac";
             this.txt_a12s_sac.Size = new System.Drawing.Size(49, 20);
             this.txt_a12s_sac.TabIndex = 14;
-            this.txt_a12s_sac.Text = "cross";
+            this.txt_a12s_sac.Text = "out";
             // 
             // label18
             // 
@@ -1338,18 +1349,6 @@
             this.chk_quickMode.Text = "Quick Mode (Disable Player List)";
             this.chk_quickMode.UseVisualStyleBackColor = true;
             this.chk_quickMode.CheckedChanged += new System.EventHandler(this.chk_quickMode_CheckedChanged);
-            // 
-            // chk_a12s_inceptionTanksStack
-            // 
-            this.chk_a12s_inceptionTanksStack.AutoSize = true;
-            this.chk_a12s_inceptionTanksStack.Checked = true;
-            this.chk_a12s_inceptionTanksStack.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_a12s_inceptionTanksStack.Location = new System.Drawing.Point(228, 17);
-            this.chk_a12s_inceptionTanksStack.Name = "chk_a12s_inceptionTanksStack";
-            this.chk_a12s_inceptionTanksStack.Size = new System.Drawing.Size(128, 17);
-            this.chk_a12s_inceptionTanksStack.TabIndex = 19;
-            this.chk_a12s_inceptionTanksStack.Text = "Inception tanks stack";
-            this.chk_a12s_inceptionTanksStack.UseVisualStyleBackColor = true;
             // 
             // formMain
             // 
