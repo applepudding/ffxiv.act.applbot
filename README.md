@@ -7,7 +7,8 @@ applbot is an ACT plugin that covers robot, callouts, event broadcast, and timel
 
 ## Usage
 er ... add+enable it in ACT - plugin listing and try out :) 
-Make sure ACT reset is set to around 35s or 40s. Options - Main Table/Encounters - General - Number of seconds....
+Make sure ACT reset is set to around 40s or 50s. Options - Main Table/Encounters - General - Number of seconds....
+Since new fights have lengthy idle time, this plugin will force ACT to end encounter when reading "has initiated a ready check", or when countdown reaches "Engage!".
 
 ## Guides and Screenshots
 - visual guide: http://imgur.com/a/g1OyM
