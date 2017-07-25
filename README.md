@@ -23,15 +23,11 @@ Since new fights have lengthy idle time, this plugin will force ACT to end encou
 - A'oshane Taru @ Odin
 
 ## Stuffs on progress
-Required fixes:
-- a9s + a10s xml (stop working when player dies, and timings)
 
 Missing features:
-- sophia ex xml (lazy)
-- event warning notification (warning-timing, warning-speak, warning-countdown)
+- Discord Bot Broadcast
 - simulation on plugin (read from chosen log directly)
-- full log reader fight recognizer/separator
-- multiple encounters in 1 xml
+- xml rework to include triggers to support non en languages
 - broadcastable BEEP
 
 ## Contributing 
