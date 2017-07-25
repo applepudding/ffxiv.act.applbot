@@ -19,7 +19,7 @@ Since new fights have lengthy idle time, this plugin will force ACT to end encou
 - a12s, 2nd personal kill, full pugs PF @ levi: https://www.twitch.tv/melonpudding/v/106460362
 
 ## Credits & Contacts
-- Apple Pudding, Ix Xyl, Raccle Lancale, Akela Freya @ Leviathan
+- Apple Pudding, Ix Xyl, Raccle Lancale, Akela Freya, Aria Stardust, Sarang Rie @ Leviathan
 - A'oshane Taru @ Odin
 
 ## Stuffs on progress
