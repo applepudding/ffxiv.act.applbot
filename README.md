@@ -4,6 +4,7 @@ applbot is an ACT plugin that covers robot, callouts, event broadcast, and timel
 ## Installation
 1. Download and unblock (if neccesary) .zip file from releases section (https://github.com/applepudding/ffxiv.act.applbot/releases).
 2. Extract .zip to ACT Folder (applbot folder inside ACT main folder)
+3. Make sure ACT is run as administrator and is allowed through firewall!
 
 ## Usage
 er ... add+enable it in ACT - plugin listing and try out :) 
